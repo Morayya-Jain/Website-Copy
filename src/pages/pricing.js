@@ -255,9 +255,9 @@ function render(root, packages, hasUser) {
       const packageId = btn.dataset.packageId
 
       if (!hasUser) {
-        // Not logged in: redirect to signup, then come back with auto_checkout
+        // Not logged in: open signup in a new tab, then come back with auto_checkout
         const returnUrl = `/pricing/?auto_checkout=${encodeURIComponent(packageId)}`
-        window.location.href = `/auth/signup/?redirect=${encodeURIComponent(returnUrl)}`
+        window.open(`/auth/signup/?redirect=${encodeURIComponent(returnUrl)}`, '_blank')
         return
       }
 
