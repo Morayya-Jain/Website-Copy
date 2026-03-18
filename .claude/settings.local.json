@@ -34,7 +34,12 @@
       "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''/Users/morayyajain/Developer/BrainDock-Website/public/js/translations/zh.json'',''utf8''\\)\\)\")",
       "Bash(node -e \"JSON.parse\\(require\\(''fs''\\).readFileSync\\(''/Users/morayyajain/Developer/BrainDock-Website/public/js/translations/hi.json'',''utf8''\\)\\)\")",
       "WebFetch(domain:thebraindock.com)",
-      "Bash(curl -s https://thebraindock.com/)"
+      "Bash(curl -s https://thebraindock.com/)",
+      "WebSearch",
+      "WebFetch(domain:www.focusbear.io)",
+      "WebFetch(domain:www.fomilab.ai)",
+      "WebFetch(domain:freedom.to)",
+      "WebFetch(domain:trackermode.app)"
     ]
   },
   "enableAllProjectMcpServers": true,

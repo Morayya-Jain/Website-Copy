@@ -44,6 +44,20 @@ const I18n = {
    * @returns {string} Language code
    */
   getSavedLanguage() {
+    // Check URL query parameter first (for hreflang support)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && this.SUPPORTED_LANGUAGES.includes(urlLang)) {
+      this.saveLanguage(urlLang);
+      // Strip ?lang= from URL so it doesn't override future language toggle changes
+      urlParams.delete('lang');
+      const newUrl = urlParams.toString()
+        ? `${window.location.pathname}?${urlParams.toString()}`
+        : window.location.pathname;
+      history.replaceState(null, '', newUrl);
+      return urlLang;
+    }
+
     const saved = localStorage.getItem(this.STORAGE_KEY);
     if (saved && this.SUPPORTED_LANGUAGES.includes(saved)) {
       return saved;
