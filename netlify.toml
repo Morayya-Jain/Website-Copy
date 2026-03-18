@@ -47,3 +47,14 @@
   from = "/sessions/:id"
   to = "/sessions/detail/index.html"
   status = 200
+
+# Branded download redirects → GitHub Releases
+[[redirects]]
+  from = "/download/macos"
+  to = "https://github.com/Morayya-Jain/BrainDock/releases/latest/download/BrainDock-macOS.dmg"
+  status = 302
+
+[[redirects]]
+  from = "/download/windows"
+  to = "https://github.com/Morayya-Jain/BrainDock/releases/latest/download/BrainDock-Setup.exe"
+  status = 302
