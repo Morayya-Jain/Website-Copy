@@ -9,6 +9,7 @@ import { escapeHtml, formatDuration, modeLabel } from '../utils.js'
 import { isValidUuid } from '../validators.js'
 import { t, getLocale } from '../dashboard-i18n.js'
 import { logError } from '../logger.js'
+import { track, EVENTS } from '../analytics.js'
 
 function eventLabel(type) {
   const labels = {
@@ -226,6 +227,7 @@ async function main() {
       return
     }
     render(mainEl, session, events)
+    track(EVENTS.SESSION_DETAIL_VIEWED, { monitoring_mode: session.monitoring_mode })
   } catch (err) {
     logError('Session detail load failed:', err)
     mainEl.innerHTML = `

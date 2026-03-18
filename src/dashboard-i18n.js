@@ -6,6 +6,7 @@
  */
 
 import { logError } from './logger.js'
+import { track, EVENTS } from './analytics.js'
 
 const STORAGE_KEY = 'braindock-language'
 const DEFAULT_LANG = 'en'
@@ -101,6 +102,7 @@ export function t(key, fallback) {
  */
 export function changeLang(lang) {
   if (!SUPPORTED_LANGUAGES.includes(lang)) return
+  track(EVENTS.LANGUAGE_CHANGED, { language: lang })
   localStorage.setItem(STORAGE_KEY, lang)
   window.location.reload()
 }

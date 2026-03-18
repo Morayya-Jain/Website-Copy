@@ -10,6 +10,7 @@ import { validateUrlPattern, validateAppPattern } from '../validators.js'
 import { escapeHtml, showInlineError } from '../utils.js'
 import { logError } from '../logger.js'
 import { t } from '../dashboard-i18n.js'
+import { track, EVENTS } from '../analytics.js'
 import {
   createIcons,
   Smartphone,
@@ -272,6 +273,7 @@ function render(main, blocklistConfig, detectionSettings, userId) {
       const level = parseInt(el.dataset.level, 10)
       if (level === distractionLevel) return
       distractionLevel = level
+      track(EVENTS.DISTRACTION_LEVEL_CHANGED, { level })
       // Update active state on all level buttons
       main.querySelectorAll('.level-option[data-level]').forEach((btn) => {
         const isActive = parseInt(btn.dataset.level, 10) === level
@@ -294,6 +296,7 @@ function render(main, blocklistConfig, detectionSettings, userId) {
     el.addEventListener('click', () => {
       el.classList.toggle('active')
       el.setAttribute('aria-pressed', el.classList.contains('active'))
+      track(EVENTS.BLOCKLIST_ITEM_TOGGLED, { item_id: el.dataset.item, enabled: el.classList.contains('active') })
       scheduleDetectionSave()
     })
   })
@@ -314,6 +317,7 @@ function render(main, blocklistConfig, detectionSettings, userId) {
       const next = !el.classList.contains('active')
       el.classList.toggle('active', next)
       el.setAttribute('aria-pressed', next)
+      track(EVENTS.BLOCKLIST_SITE_TOGGLED, { site_id: id, enabled: next })
       state.quick_blocks[id] = next
       scheduleBlocklistSave()
     })
@@ -400,6 +404,7 @@ function render(main, blocklistConfig, detectionSettings, userId) {
       return
     }
     state.custom_urls.push(normalized)
+    track(EVENTS.BLOCKLIST_CUSTOM_URL_ADDED)
     input.value = ''
     setHint(hintEl, result.isWarning ? result.message : t('dashboard.config.added', 'Added.'), result.isWarning ? 'warning' : 'success')
     setTimeout(() => setHint(hintEl, '', ''), 3000)
@@ -431,6 +436,7 @@ function render(main, blocklistConfig, detectionSettings, userId) {
       return
     }
     state.custom_apps.push(val)
+    track(EVENTS.BLOCKLIST_CUSTOM_APP_ADDED)
     input.value = ''
     setHint(hintEl, result.isWarning ? result.message : t('dashboard.config.added', 'Added.'), result.isWarning ? 'warning' : 'success')
     setTimeout(() => setHint(hintEl, '', ''), 3000)

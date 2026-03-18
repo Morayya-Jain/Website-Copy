@@ -27,6 +27,7 @@ import {
 } from 'lucide/dist/cjs/lucide.js'
 import { MACOS_URL, WINDOWS_URL } from './constants.js'
 import { fetchRemainingSeconds } from './credits.js'
+import { identify } from './analytics.js'
 import './dashboard.css'
 
 const LOGIN_PATH = '/auth/login/'
@@ -262,6 +263,9 @@ async function handleSignOut() {
   sessionStorage.removeItem('braindock_redirect')
   sessionStorage.removeItem('braindock_signup_reload_count')
   sessionStorage.removeItem('braindock_signup_reload_bail')
+  sessionStorage.removeItem('braindock_checkout_tracked')
+  // Reset PostHog identity so events are not attributed to the signed-out user
+  try { window.posthog?.reset?.() } catch (_) { /* silent */ }
   window.location.href = '/'
 }
 
@@ -312,6 +316,7 @@ export async function initDashboardLayout(options = {}) {
   }
 
   const user = session.user
+  identify(user.id)
   const currentPath = getCurrentPath()
   const base = window.location.origin
   const avatarUrl = getUserAvatarUrl(user)

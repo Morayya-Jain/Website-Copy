@@ -14,6 +14,7 @@ import {
   friendlyError,
 } from '../auth-helpers.js'
 import { isValidName, isValidEmail, isValidPassword, LIMITS } from '../validators.js'
+import { track, EVENTS } from '../analytics.js'
 import '../auth.css'
 
 // Persist ?source=desktop and ?redirect= FIRST (synchronous, before any async work)
@@ -101,6 +102,7 @@ form.addEventListener('submit', async (e) => {
   }
 
   showLoading(signupBtn)
+  track(EVENTS.SIGNUP_STARTED, { method: 'email' })
 
   const redirectParam = new URLSearchParams(window.location.search).get('redirect') ||
     sessionStorage.getItem(REDIRECT_STORAGE_KEY) ||
@@ -121,6 +123,7 @@ form.addEventListener('submit', async (e) => {
   hideLoading(signupBtn)
 
   if (error) {
+    track(EVENTS.SIGNUP_FAILED, { method: 'email' })
     showError(card, friendlyError(error))
     return
   }
@@ -135,6 +138,7 @@ form.addEventListener('submit', async (e) => {
   // If Supabase returned a session, the user is auto-confirmed (go to dashboard).
   // If no session, email confirmation is required (show message).
   if (data.session) {
+    track(EVENTS.SIGNUP_COMPLETED, { method: 'email' })
     // For desktop flow, switch to spinner so the paste-code fallback
     // appears on a spinner page rather than the signup form.
     if (isDesktopSource()) {
@@ -150,6 +154,7 @@ form.addEventListener('submit', async (e) => {
     form.hidden = true
     document.querySelector('.auth-divider').hidden = true
     googleBtn.hidden = true
+    track(EVENTS.SIGNUP_COMPLETED, { method: 'email', needs_confirmation: true })
     showSuccess(card, 'Check your email for a confirmation link. Once confirmed, you can log in.')
   }
 })
@@ -164,6 +169,9 @@ googleBtn.addEventListener('click', async () => {
     return
   }
 
+  track(EVENTS.SIGNUP_STARTED, { method: 'google' })
+  sessionStorage.setItem('braindock_auth_flow', 'signup')
+
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
@@ -172,6 +180,7 @@ googleBtn.addEventListener('click', async () => {
   })
 
   if (error) {
+    track(EVENTS.SIGNUP_FAILED, { method: 'google' })
     showError(card, friendlyError(error))
   }
 })

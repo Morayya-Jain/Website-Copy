@@ -12,6 +12,7 @@ import {
   friendlyError,
 } from '../auth-helpers.js'
 import { isValidEmail, isValidPassword, LIMITS } from '../validators.js'
+import { track, EVENTS } from '../analytics.js'
 import '../auth.css'
 
 // Persist ?source=desktop and ?redirect= before they are lost to OAuth redirects
@@ -124,14 +125,18 @@ loginForm.addEventListener('submit', async (e) => {
   }
 
   showLoading(loginBtn)
+  track(EVENTS.LOGIN_STARTED, { method: 'email' })
 
   const { error } = await supabase.auth.signInWithPassword({ email, password })
 
   if (error) {
+    track(EVENTS.LOGIN_FAILED, { method: 'email' })
     hideLoading(loginBtn)
     showError(authCard, friendlyError(error))
     return
   }
+
+  track(EVENTS.LOGIN_COMPLETED, { method: 'email' })
 
   // For desktop flow, switch to spinner before the linking/deep-link step
   // so the paste-code fallback appears on a spinner page, not the login form.
@@ -151,6 +156,7 @@ loginForm.addEventListener('submit', async (e) => {
 // Google OAuth login
 googleBtn.addEventListener('click', async () => {
   hideError(authCard)
+  track(EVENTS.LOGIN_STARTED, { method: 'google' })
 
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
@@ -160,6 +166,7 @@ googleBtn.addEventListener('click', async () => {
   })
 
   if (error) {
+    track(EVENTS.LOGIN_FAILED, { method: 'google' })
     showError(authCard, friendlyError(error))
   }
 })

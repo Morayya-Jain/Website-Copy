@@ -20,6 +20,7 @@ export default defineConfig({
     {
       name: 'inject-posthog',
       transformIndexHtml(html) {
+        if (html.includes('/js/posthog.js')) return html
         return html.replace('</head>', `${posthogTag}\n</head>`)
       },
     },

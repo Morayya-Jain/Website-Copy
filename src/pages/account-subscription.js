@@ -8,6 +8,7 @@ import { escapeHtml, formatDuration, formatPrice } from '../utils.js'
 import { t, getLocale } from '../dashboard-i18n.js'
 import { fetchUserCredits } from '../credits.js'
 import { logError } from '../logger.js'
+import { track, EVENTS } from '../analytics.js'
 
 function formatDate(iso) {
   if (!iso) return '-'
@@ -138,6 +139,10 @@ async function main() {
 
     const params = new URLSearchParams(window.location.search)
     if (params.get('success') === 'true') {
+      if (!sessionStorage.getItem('braindock_checkout_tracked')) {
+        track(EVENTS.CHECKOUT_COMPLETED)
+        sessionStorage.setItem('braindock_checkout_tracked', '1')
+      }
       window.history.replaceState({}, '', window.location.pathname)
       const banner = document.createElement('div')
       banner.className = 'dashboard-banner dashboard-banner-success'

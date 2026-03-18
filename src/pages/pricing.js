@@ -9,6 +9,7 @@ import { isValidUuid } from '../validators.js'
 import '../auth.css'
 import '../dashboard.css'
 import { logError } from '../logger.js'
+import { track, EVENTS } from '../analytics.js'
 
 /** Simple translation helper for the pricing page (uses the landing page I18n global). */
 function pt(key, fallback) {
@@ -253,6 +254,7 @@ function render(root, packages, hasUser) {
     btn.addEventListener('click', async () => {
       const currentLabel = btn.textContent
       const packageId = btn.dataset.packageId
+      track(EVENTS.CHECKOUT_STARTED, { package_id: packageId })
 
       if (!hasUser) {
         // Not logged in: open signup in a new tab, then come back with auto_checkout
@@ -267,18 +269,21 @@ function render(root, packages, hasUser) {
       try {
         const { url, error } = await createCheckoutSession(packageId)
         if (error) {
+          track(EVENTS.CHECKOUT_FAILED, { package_id: packageId })
           btn.disabled = false
           btn.textContent = currentLabel
           showInlineError(root, pt('pricing.checkoutError', 'Could not start checkout. Please try again.'))
           return
         }
         if (url) {
+          track(EVENTS.CHECKOUT_REDIRECTED, { package_id: packageId })
           // Use location.href to avoid popup blockers (window.open after async is blocked)
           window.location.href = url
         }
         btn.disabled = false
         btn.textContent = currentLabel
       } catch (err) {
+        track(EVENTS.CHECKOUT_FAILED, { package_id: packageId })
         btn.disabled = false
         btn.textContent = currentLabel
         showInlineError(root, pt('pricing.networkError', 'Network error. Please check your connection and try again.'))
@@ -336,6 +341,7 @@ async function main() {
   const params = new URLSearchParams(window.location.search)
 
   if (params.get('canceled') === 'true') {
+    track(EVENTS.CHECKOUT_CANCELLED)
     window.history.replaceState({}, '', '/pricing/')
     const banner = document.createElement('div')
     banner.className = 'dashboard-banner dashboard-banner-info'

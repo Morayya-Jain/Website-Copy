@@ -1,5 +1,6 @@
 import { supabase } from '../supabase.js'
 import { showError, isDesktopSource, handlePostAuthRedirect } from '../auth-helpers.js'
+import { track, identify, EVENTS } from '../analytics.js'
 import '../auth.css'
 
 const card = document.querySelector('.auth-card')
@@ -48,6 +49,8 @@ if (oauthError) {
   let handled = false
   let fallbackTimer = null
   let finalTimer = null
+  const authFlow = sessionStorage.getItem('braindock_auth_flow') || 'login'
+  sessionStorage.removeItem('braindock_auth_flow')
 
   async function completeAuth() {
     if (handled) return
@@ -71,6 +74,9 @@ if (oauthError) {
   // Listen for auth state changes (SIGNED_IN or INITIAL_SESSION with a session)
   const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
     if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && session) {
+      identify(session.user.id)
+      const event_name = authFlow === 'signup' ? EVENTS.SIGNUP_COMPLETED : EVENTS.LOGIN_COMPLETED
+      track(event_name, { method: 'google' })
       subscription.unsubscribe()
       await completeAuth()
     }
@@ -82,6 +88,9 @@ if (oauthError) {
     try {
       const { data: { session } } = await supabase.auth.getSession()
       if (session) {
+        identify(session.user.id)
+        const evt = authFlow === 'signup' ? EVENTS.SIGNUP_COMPLETED : EVENTS.LOGIN_COMPLETED
+        track(evt, { method: 'google' })
         subscription.unsubscribe()
         await completeAuth()
       } else {

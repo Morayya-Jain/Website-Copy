@@ -6,6 +6,7 @@ import { initDashboardLayout } from '../dashboard-layout.js'
 import { t } from '../dashboard-i18n.js'
 import { MACOS_URL, WINDOWS_URL } from '../constants.js'
 import { appleIcon, windowsIcon, linuxIcon } from '../icons.js'
+import { track, EVENTS } from '../analytics.js'
 
 function render(main) {
   main.innerHTML = `
@@ -44,6 +45,13 @@ async function main() {
   if (!mainEl) return
 
   render(mainEl)
+
+  mainEl.querySelectorAll('.btn-download[href]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const platform = link.getAttribute('href') === MACOS_URL ? 'macos' : 'windows'
+      track(EVENTS.DOWNLOAD_CLICKED, { platform })
+    })
+  })
 }
 
 main()

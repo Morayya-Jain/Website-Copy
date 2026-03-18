@@ -19,7 +19,9 @@
       "Bash(done)",
       "mcp__supabase__list_tables",
       "mcp__posthog__projects-get",
-      "mcp__posthog__event-definitions-list"
+      "mcp__posthog__event-definitions-list",
+      "Bash(wc:*)",
+      "Bash(file /Users/morayyajain/Developer/BrainDock-Website/public/assets/*.png)"
     ]
   },
   "enableAllProjectMcpServers": true,
