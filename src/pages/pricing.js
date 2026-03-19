@@ -70,6 +70,13 @@ function tierButtonLabel(hours) {
   return 'Buy Now'
 }
 
+function freeCardCta(hasUser) {
+  if (hasUser) {
+    return `<a href="/dashboard/" class="btn btn-secondary" data-i18n="pricing.tier.free.btnDashboard">Go to Dashboard</a>`
+  }
+  return `<a href="/auth/signup/" class="btn btn-secondary" data-i18n="pricing.tier.free.btn">Sign Up Free</a>`
+}
+
 function render(root, packages, hasUser) {
   // If packages failed to load from DB, show an error state instead of non-functional fallbacks
   const defaultPackages = packages.length > 0 ? packages : []
@@ -125,6 +132,13 @@ function render(root, packages, hasUser) {
           <p class="pricing-subtitle" data-i18n="pricing.subtitle">Use camera or screen sessions - time is deducted from your balance. Top up anytime.</p>
         </div>
         <div class="pricing-grid">
+          <div class="dashboard-card pricing-card pricing-card--free">
+            <h3 class="pricing-card-title" data-i18n="pricing.tier.free.name">Free</h3>
+            <p class="pricing-card-price">$0</p>
+            <p class="pricing-card-per-hour" data-i18n="pricing.tier.free.perHour">30 min / month</p>
+            <p class="pricing-card-desc" data-i18n="pricing.tier.free.desc">Try BrainDock free. Camera monitoring with AI focus detection. Resets monthly.</p>
+            ${freeCardCta(hasUser)}
+          </div>
           ${packagesLoadFailed
             ? `<div class="dashboard-card pricing-card" style="grid-column: 1 / -1; text-align: center;">
                 <p data-i18n="pricing.loadError">Could not load pricing packages. Please refresh the page or try again later.</p>
@@ -149,6 +163,17 @@ function render(root, packages, hasUser) {
         <section class="pricing-faq">
           <h2 class="pricing-faq-title" data-i18n="pricing.faq.title">Questions & Answers</h2>
           <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span data-i18n="pricing.faq.q0">Is there a free plan?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  <p data-i18n="pricing.faq.a0">Yes! Every new account gets 30 free minutes per month. Your free time resets automatically at the start of each month. Upgrade anytime for more hours and PDF reports.</p>
+                </div>
+              </div>
+            </div>
             <div class="faq-item">
               <button class="faq-question" aria-expanded="false">
                 <span data-i18n="pricing.faq.q1">Which plan should I choose?</span>

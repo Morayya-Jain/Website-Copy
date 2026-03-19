@@ -7,6 +7,7 @@ import { supabase } from '../supabase.js'
 import { initDashboardLayout } from '../dashboard-layout.js'
 import { escapeHtml, showInlineError } from '../utils.js'
 import { t, getLocale } from '../dashboard-i18n.js'
+
 import { logError } from '../logger.js'
 
 // Inline SVGs for OS icons (kept small and simple)
@@ -66,14 +67,21 @@ function formatRelativeTime(iso) {
   return d.toLocaleDateString(getLocale())
 }
 
-function render(main, devices, userId) {
+function render(main, devices, userId, credits) {
   const base = window.location.origin
+  const isFreeTier = credits?.is_free_tier === true
+  const atDeviceLimit = isFreeTier && devices.length >= 1
 
   main.innerHTML = `
     <h1 class="dashboard-page-title">${t('dashboard.devices.title', 'Linked Devices')}</h1>
     <p class="dashboard-page-subtitle">
       ${t('dashboard.devices.subtitle', 'Devices where you have signed in with BrainDock. Unlinking will require signing in again on that device.')}
     </p>
+    ${atDeviceLimit ? `
+    <div class="dashboard-banner dashboard-banner-info" role="status">
+      ${t('dashboard.devices.freeTierLimit', 'Free tier accounts are limited to 1 device. Upgrade to use BrainDock on more devices.')}
+    </div>
+    ` : ''}
 
     <div class="dashboard-card">
       ${devices.length === 0
@@ -133,7 +141,7 @@ function render(main, devices, userId) {
         li.remove()
         // If no devices remain, re-render to show the empty state
         if (main.querySelectorAll('[data-device-id]').length === 0) {
-          render(main, [], userId)
+          render(main, [], userId, credits)
         }
       } catch (err) {
         logError('Device unlink failed:', err)
@@ -156,8 +164,8 @@ async function main() {
   const userId = result.user.id
 
   try {
-    const devices = await loadDevices(userId)
-    render(mainEl, devices, userId)
+    const [devices, credits] = await Promise.all([loadDevices(userId), result.creditsPromise])
+    render(mainEl, devices, userId, credits)
   } catch (err) {
     logError('Devices page load failed:', err)
     mainEl.innerHTML = `

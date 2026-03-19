@@ -26,7 +26,7 @@ import {
   Hourglass,
 } from 'lucide/dist/cjs/lucide.js'
 import { MACOS_URL, WINDOWS_URL } from './constants.js'
-import { fetchRemainingSeconds } from './credits.js'
+import { fetchUserCredits } from './credits.js'
 import { identify } from './analytics.js'
 import './dashboard.css'
 
@@ -345,8 +345,8 @@ export async function initDashboardLayout(options = {}) {
   const main = document.createElement('main')
   main.className = 'dashboard-main'
 
-  // Fetch remaining credits for the pill (non-blocking, updates when ready)
-  const remainingPromise = fetchRemainingSeconds()
+  // Fetch credits for the pill (non-blocking, updates when ready)
+  const creditsPromise = fetchUserCredits()
 
   // Top-right header (desktop): remaining pill + download button + profile dropdown
   const headerWrap = document.createElement('div')
@@ -440,10 +440,13 @@ export async function initDashboardLayout(options = {}) {
   initLangToggle()
 
   // Populate remaining-time pill once credits load
-  remainingPromise
-    .then((seconds) => {
+  creditsPromise
+    .then((credits) => {
       const textEl = document.getElementById('dashboard-remaining-text')
-      if (textEl) textEl.textContent = formatPillDuration(seconds)
+      if (textEl) {
+        const label = formatPillDuration(credits.remaining_seconds)
+        textEl.textContent = credits.is_free_tier ? `${t('dashboard.common.free', 'FREE')} | ${label}` : label
+      }
     })
     .catch(() => { /* credits fetch failed - pill stays as "..." */ })
 
@@ -454,7 +457,7 @@ export async function initDashboardLayout(options = {}) {
     }
   })
 
-  return { user }
+  return { user, creditsPromise }
 }
 
 /**

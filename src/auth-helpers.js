@@ -302,6 +302,9 @@ export function hideLoading(button) {
 export function friendlyError(error) {
   const msg = error?.message || 'Something went wrong. Please try again.'
 
+  if (msg.includes('disposable email')) {
+    return 'This email provider is not supported. Please use a different email address.'
+  }
   if (msg.includes('Invalid login credentials')) {
     return 'Incorrect email or password. Please try again.'
   }

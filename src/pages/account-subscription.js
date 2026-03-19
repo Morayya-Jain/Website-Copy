@@ -6,7 +6,7 @@ import { supabase } from '../supabase.js'
 import { initDashboardLayout } from '../dashboard-layout.js'
 import { escapeHtml, formatDuration, formatPrice } from '../utils.js'
 import { t, getLocale } from '../dashboard-i18n.js'
-import { fetchUserCredits } from '../credits.js'
+
 import { logError } from '../logger.js'
 import { track, EVENTS } from '../analytics.js'
 
@@ -41,8 +41,9 @@ function render(main, credits, purchases) {
 
     <div class="dashboard-card dashboard-credits-card">
       <div class="dashboard-credits-widget">
-        <p class="dashboard-credits-widget-value">${formatDuration(remaining)} ${t('dashboard.common.remaining', 'remaining')}</p>
-        <a href="${base}/pricing/" target="_blank" rel="noopener" class="btn btn-secondary">${t('dashboard.actions.getMoreHours', 'Get More Hours')}</a>
+        <p class="dashboard-credits-widget-value">${credits?.is_free_tier ? `${t('dashboard.common.free', 'FREE')} | ` : ''}${formatDuration(remaining)} ${t('dashboard.common.remaining', 'remaining')}</p>
+        ${credits?.is_free_tier && credits?.free_tier_reset_at ? `<p class="dashboard-meta">${t('dashboard.billing.resetsOn', 'Resets on')} ${formatDate(credits.free_tier_reset_at)}</p>` : ''}
+        <a href="${base}/pricing/" target="_blank" rel="noopener" class="btn btn-secondary">${credits?.is_free_tier ? t('dashboard.actions.upgradeNow', 'Upgrade Now') : t('dashboard.actions.getMoreHours', 'Get More Hours')}</a>
       </div>
     </div>
 
@@ -130,7 +131,7 @@ async function main() {
   mainEl.innerHTML = `<div class="dashboard-loading"><div class="dashboard-spinner"></div><p>${t('dashboard.billing.loading', 'Loading billing...')}</p></div>`
 
   try {
-    const results = await Promise.allSettled([fetchUserCredits(), loadPurchaseHistory(result.user.id)])
+    const results = await Promise.allSettled([result.creditsPromise, loadPurchaseHistory(result.user.id)])
     const credits = results[0].status === 'fulfilled' ? results[0].value : null
     const purchases = results[1].status === 'fulfilled' ? results[1].value : []
     if (results[0].status === 'rejected') logError('Credit fetch failed:', results[0].reason)

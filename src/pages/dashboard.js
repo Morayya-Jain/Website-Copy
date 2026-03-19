@@ -8,7 +8,7 @@ import { initDashboardLayout } from '../dashboard-layout.js'
 import { escapeHtml, formatDuration, modeLabel, focusLevelClass } from '../utils.js'
 import { t, getLocale } from '../dashboard-i18n.js'
 import { MACOS_URL, WINDOWS_URL } from '../constants.js'
-import { fetchUserCredits } from '../credits.js'
+
 import { appleIcon, windowsIcon } from '../icons.js'
 import { logError } from '../logger.js'
 
@@ -145,7 +145,9 @@ function render(main, user, sessions, stats, weeklyData, credits) {
     ${hasCredits && !hasSessions ? `
     <div class="dashboard-card dashboard-card--accent mb-xl">
       <h2 class="dashboard-section-title mb-s">${t('dashboard.home.allSetTitle', "You're all set! Download BrainDock")}</h2>
-      <p class="dashboard-meta mb-l">${t('dashboard.home.allSetDesc', 'You have hours available. Download the desktop app and sign in with the same account to start tracking your focus.')}</p>
+      <p class="dashboard-meta mb-l">${credits?.is_free_tier
+        ? t('dashboard.home.allSetDescFree', 'You have free minutes available. Download the app to start your first session.')
+        : t('dashboard.home.allSetDesc', 'You have hours available. Download the desktop app and sign in with the same account to start tracking your focus.')}</p>
       <div class="download-buttons">
         <a href="${MACOS_URL}" class="btn btn-primary btn-download">
           ${appleIcon(22)}
@@ -264,7 +266,7 @@ async function main() {
   try {
     const results = await Promise.allSettled([
       fetchSessionsForDashboard(result.user.id),
-      fetchUserCredits(),
+      result.creditsPromise,
     ])
     const sessions = results[0].status === 'fulfilled' ? results[0].value : []
     const credits = results[1].status === 'fulfilled' ? results[1].value : null
