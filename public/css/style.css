@@ -946,6 +946,9 @@ body.hero-compact .hero-ctas {
    Made For You - Light Card
    -------------------------------------------------------------------------- */
 .mfy-card {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(100, 134, 16, 0.06) 0%, transparent 70%),
+    #E5EBD4;
   border: 1px solid rgba(100, 134, 16, 0.12);
   border-radius: var(--card-radius);
   overflow: hidden;
@@ -2090,6 +2093,7 @@ body.hero-compact .hero-ctas {
 
 .animated-grid-bg .grid-square {
   fill: rgba(176, 176, 176, 1);
+  opacity: 0;
   animation: gridSquarePulse var(--grid-duration, 5s) ease-in-out infinite;
   animation-delay: var(--grid-delay, 0s);
 }

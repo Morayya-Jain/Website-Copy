@@ -824,7 +824,7 @@
       "title": "Dashboard",
       "welcome": "Willkommen zurück,",
       "allSetTitle": "Alles bereit! BrainDock herunterladen",
-      "allSetDesc": "Sie haben verfügbare Stunden. Laden Sie die Desktop-App herunter und melden Sie sich mit demselben Konto an, um Ihren Fokus zu verfolgen.",
+      "allSetDesc": "Sie haben verfügbare Stunden. Laden Sie die Desktop-App herunter und melden Sie sich mit demselben Konto an, um Ihren Fokus zu stärken.",
       "downloadMac": "Für macOS herunterladen",
       "downloadWin": "Für Windows herunterladen",
       "todaysFocus": "Heutiger Fokus",
@@ -832,7 +832,7 @@
       "focusRate": "Fokusrate",
       "recentSessions": "Letzte Sitzungen",
       "noSessionsTitle": "Noch keine Sitzungen",
-      "noSessionsDesc": "Starten Sie die Aufzeichnung mit der BrainDock-App, um hier Ihre Fokusstatistiken zu sehen.",
+      "noSessionsDesc": "Starten Sie eine Sitzung mit der BrainDock-App, um hier Ihre Fokusstatistiken zu sehen.",
       "thisWeek": "Diese Woche",
       "noDataTitle": "Noch keine Daten",
       "noDataDesc": "Schließen Sie eine Sitzung mit der Desktop-App ab, um Ihren wöchentlichen Fokus zu sehen.",
@@ -898,8 +898,8 @@
       "appNamePlaceholder": "App-Name",
       "levelTitle": "Ablenkungsmodus",
       "levelDesc": "Wählen Sie, was passiert, wenn eine Ablenkung während einer Sitzung erkannt wird.",
-      "trackOnlyTitle": "Nur aufzeichnen",
-      "trackOnlyDesc": "Stille Protokollierung. Sie werden nicht unterbrochen.",
+      "trackOnlyTitle": "Ruhemodus",
+      "trackOnlyDesc": "Ereignisse werden leise protokolliert. Sie werden nicht unterbrochen.",
       "warningTitle": "Warnung + Verzögerung",
       "warningDesc": "Ein 15-Sekunden-Pausenbildschirm erscheint. Sie entscheiden, ob Sie fortfahren möchten.",
       "items": {
@@ -1054,11 +1054,48 @@
     },
     "downloadPage": {
       "title": "BrainDock herunterladen",
-      "subtitle": "Installieren Sie die Desktop-App, um Ihren Fokus zu verfolgen. Verfügbar für macOS und Windows.",
+      "subtitle": "Installieren Sie die Desktop-App, um Ihren Fokus zu verbessern. Verfügbar für macOS und Windows.",
       "macOS": "macOS",
       "windows": "Windows",
       "linuxComingSoon": "Linux (Demnächst)",
       "afterInstalling": "Öffnen Sie nach der Installation BrainDock und melden Sie sich mit Ihrem Konto an, um dieses Gerät zu verbinden."
+    }
+  },
+  "auth": {
+    "callback": {
+      "cancelled": "Anmeldung wurde abgebrochen.",
+      "connecting": "Verbindung zur App wird hergestellt...",
+      "failed": "Anmeldung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut."
+    },
+    "login": {
+      "signingIn": "Sie werden angemeldet...",
+      "welcomeBack": "Willkommen zurück",
+      "subtitle": "Melden Sie sich bei Ihrem BrainDock-Konto an",
+      "emptyFields": "Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+    },
+    "signup": {
+      "signingIn": "Sie werden angemeldet...",
+      "emptyFields": "Bitte füllen Sie alle Felder aus.",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "nameValidation": "Der Name muss 1-50 Zeichen lang sein und darf kein < oder > enthalten.",
+      "termsRequired": "Bitte stimmen Sie den Nutzungsbedingungen zu, um fortzufahren.",
+      "alreadyExists": "Ein Konto mit dieser E-Mail-Adresse existiert bereits. Versuchen Sie sich stattdessen anzumelden.",
+      "checkEmail": "Überprüfen Sie Ihre E-Mails auf einen Bestätigungslink. Nach der Bestätigung können Sie sich anmelden."
+    },
+    "forgot": {
+      "emptyEmail": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      "checkEmail": "Überprüfen Sie Ihre E-Mails auf einen Link zum Zurücksetzen des Passworts. Es kann eine Minute dauern, bis er ankommt."
+    },
+    "reset": {
+      "expired": "Dieser Link zum Zurücksetzen ist abgelaufen oder ungültig. Bitte fordern Sie einen neuen an.",
+      "requestNew": "Neuen Link anfordern",
+      "emptyFields": "Bitte füllen Sie beide Passwortfelder aus.",
+      "mismatch": "Passwörter stimmen nicht überein.",
+      "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
+      "success": "Passwort erfolgreich aktualisiert! Weiterleitung zur Anmeldung..."
     }
   }
 }

@@ -41,7 +41,8 @@
       "WebFetch(domain:freedom.to)",
       "WebFetch(domain:trackermode.app)",
       "Bash(find /Users/morayyajain/Developer/BrainDock-Website/public/js/translations -name \"*.json\" -exec wc -l {} +)",
-      "Bash(npx vite:*)"
+      "Bash(npx vite:*)",
+      "Bash(ls -la /private/tmp/claude-501/-Users-morayyajain-Developer-BrainDock-Website/ccecec05-7ab2-49bc-8cff-69da847dfdeb/tasks/*.output)"
     ]
   },
   "enableAllProjectMcpServers": true,

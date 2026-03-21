@@ -529,7 +529,7 @@
       "developers": {
         "pill": "D\u00e9veloppeurs",
         "title": "Pour les <em>D\u00e9veloppeurs</em>",
-        "description": "Le travail en profondeur est essentiel. BrainDock surveille discr\u00e8tement les changements de contexte et les distractions des appareils, vous aidant \u00e0 rester en \u00e9tat de flow pendant vos sessions de code."
+        "description": "Le travail en profondeur est essentiel. BrainDock remarque discr\u00e8tement les changements de contexte et les distractions des appareils, vous aidant \u00e0 rester en \u00e9tat de flow pendant vos sessions de code."
       },
       "creators": {
         "pill": "Cr\u00e9ateurs",
@@ -675,7 +675,7 @@
       "q2": "Comment fonctionne le systeme de credits ?",
       "a2": "Vous achetez un pack d'heures a l'avance. Chaque fois que vous lancez une session de concentration - que ce soit avec la camera, la conscience d'ecran ou les deux - du temps est deduit de votre solde. Vous pouvez recharger a tout moment et vos heures n'expirent jamais.",
       "q3": "Puis-je alterner entre les sessions camera et ecran ?",
-      "a3": "Oui. Vos heures fonctionnent pour tous les types de sessions. Utilisez le suivi de concentration par camera, la surveillance d'ecran ou les deux en meme temps - tout est preleve sur le meme solde.",
+      "a3": "Oui. Vos heures fonctionnent pour tous les types de sessions. Utilisez les sessions de concentration par camera, la conscience d'ecran ou les deux en meme temps - tout est preleve sur le meme solde.",
       "q4": "Que se passe-t-il quand mes heures sont epuisees ?",
       "a4": "Votre session se terminera et vous pourrez recharger immediatement avec un autre pack. Toutes les donnees de session deja enregistrees restent dans votre tableau de bord - rien n'est perdu."
     },
@@ -824,7 +824,7 @@
       "title": "Tableau de bord",
       "welcome": "Bon retour,",
       "allSetTitle": "Vous êtes prêt ! Téléchargez BrainDock",
-      "allSetDesc": "Vous avez des heures disponibles. Téléchargez l'application et connectez-vous avec le même compte pour commencer à suivre votre concentration.",
+      "allSetDesc": "Vous avez des heures disponibles. Téléchargez l'application et connectez-vous avec le même compte pour commencer à renforcer votre concentration.",
       "downloadMac": "Télécharger pour macOS",
       "downloadWin": "Télécharger pour Windows",
       "todaysFocus": "Concentration du jour",
@@ -832,7 +832,7 @@
       "focusRate": "Taux de concentration",
       "recentSessions": "Sessions récentes",
       "noSessionsTitle": "Aucune session",
-      "noSessionsDesc": "Commencez à enregistrer avec l'application BrainDock pour voir vos statistiques ici.",
+      "noSessionsDesc": "Lancez une session avec l'application BrainDock pour voir vos statistiques ici.",
       "thisWeek": "Cette semaine",
       "noDataTitle": "Pas encore de données",
       "noDataDesc": "Terminez une session avec l'application pour voir votre concentration hebdomadaire.",
@@ -898,8 +898,8 @@
       "appNamePlaceholder": "Nom de l'application",
       "levelTitle": "Mode de distraction",
       "levelDesc": "Choisissez ce qui se passe lorsqu'une distraction est détectée pendant une session.",
-      "trackOnlyTitle": "Suivi uniquement",
-      "trackOnlyDesc": "Journalisation silencieuse. Vous ne serez pas interrompu.",
+      "trackOnlyTitle": "Mode silencieux",
+      "trackOnlyDesc": "Les événements sont enregistrés silencieusement. Vous ne serez pas interrompu.",
       "warningTitle": "Avertissement + Délai",
       "warningDesc": "Un écran de pause de 15 secondes apparaît. Vous choisissez de continuer ou non.",
       "items": {
@@ -1054,11 +1054,48 @@
     },
     "downloadPage": {
       "title": "Télécharger BrainDock",
-      "subtitle": "Installez l'application de bureau pour commencer à suivre votre concentration. Disponible pour macOS et Windows.",
+      "subtitle": "Installez l'application de bureau pour commencer à améliorer votre concentration. Disponible pour macOS et Windows.",
       "macOS": "macOS",
       "windows": "Windows",
       "linuxComingSoon": "Linux (Bientôt)",
       "afterInstalling": "Après l'installation, ouvrez BrainDock et connectez-vous avec votre compte pour associer cet appareil."
+    }
+  },
+  "auth": {
+    "callback": {
+      "cancelled": "La connexion a été annulée.",
+      "connecting": "Connexion à l'application...",
+      "failed": "La connexion n'a pas pu être complétée. Veuillez réessayer."
+    },
+    "login": {
+      "signingIn": "Connexion en cours...",
+      "welcomeBack": "Bon retour",
+      "subtitle": "Connectez-vous à votre compte BrainDock",
+      "emptyFields": "Veuillez entrer votre adresse e-mail et votre mot de passe.",
+      "invalidEmail": "Veuillez entrer une adresse e-mail valide."
+    },
+    "signup": {
+      "signingIn": "Connexion en cours...",
+      "emptyFields": "Veuillez remplir tous les champs.",
+      "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+      "nameValidation": "Le nom doit contenir 1 à 50 caractères et ne peut pas contenir < ou >.",
+      "termsRequired": "Veuillez accepter les Conditions d'utilisation pour continuer.",
+      "alreadyExists": "Un compte avec cette adresse e-mail existe déjà. Essayez de vous connecter.",
+      "checkEmail": "Consultez votre e-mail pour un lien de confirmation. Une fois confirmé, vous pourrez vous connecter."
+    },
+    "forgot": {
+      "emptyEmail": "Veuillez entrer votre adresse e-mail.",
+      "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+      "networkError": "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
+      "checkEmail": "Consultez votre e-mail pour un lien de réinitialisation du mot de passe. L'envoi peut prendre une minute."
+    },
+    "reset": {
+      "expired": "Ce lien de réinitialisation a expiré ou est invalide. Veuillez en demander un nouveau.",
+      "requestNew": "Demander un nouveau lien",
+      "emptyFields": "Veuillez remplir les deux champs de mot de passe.",
+      "mismatch": "Les mots de passe ne correspondent pas.",
+      "networkError": "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
+      "success": "Mot de passe mis à jour avec succès ! Redirection vers la connexion..."
     }
   }
 }

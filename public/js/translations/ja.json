@@ -529,7 +529,7 @@
       "developers": {
         "pill": "\u958b\u767a\u8005",
         "title": "<em>\u958b\u767a\u8005</em>\u306e\u305f\u3081\u306b",
-        "description": "\u30c7\u30a3\u30fc\u30d7\u30ef\u30fc\u30af\u304c\u3059\u3079\u3066\u3067\u3059\u3002BrainDock\u306f\u30b3\u30f3\u30c6\u30ad\u30b9\u30c8\u30b9\u30a4\u30c3\u30c1\u3084\u30c7\u30d0\u30a4\u30b9\u306e\u6c17\u6563\u308a\u3092\u9759\u304b\u306b\u76e3\u8996\u3057\u3001\u30b3\u30fc\u30c7\u30a3\u30f3\u30b0\u30bb\u30c3\u30b7\u30e7\u30f3\u4e2d\u306e\u30d5\u30ed\u30fc\u72b6\u614b\u3092\u7dad\u6301\u3059\u308b\u304a\u624b\u4f1d\u3044\u3092\u3057\u307e\u3059\u3002"
+        "description": "ディープワークがすべてです。BrainDockはコンテキストスイッチやデバイスの気散りを静かに察知し、コーディングセッション中のフロー状態を維持するお手伝いをします。"
       },
       "creators": {
         "pill": "\u30af\u30ea\u30a8\u30a4\u30bf\u30fc",
@@ -1059,6 +1059,43 @@
       "windows": "Windows",
       "linuxComingSoon": "Linux（近日公開）",
       "afterInstalling": "インストール後、BrainDockを開いてアカウントでサインインし、このデバイスをリンクしてください。"
+    }
+  },
+  "auth": {
+    "callback": {
+      "cancelled": "サインインがキャンセルされました。",
+      "connecting": "アプリに接続中...",
+      "failed": "サインインを完了できませんでした。もう一度お試しください。"
+    },
+    "login": {
+      "signingIn": "サインイン中...",
+      "welcomeBack": "おかえりなさい",
+      "subtitle": "BrainDockアカウントにログイン",
+      "emptyFields": "メールアドレスとパスワードを入力してください。",
+      "invalidEmail": "有効なメールアドレスを入力してください。"
+    },
+    "signup": {
+      "signingIn": "サインイン中...",
+      "emptyFields": "すべてのフィールドに入力してください。",
+      "invalidEmail": "有効なメールアドレスを入力してください。",
+      "nameValidation": "名前は1〜50文字で、< や > を含めることはできません。",
+      "termsRequired": "続行するには利用規約に同意してください。",
+      "alreadyExists": "このメールアドレスのアカウントは既に存在します。ログインをお試しください。",
+      "checkEmail": "確認リンクが記載されたメールをご確認ください。確認後、ログインできます。"
+    },
+    "forgot": {
+      "emptyEmail": "メールアドレスを入力してください。",
+      "invalidEmail": "有効なメールアドレスを入力してください。",
+      "networkError": "ネットワークエラー。接続を確認してもう一度お試しください。",
+      "checkEmail": "パスワードリセットリンクが記載されたメールをご確認ください。届くまで少しお待ちください。"
+    },
+    "reset": {
+      "expired": "このリセットリンクは期限切れまたは無効です。新しいリンクをリクエストしてください。",
+      "requestNew": "新しいリセットリンクをリクエスト",
+      "emptyFields": "両方のパスワードフィールドに入力してください。",
+      "mismatch": "パスワードが一致しません。",
+      "networkError": "ネットワークエラー。接続を確認してもう一度お試しください。",
+      "success": "パスワードが正常に更新されました！ログインページにリダイレクト中..."
     }
   }
 }

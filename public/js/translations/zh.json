@@ -529,7 +529,7 @@
       "developers": {
         "pill": "\u5f00\u53d1\u8005",
         "title": "\u4e3a<em>\u5f00\u53d1\u8005</em>\u6253\u9020",
-        "description": "\u6df1\u5ea6\u5de5\u4f5c\u662f\u4e00\u5207\u3002BrainDock \u9759\u9ed8\u76d1\u6d4b\u4e0a\u4e0b\u6587\u5207\u6362\u548c\u8bbe\u5907\u5e72\u6270\uff0c\u5e2e\u52a9\u60a8\u5728\u7f16\u7a0b\u4f1a\u8bdd\u4e2d\u4fdd\u6301\u5fc3\u6d41\u72b6\u6001\u3002"
+        "description": "深度工作是一切。BrainDock 静默注意到上下文切换和设备干扰，帮助您在编程会话中保持心流状态。"
       },
       "creators": {
         "pill": "\u521b\u4f5c\u8005",
@@ -594,7 +594,7 @@
     "cards": {
       "timedSessions": {
         "title": "计时会话",
-        "description": "准备好后随时开始会话。BrainDock当你工作时实时关注你的专注状态。"
+        "description": "准备好后随时开始会话。BrainDock在你工作时实时支持你的专注。"
       },
       "attentionCoach": {
         "title": "专注教练",
@@ -602,7 +602,7 @@
       },
       "screenAwareness": {
         "title": "屏幕感知",
-        "description": "可选择追踪活动窗口，识别切换到分散注意力的应用程序或网站。"
+        "description": "可选择检查活动窗口，识别切换到分散注意力的应用程序或网站。"
       },
       "detailedReports": {
         "title": "绩效报告",
@@ -673,11 +673,11 @@
       "q1": "我应该选择哪个套餐？",
       "a1": "如果您刚开始使用，Pro（1小时）让您无需大量投入即可试用BrainDock。日常使用推荐Ultra（10小时），每小时价格更优惠。如果您计划每天使用BrainDock，Max（30小时）最划算。",
       "q2": "积分系统如何运作？",
-      "a2": "您预先购买时间包。每次运行专注会话时——无论使用摄像头、屏幕监控还是两者——都会从余额中扣除时间。您可以随时充值，且时间永不过期。",
+      "a2": "您预先购买时间包。每次运行专注会话时 - 无论使用摄像头、屏幕感知还是两者 - 都会从余额中扣除时间。您可以随时充值，且时间永不过期。",
       "q3": "可以在摄像头和屏幕会话之间切换吗？",
-      "a3": "可以。您的时间适用于所有会话类型。使用基于摄像头的专注追踪、屏幕监控，或同时使用两者——都从同一余额中扣除。",
+      "a3": "可以。您的时间适用于所有会话类型。使用基于摄像头的专注支持、屏幕感知 - 或同时使用两者 - 都从同一余额中扣除。",
       "q4": "时间用完会怎样？",
-      "a4": "您的会话将结束，您可以立即用另一个套餐充值。已记录的会话数据保留在您的仪表板中——不会丢失。"
+      "a4": "您的会话将结束，您可以立即用另一个套餐充值。已记录的会话数据保留在您的仪表板中 - 不会丢失。"
     },
     "loadError": "无法加载价格套餐。请刷新页面或稍后重试。",
     "loading": "加载中...",
@@ -728,7 +728,7 @@
   "about": {
     "backHome": "← 返回首页",
     "title": "关于 BrainDock",
-    "subtitle": "BrainDock 是一款 AI 驱动的专注助手，帮助您在工作和学习期间保持专注。它通过摄像头检测分心行为 - 不存储任何视频，也不使用面部识别。",
+    "subtitle": "BrainDock 是一款 AI 驱动的专注助手，帮助您在工作和学习期间保持专注。它利用AI帮助你保持专注 - 不存储任何视频，也不使用面部识别。",
     "mission": {
       "title": "我们的使命",
       "description": "我们相信深度专注是一项可以训练的技能。BrainDock 旨在为人们提供一个温和、智能的伙伴，在注意力分散时及时提醒。"
@@ -824,7 +824,7 @@
       "title": "仪表盘",
       "welcome": "欢迎回来，",
       "allSetTitle": "准备就绪！下载BrainDock",
-      "allSetDesc": "您有可用时长。下载桌面应用并使用同一账户登录，开始追踪您的专注情况。",
+      "allSetDesc": "您有可用时长。下载桌面应用并使用同一账户登录，开始建立您的专注。",
       "downloadMac": "下载macOS版",
       "downloadWin": "下载Windows版",
       "todaysFocus": "今日专注",
@@ -832,7 +832,7 @@
       "focusRate": "专注率",
       "recentSessions": "最近会话",
       "noSessionsTitle": "暂无会话",
-      "noSessionsDesc": "使用BrainDock应用开始记录，即可在此查看专注统计。",
+      "noSessionsDesc": "使用BrainDock应用开始一个会话，即可在此查看专注统计。",
       "thisWeek": "本周",
       "noDataTitle": "暂无数据",
       "noDataDesc": "使用桌面应用完成一次会话，即可查看每周专注数据。",
@@ -898,8 +898,8 @@
       "appNamePlaceholder": "应用名称",
       "levelTitle": "分心模式",
       "levelDesc": "选择在会话中检测到分心时的处理方式。",
-      "trackOnlyTitle": "仅记录",
-      "trackOnlyDesc": "静默记录。不会打断您。",
+      "trackOnlyTitle": "静默模式",
+      "trackOnlyDesc": "事件被静默记录。您不会被打断。",
       "warningTitle": "警告 + 延迟",
       "warningDesc": "出现15秒暂停屏幕。您可以选择是否继续。",
       "items": {
@@ -1054,11 +1054,48 @@
     },
     "downloadPage": {
       "title": "下载BrainDock",
-      "subtitle": "安装桌面应用开始追踪您的专注。支持macOS和Windows。",
+      "subtitle": "安装桌面应用开始提升您的专注。支持macOS和Windows。",
       "macOS": "macOS",
       "windows": "Windows",
       "linuxComingSoon": "Linux（即将推出）",
       "afterInstalling": "安装后，打开BrainDock并使用您的账户登录以关联此设备。"
+    }
+  },
+  "auth": {
+    "callback": {
+      "cancelled": "登录已取消。",
+      "connecting": "正在连接应用...",
+      "failed": "登录未能完成。请重试。"
+    },
+    "login": {
+      "signingIn": "正在登录...",
+      "welcomeBack": "欢迎回来",
+      "subtitle": "登录您的 BrainDock 账户",
+      "emptyFields": "请输入您的邮箱地址和密码。",
+      "invalidEmail": "请输入有效的邮箱地址。"
+    },
+    "signup": {
+      "signingIn": "正在登录...",
+      "emptyFields": "请填写所有字段。",
+      "invalidEmail": "请输入有效的邮箱地址。",
+      "nameValidation": "名称必须为 1-50 个字符，且不能包含 < 或 >。",
+      "termsRequired": "请同意服务条款以继续。",
+      "alreadyExists": "使用此邮箱的账户已存在。请尝试登录。",
+      "checkEmail": "请查看您的邮箱以获取确认链接。确认后即可登录。"
+    },
+    "forgot": {
+      "emptyEmail": "请输入您的邮箱地址。",
+      "invalidEmail": "请输入有效的邮箱地址。",
+      "networkError": "网络错误。请检查您的连接并重试。",
+      "checkEmail": "请查看您的邮箱以获取密码重置链接。可能需要一分钟才能收到。"
+    },
+    "reset": {
+      "expired": "此重置链接已过期或无效。请申请新链接。",
+      "requestNew": "申请新的重置链接",
+      "emptyFields": "请填写两个密码字段。",
+      "mismatch": "密码不匹配。",
+      "networkError": "网络错误。请检查您的连接并重试。",
+      "success": "密码更新成功！正在跳转到登录页面..."
     }
   }
 }
