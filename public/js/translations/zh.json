@@ -513,7 +513,7 @@
     "subtitle": "BrainDock使用AI帮助你集中注意力，更聪明地工作，增强专注力。",
     "downloadBtn": "下载",
     "learnMoreBtn": "了解更多",
-    "note": "支持macOS和Windows。Linux即将推出。",
+    "note": "支持macOS和Windows。",
     "imageAlt": "BrainDock - AI连接设备与心智"
   },
   "madeForYou": {
@@ -594,15 +594,15 @@
     "cards": {
       "timedSessions": {
         "title": "计时会话",
-        "description": "准备好后随时开始计时会话。BrainDock在你工作时实时帮助你保持专注。"
+        "description": "准备好后随时开始计时会话。BrainDock在你工作时实时帮助你保持专注，追踪你的高效时间，让你清楚了解每次会话的情况。"
       },
       "attentionCoach": {
         "title": "专注教练",
-        "description": "当设备分散你的注意力或当你离开办公桌时，会温和地提醒你。"
+        "description": "当设备分散你的注意力或当你离开办公桌时，会温和地提醒你。在不打断工作流的情况下，帮助你重新回到正轨。"
       },
       "screenAwareness": {
         "title": "屏幕感知",
-        "description": "可选择识别您切换到分散注意力的应用程序或网站。"
+        "description": "可选择识别您切换到分散注意力的应用程序或网站。帮助您了解屏幕时间的实际去向，养成更好的使用习惯。"
       },
       "detailedReports": {
         "title": "绩效报告",
@@ -616,7 +616,7 @@
     "steps": {
       "step1": {
         "title": "下载应用",
-        "description": "根据您的操作系统（macOS、Windows、Linux）点击下载按钮。配置您的设置，即可开始使用！"
+        "description": "根据您的操作系统（macOS或Windows）点击下载按钮。配置您的设置，即可开始使用！"
       },
       "step2": {
         "title": "开始会话",
@@ -640,31 +640,31 @@
   },
   "download": {
     "sectionTitle": "下载BrainDock",
-    "sectionSubtitle": "支持macOS和Windows。Linux即将推出。",
+    "sectionSubtitle": "支持macOS和Windows。",
     "macOS": "macOS",
-    "windows": "Windows",
-    "linux": "Linux"
+    "windows": "Windows"
   },
   "pricing": {
     "title": "价格",
-    "subtitle": "使用相机或屏幕会话 - 时间从您的余额中扣除。随时充值。",
+    "subtitleFree": "<strong>每个账户起始附赠30分钟免费体验。</strong>",
+    "subtitleDesc": "使用相机或屏幕会话 - 随时充值。",
+    "perHourSuffix": "/小时",
+    "hourSingular": "1小时",
+    "hourPlural": "{n}小时",
     "tier": {
       "1": {
         "name": "Pro",
-        "perHour": "A$1.99/小时",
-        "desc": "1小时BrainDock - 相机、屏幕或两者。",
+        "desc": "非常适合试用BrainDock，体验AI驱动的专注如何为您服务。",
         "btn": "获取Pro"
       },
       "10": {
         "name": "Ultra",
-        "perHour": "A$1.50/小时",
-        "desc": "10小时BrainDock - 相机、屏幕或两者。",
+        "desc": "为那些专注的人打造。足够的时间以更优惠的价格建立真正的专注习惯。",
         "btn": "获取Ultra"
       },
       "30": {
         "name": "Max",
-        "perHour": "A$1.17/小时",
-        "desc": "30小时BrainDock - 相机、屏幕或两者。",
+        "desc": "为全力以赴的人准备。最超值的选择，获得终极AI驱动专注体验。",
         "btn": "获取Max"
       }
     },
@@ -744,10 +744,6 @@
     "contact": {
       "title": "联系我们"
     }
-  },
-  "popup": {
-    "comingSoon": "即将推出！",
-    "ok": "确定"
   },
   "language": {
     "en": "English",
@@ -1057,7 +1053,6 @@
       "subtitle": "安装桌面应用开始提升您的专注。支持macOS和Windows。",
       "macOS": "macOS",
       "windows": "Windows",
-      "linuxComingSoon": "Linux（即将推出）",
       "afterInstalling": "安装后，打开BrainDock并使用您的账户登录以关联此设备。"
     }
   },

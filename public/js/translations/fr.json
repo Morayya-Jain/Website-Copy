@@ -513,7 +513,7 @@
     "subtitle": "BrainDock utilise l'IA pour vous aider à vous concentrer, travailler plus intelligemment et renforcer votre concentration.",
     "downloadBtn": "Télécharger",
     "learnMoreBtn": "En savoir plus",
-    "note": "Disponible pour macOS et Windows. Linux bientôt disponible.",
+    "note": "Disponible pour macOS et Windows.",
     "imageAlt": "BrainDock - L'IA connectant appareils et esprit"
   },
   "madeForYou": {
@@ -594,15 +594,15 @@
     "cards": {
       "timedSessions": {
         "title": "Sessions minutées",
-        "description": "Lancez une session minutée quand vous êtes prêt. BrainDock vous aide à rester concentré en temps réel pendant que vous travaillez."
+        "description": "Lancez une session minutee quand vous etes pret. BrainDock vous aide a rester concentre en temps reel, suit vos minutes productives et vous donne une image claire de chaque session."
       },
       "attentionCoach": {
         "title": "Coach d'attention",
-        "description": "Remarque doucement quand les appareils détournent votre attention ou quand vous vous éloignez de votre bureau."
+        "description": "Remarque doucement quand les appareils detournent votre attention ou quand vous vous eloignez de votre bureau. Recevez des rappels utiles pour reprendre le fil sans interrompre votre flux."
       },
       "screenAwareness": {
-        "title": "Conscience de l'écran",
-        "description": "Identifie optionnellement lorsque vous basculez vers des applications ou sites web distrayants."
+        "title": "Conscience de l'ecran",
+        "description": "Identifie optionnellement lorsque vous basculez vers des applications ou sites web distrayants. Vous aide a developper de meilleures habitudes en comprenant ou va reellement votre temps d'ecran."
       },
       "detailedReports": {
         "title": "Rapport de performance",
@@ -616,7 +616,7 @@
     "steps": {
       "step1": {
         "title": "Télécharger l'application",
-        "description": "Cliquez sur le bouton Télécharger selon votre système d'exploitation (macOS, Windows, Linux). Configurez vos paramètres et c'est parti !"
+        "description": "Cliquez sur le bouton Télécharger selon votre système d'exploitation (macOS ou Windows). Configurez vos paramètres et c'est parti !"
       },
       "step2": {
         "title": "Démarrer une session",
@@ -640,31 +640,31 @@
   },
   "download": {
     "sectionTitle": "Télécharger BrainDock",
-    "sectionSubtitle": "Disponible pour macOS et Windows. Linux bientôt disponible.",
+    "sectionSubtitle": "Disponible pour macOS et Windows.",
     "macOS": "macOS",
-    "windows": "Windows",
-    "linux": "Linux"
+    "windows": "Windows"
   },
   "pricing": {
     "title": "Tarifs",
-    "subtitle": "Utilisez des sessions caméra ou écran - le temps est déduit de votre solde. Rechargez à tout moment.",
+    "subtitleFree": "<strong>Chaque compte commence avec 30 minutes gratuites.</strong>",
+    "subtitleDesc": "Utilisez des sessions camera ou ecran - rechargez a tout moment.",
+    "perHourSuffix": "/h",
+    "hourSingular": "1 heure",
+    "hourPlural": "{n} heures",
     "tier": {
       "1": {
         "name": "Pro",
-        "perHour": "A$1,99 par heure",
-        "desc": "1 heure de BrainDock - caméra, écran ou les deux.",
+        "desc": "Parfait pour essayer BrainDock et decouvrir comment la concentration assistee par IA fonctionne pour vous.",
         "btn": "Obtenir Pro"
       },
       "10": {
         "name": "Ultra",
-        "perHour": "A$1,50 par heure",
-        "desc": "10 heures de BrainDock - caméra, écran ou les deux.",
+        "desc": "Pour les plus assidus. Assez d'heures pour construire une vraie routine de concentration a un meilleur tarif.",
         "btn": "Obtenir Ultra"
       },
       "30": {
         "name": "Max",
-        "perHour": "A$1,17 par heure",
-        "desc": "30 heures de BrainDock - caméra, écran ou les deux.",
+        "desc": "Pour ceux qui veulent aller a fond. Le meilleur rapport qualite-prix pour une concentration ultime assistee par IA.",
         "btn": "Obtenir Max"
       }
     },
@@ -744,10 +744,6 @@
     "contact": {
       "title": "Nous contacter"
     }
-  },
-  "popup": {
-    "comingSoon": "Bientôt disponible !",
-    "ok": "OK"
   },
   "language": {
     "en": "English",
@@ -1057,7 +1053,6 @@
       "subtitle": "Installez l'application de bureau pour commencer à améliorer votre concentration. Disponible pour macOS et Windows.",
       "macOS": "macOS",
       "windows": "Windows",
-      "linuxComingSoon": "Linux (Bientôt)",
       "afterInstalling": "Après l'installation, ouvrez BrainDock et connectez-vous avec votre compte pour associer cet appareil."
     }
   },

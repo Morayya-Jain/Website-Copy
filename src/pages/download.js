@@ -5,7 +5,7 @@
 import { initDashboardLayout } from '../dashboard-layout.js'
 import { t } from '../dashboard-i18n.js'
 import { MACOS_URL, WINDOWS_URL } from '../constants.js'
-import { appleIcon, windowsIcon, linuxIcon, ctaSlideHtml } from '../icons.js'
+import { appleIcon, windowsIcon, ctaSlideHtml } from '../icons.js'
 import { track, EVENTS } from '../analytics.js'
 
 function render(main) {
@@ -25,10 +25,6 @@ function render(main) {
           <span class="btn-cta-label">${windowsIcon(20)} ${t('dashboard.downloadPage.windows', 'Windows')}</span>
           ${ctaSlideHtml()}
         </a>
-        <button type="button" class="btn btn-primary btn-download btn-disabled" disabled>
-          ${linuxIcon(20)}
-          ${t('dashboard.downloadPage.linuxComingSoon', 'Linux (Coming Soon)')}
-        </button>
       </div>
       <p class="dashboard-download-footer">
         ${t('dashboard.downloadPage.afterInstalling', 'After installing, open BrainDock and sign in with your account to link this device.')}

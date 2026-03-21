@@ -513,7 +513,7 @@
     "subtitle": "BrainDock uses AI to help you focus, work smarter and strengthen concentration.",
     "downloadBtn": "Download",
     "learnMoreBtn": "Learn More",
-    "note": "Available for macOS and Windows. Linux coming soon.",
+    "note": "Available for macOS and Windows.",
     "imageAlt": "BrainDock - AI connecting devices and mind"
   },
   "madeForYou": {
@@ -594,15 +594,15 @@
     "cards": {
       "timedSessions": {
         "title": "Timed Sessions",
-        "description": "Start a timed session whenever you're ready. BrainDock helps you stay focused in real-time while you work."
+        "description": "Start a timed session whenever you're ready. BrainDock helps you stay focused in real-time while you work, tracking your productive minutes and giving you a clear picture of each session."
       },
       "attentionCoach": {
         "title": "Attention Coach",
-        "description": "Gently notices when devices pull your attention away or when you step away from your desk."
+        "description": "Gently notices when devices pull your attention away or when you step away from your desk. Receive helpful nudges to get back on track without breaking your flow."
       },
       "screenAwareness": {
         "title": "Screen Awareness",
-        "description": "Optionally identifies when you switch to distracting applications or websites."
+        "description": "Optionally identifies when you switch to distracting applications or websites. Helps you build better habits by understanding where your screen time actually goes."
       },
       "detailedReports": {
         "title": "Performance Report",
@@ -616,7 +616,7 @@
     "steps": {
       "step1": {
         "title": "Download the App",
-        "description": "Click the Download button for your operating system (macOS, Windows, Linux). Configure your settings and you're good to go!"
+        "description": "Click the Download button for your operating system (macOS or Windows). Configure your settings and you're good to go!"
       },
       "step2": {
         "title": "Start a Session",
@@ -640,31 +640,31 @@
   },
   "download": {
     "sectionTitle": "Download BrainDock",
-    "sectionSubtitle": "Available for macOS and Windows. Linux coming soon.",
+    "sectionSubtitle": "Available for macOS and Windows.",
     "macOS": "macOS",
-    "windows": "Windows",
-    "linux": "Linux"
+    "windows": "Windows"
   },
   "pricing": {
     "title": "Pricing",
-    "subtitle": "Use camera or screen sessions - time is deducted from your balance. Top up anytime.",
+    "subtitleFree": "<strong>Every account starts with 30 free minutes.</strong>",
+    "subtitleDesc": "Use camera or screen sessions - top up anytime.",
+    "perHourSuffix": "/hr",
+    "hourSingular": "1 hour",
+    "hourPlural": "{n} hours",
     "tier": {
       "1": {
         "name": "Pro",
-        "perHour": "A$1.99 per hour",
-        "desc": "1 hour of BrainDock - camera, screen, or both.",
+        "desc": "Perfect for trying out BrainDock and seeing how AI-powered focus works for you.",
         "btn": "Get Pro"
       },
       "10": {
         "name": "Ultra",
-        "perHour": "A$1.50 per hour",
-        "desc": "10 hours of BrainDock - camera, screen, or both.",
+        "desc": "For the dedicated ones. Enough hours to build a real focus routine at a better rate.",
         "btn": "Get Ultra"
       },
       "30": {
         "name": "Max",
-        "perHour": "A$1.17 per hour",
-        "desc": "30 hours of BrainDock - camera, screen, or both.",
+        "desc": "For those who want to go all out. The best bang for your buck to get ultimate AI-powered focus.",
         "btn": "Get Max"
       }
     },
@@ -745,11 +745,7 @@
       "title": "Get in Touch"
     }
   },
-  "popup": {
-    "comingSoon": "Coming Soon!",
-    "ok": "OK"
-  },
-  "language": {
+    "language": {
     "en": "English",
     "ja": "日本語 (Japan)",
     "de": "Deutsch (Germany)",
@@ -1057,7 +1053,6 @@
       "subtitle": "Install the desktop app to start improving your focus. Available for macOS and Windows.",
       "macOS": "macOS",
       "windows": "Windows",
-      "linuxComingSoon": "Linux (Coming Soon)",
       "afterInstalling": "After installing, open BrainDock and sign in with your account to link this device."
     }
   },

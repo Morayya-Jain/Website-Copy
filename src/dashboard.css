@@ -25,12 +25,15 @@
    Dashboard button overrides: accent colour instead of black
    -------------------------------------------------------------------------- */
 .dashboard-app .btn-primary {
-  background-color: var(--btn-primary-bg);
-  color: #FFFFFF;
+  background-color: rgba(100, 134, 16, 0.35);
+  color: var(--text-primary);
+  border: 2px solid rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .dashboard-app .btn-primary:hover {
-  background-color: var(--btn-primary-hover);
+  background-color: rgba(100, 134, 16, 0.45);
 }
 
 /* --------------------------------------------------------------------------
@@ -1748,6 +1751,13 @@
   margin-bottom: 1vh;
 }
 
+.pricing-subtitle-free {
+  font-family: var(--font-sans);
+  font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.1rem);
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+}
+
 .pricing-subtitle {
   font-family: var(--font-sans);
   font-size: clamp(0.875rem, 0.82rem + 0.3vw, 1.05rem);
@@ -1780,7 +1790,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: clamp(340px, 40vh, 460px);
+  min-height: clamp(300px, 35vh, 400px);
   padding: clamp(16px, 1.8vw, 24px) clamp(18px, 2.5vw, 32px) clamp(24px, 2.5vw, 32px) clamp(18px, 2vw, 28px);
   text-align: left;
 }
@@ -1801,7 +1811,7 @@
   font-family: var(--font-sans);
 }
 
-.pricing-card-per-hour {
+.pricing-card-total {
   font-size: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
   color: var(--text-tertiary);
   margin-bottom: 1.2vh;
@@ -1818,7 +1828,6 @@
 }
 
 .pricing-card .btn {
-  width: auto;
   margin-top: auto;
   padding: clamp(12px, 1.3vw, 16px) clamp(24px, 2.5vw, 36px);
   font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);

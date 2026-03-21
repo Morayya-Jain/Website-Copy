@@ -55,7 +55,7 @@ async function createCheckoutSession(packageId) {
 /** Calculate per-hour price in cents. Returns null if hours is invalid. */
 function pricePerHourCents(cents, hours) {
   if (!hours || hours < 1) return null
-  return Math.round(cents / hours)
+  return Math.floor(cents / hours)
 }
 
 /** Tier label for display: 1 -> Pro, 10 -> Ultra, 30 -> Max */
@@ -74,11 +74,12 @@ function tierButtonLabel(hours) {
   return 'Buy Now'
 }
 
-function freeCardCta(hasUser) {
-  if (hasUser) {
-    return `<a href="/dashboard/" class="btn btn-secondary" data-i18n="pricing.tier.free.btnDashboard">Go to Dashboard</a>`
-  }
-  return `<a href="/auth/signup/" class="btn btn-secondary" data-i18n="pricing.tier.free.btn">Sign Up Free</a>`
+/** Description fallback per tier */
+function tierDescription(hours) {
+  if (hours === 1) return 'Perfect for trying out BrainDock and seeing how AI-powered focus works for you.'
+  if (hours === 10) return 'For the dedicated ones. Enough hours to build a real focus routine at a better rate.'
+  if (hours === 30) return 'For those who want to go all out. The best bang for your buck to get ultimate AI-powered focus.'
+  return `${hours} hours of BrainDock - camera, screen, or both.`
 }
 
 function render(root, packages, hasUser) {
@@ -132,16 +133,10 @@ function render(root, packages, hasUser) {
       <div class="container pricing-container">
         <div class="pricing-header">
           <h1 class="pricing-title" data-i18n="pricing.title">Pricing</h1>
-          <p class="pricing-subtitle" data-i18n="pricing.subtitle">Use camera or screen sessions - time is deducted from your balance. Top up anytime.</p>
+          <p class="pricing-subtitle-free" data-i18n-html="pricing.subtitleFree"><strong>Every account starts with 30 free minutes.</strong></p>
+          <p class="pricing-subtitle" data-i18n="pricing.subtitleDesc">Use camera or screen sessions - top up anytime.</p>
         </div>
         <div class="pricing-grid">
-          <div class="dashboard-card pricing-card pricing-card--free">
-            <h3 class="pricing-card-title" data-i18n="pricing.tier.free.name">Free</h3>
-            <p class="pricing-card-price">$0</p>
-            <p class="pricing-card-per-hour" data-i18n="pricing.tier.free.perHour">30 min / month</p>
-            <p class="pricing-card-desc" data-i18n="pricing.tier.free.desc">Try BrainDock free. Camera monitoring with AI focus detection. Resets monthly.</p>
-            ${freeCardCta(hasUser)}
-          </div>
           ${packagesLoadFailed
             ? `<div class="dashboard-card pricing-card" style="grid-column: 1 / -1; text-align: center;">
                 <p data-i18n="pricing.loadError">Could not load pricing packages. Please refresh the page or try again later.</p>
@@ -150,12 +145,18 @@ function render(root, packages, hasUser) {
             const perHour = pricePerHourCents(pkg.price_cents, pkg.hours)
             const tierName = tierDisplayName(pkg.hours) || escapeHtml(pkg.display_name || pkg.name)
             const btnLabel = tierButtonLabel(pkg.hours)
+            const desc = escapeHtml(tierDescription(pkg.hours))
+            const hrLabel = pt('pricing.perHourSuffix', '/hr')
+            const displayPrice = perHour !== null ? formatPrice(perHour, pkg.currency) : formatPrice(pkg.price_cents, pkg.currency)
+            const hoursLabel = pkg.hours === 1
+              ? pt('pricing.hourSingular', '1 hour')
+              : pt('pricing.hourPlural', `${pkg.hours} hours`).replace('{n}', String(pkg.hours))
             return `
               <div class="dashboard-card pricing-card">
                 <h3 class="pricing-card-title" data-i18n="pricing.tier.${pkg.hours}.name">${tierName}</h3>
-                <p class="pricing-card-price">${formatPrice(pkg.price_cents, pkg.currency)}</p>
-                ${perHour ? `<p class="pricing-card-per-hour" data-i18n="pricing.tier.${pkg.hours}.perHour">${formatPrice(perHour, pkg.currency)} per hour</p>` : '<p class="pricing-card-per-hour"></p>'}
-                <p class="pricing-card-desc" data-i18n="pricing.tier.${pkg.hours}.desc">${pkg.hours} hour${pkg.hours === 1 ? '' : 's'} of BrainDock - camera, screen, or both.</p>
+                <p class="pricing-card-price">${displayPrice}${hrLabel}</p>
+                <p class="pricing-card-total">${hoursLabel}</p>
+                <p class="pricing-card-desc" data-i18n="pricing.tier.${pkg.hours}.desc">${desc}</p>
                 <button type="button" class="btn btn-primary btn-cta" data-package-id="${escapeHtml(pkg.id)}"><span class="btn-cta-label"><span data-i18n="pricing.tier.${pkg.hours}.btn">${btnLabel}</span></span>${ctaSlideHtml()}</button>
               </div>
             `

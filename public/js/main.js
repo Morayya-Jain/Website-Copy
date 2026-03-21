@@ -23,11 +23,12 @@ document.addEventListener('DOMContentLoaded', function() {
   const navLogo = document.querySelector('.nav-logo');
   const navCta = document.querySelector('.nav-cta');
 
-  // Point header download button directly to OS-specific download
+  // Point header + hero download buttons directly to OS-specific download
   const downloadUrl = getDownloadUrl()
   if (downloadUrl) {
-    const navDownloadBtn = document.querySelector('a[href="#download"].btn-primary.nav-cta')
-    if (navDownloadBtn) navDownloadBtn.href = downloadUrl
+    document.querySelectorAll('a[href="#download"].btn-primary.nav-cta, .hero-ctas a[href="#download"].btn-primary').forEach(function(btn) {
+      btn.href = downloadUrl
+    })
   }
 
   /**
@@ -218,8 +219,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Made For You audience pill switcher
   initMadeForYou();
 
-  // Linux coming soon popup
-  initComingSoonPopup();
 });
 
 /**
@@ -349,52 +348,6 @@ function initMadeForYou() {
   }
 }
 
-/**
- * Initialize the "Coming Soon" popup for the Linux download button.
- */
-function initComingSoonPopup() {
-  const linuxBtn = document.getElementById('linux-download-btn');
-  const popup = document.getElementById('coming-soon-popup');
-  const overlay = document.getElementById('coming-soon-overlay');
-  const closeBtn = document.getElementById('popup-close-btn');
-
-  if (!linuxBtn || !popup || !overlay || !closeBtn) {
-    return;
-  }
-
-  let previousFocus = null;
-
-  /** Show the coming soon popup and trap focus. */
-  function showPopup() {
-    previousFocus = document.activeElement;
-    popup.classList.add('active');
-    overlay.classList.add('active');
-    closeBtn.focus();
-  }
-
-  /** Hide the coming soon popup and restore focus. */
-  function hidePopup() {
-    popup.classList.remove('active');
-    overlay.classList.remove('active');
-    if (previousFocus) previousFocus.focus();
-  }
-
-  // Show popup when clicking the Linux download button
-  linuxBtn.addEventListener('click', showPopup);
-
-  // Close popup when clicking the close button
-  closeBtn.addEventListener('click', hidePopup);
-
-  // Close popup when clicking the overlay
-  overlay.addEventListener('click', hidePopup);
-
-  // Close popup on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && popup.classList.contains('active')) {
-      hidePopup();
-    }
-  });
-}
 
 // ========== BINARY TEXT BANNER ==========
 // Renders "BrainDock" formed by dense 0s and 1s with a Matrix-rain

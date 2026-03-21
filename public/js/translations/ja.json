@@ -513,7 +513,7 @@
     "subtitle": "BrainDockはAIを使って集中力を高め、より賢く働き、集中力を強化します。",
     "downloadBtn": "ダウンロード",
     "learnMoreBtn": "詳細を見る",
-    "note": "macOSとWindowsに対応。Linux対応は近日公開。",
+    "note": "macOSとWindowsに対応。",
     "imageAlt": "BrainDock - AIがデバイスと心をつなぐ"
   },
   "madeForYou": {
@@ -594,15 +594,15 @@
     "cards": {
       "timedSessions": {
         "title": "タイマーセッション",
-        "description": "準備ができたらタイマーセッションを開始しましょう。BrainDockが作業中の集中をリアルタイムでサポートします。"
+        "description": "準備ができたらタイマーセッションを開始しましょう。BrainDockが作業中の集中をリアルタイムでサポートし、生産的な時間を追跡して各セッションの全体像を提供します。"
       },
       "attentionCoach": {
         "title": "集中コーチ",
-        "description": "デバイスが注意をそらした時や、席を離れた時にやさしくお知らせします。"
+        "description": "デバイスが注意をそらした時や、席を離れた時にやさしくお知らせします。流れを中断せずに、集中を取り戻すためのヒントを提供します。"
       },
       "screenAwareness": {
         "title": "スクリーン認識",
-        "description": "気が散るアプリケーションやウェブサイトへの切り替えをオプションで検出します。"
+        "description": "気が散るアプリケーションやウェブサイトへの切り替えをオプションで検出します。スクリーンタイムの使い方を理解し、より良い習慣を身につけるお手伝いをします。"
       },
       "detailedReports": {
         "title": "パフォーマンスレポート",
@@ -616,7 +616,7 @@
     "steps": {
       "step1": {
         "title": "アプリをダウンロード",
-        "description": "お使いのOS（macOS、Windows、Linux）に応じてダウンロードボタンをクリックしてください。設定を構成すれば準備完了です！"
+        "description": "お使いのOS（macOSまたはWindows）に応じてダウンロードボタンをクリックしてください。設定を構成すれば準備完了です！"
       },
       "step2": {
         "title": "セッションを開始",
@@ -640,31 +640,31 @@
   },
   "download": {
     "sectionTitle": "BrainDockをダウンロード",
-    "sectionSubtitle": "macOSとWindowsに対応。Linux対応は近日公開。",
+    "sectionSubtitle": "macOSとWindowsに対応。",
     "macOS": "macOS",
-    "windows": "Windows",
-    "linux": "Linux"
+    "windows": "Windows"
   },
   "pricing": {
     "title": "料金",
-    "subtitle": "カメラまたは画面セッションを使用 - 残高から時間が差し引かれます。いつでもチャージ可能。",
+    "subtitleFree": "<strong>すべてのアカウントに30分間の無料体験付き。</strong>",
+    "subtitleDesc": "カメラまたは画面セッションを使用 - いつでもチャージ可能。",
+    "perHourSuffix": "/時間",
+    "hourSingular": "1時間",
+    "hourPlural": "{n}時間",
     "tier": {
       "1": {
         "name": "Pro",
-        "perHour": "A$1.99/時間",
-        "desc": "BrainDock 1時間分 - カメラ、画面、または両方。",
+        "desc": "BrainDockを試して、AI搭載フォーカスがどう機能するか体験するのに最適。",
         "btn": "Proを取得"
       },
       "10": {
         "name": "Ultra",
-        "perHour": "A$1.50/時間",
-        "desc": "BrainDock 10時間分 - カメラ、画面、または両方。",
+        "desc": "本気で取り組む方へ。お得な料金で本格的なフォーカス習慣を築くのに十分な時間。",
         "btn": "Ultraを取得"
       },
       "30": {
         "name": "Max",
-        "perHour": "A$1.17/時間",
-        "desc": "BrainDock 30時間分 - カメラ、画面、または両方。",
+        "desc": "全力で取り組みたい方へ。究極のAI搭載フォーカスを最もお得に手に入れよう。",
         "btn": "Maxを取得"
       }
     },
@@ -744,10 +744,6 @@
     "contact": {
       "title": "お問い合わせ"
     }
-  },
-  "popup": {
-    "comingSoon": "近日公開！",
-    "ok": "OK"
   },
   "language": {
     "en": "English",
@@ -1057,7 +1053,6 @@
       "subtitle": "デスクトップアプリをインストールして集中力の向上を始めましょう。macOSとWindowsに対応しています。",
       "macOS": "macOS",
       "windows": "Windows",
-      "linuxComingSoon": "Linux（近日公開）",
       "afterInstalling": "インストール後、BrainDockを開いてアカウントでサインインし、このデバイスをリンクしてください。"
     }
   },

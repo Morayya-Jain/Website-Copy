@@ -430,13 +430,16 @@ p {
 }
 
 .btn-primary {
-  background-color: var(--btn-primary-bg);
-  color: #FFFFFF;
+  background-color: rgba(100, 134, 16, 0.35);
+  color: var(--text-primary);
+  border: 2px solid rgba(0, 0, 0, 0.18);
   box-shadow: var(--shadow-subtle);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .btn-primary:hover {
-  background-color: var(--btn-primary-hover);
+  background-color: rgba(100, 134, 16, 0.45);
   box-shadow: var(--shadow-hover);
 }
 
@@ -455,17 +458,6 @@ p {
   justify-content: center;
 }
 
-#linux-download-btn {
-  background-color: #F0F4D8;
-  color: var(--text-primary);
-  border: 2px solid rgba(212, 224, 96, 0.4);
-  box-shadow: none;
-}
-
-#linux-download-btn:hover {
-  background-color: #E6EDC0;
-  border-color: rgba(212, 224, 96, 0.7);
-}
 
 /* --------------------------------------------------------------------------
    CTA Slide Animation (download + payment buttons)
@@ -497,11 +489,12 @@ p {
   top: 4px;
   bottom: 4px;
   width: 20%;
-  border-radius: 4px;
+  border-radius: calc(var(--btn-radius) - 4px);
   z-index: 10;
   display: grid;
   place-items: center;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(80, 110, 10, 0.4);
+  color: #FFFFFF;
   contain: layout style;
   will-change: width;
   transition: width 500ms ease, transform 150ms ease;
@@ -942,7 +935,7 @@ body.hero-compact .hero-ctas {
    Why Use BrainDock Section
    -------------------------------------------------------------------------- */
 .why-braindock {
-  padding-bottom: 96px;
+  padding-bottom: 160px;
 }
 
 /* --------------------------------------------------------------------------
@@ -955,7 +948,7 @@ body.hero-compact .hero-ctas {
   border: 1px solid rgba(100, 134, 16, 0.12);
   border-radius: var(--card-radius);
   overflow: hidden;
-  margin-top: 120px;
+  margin-top: 160px;
   margin-bottom: var(--space-xl);
 }
 
@@ -1106,14 +1099,16 @@ body.hero-compact .hero-ctas {
 }
 
 .mfy-panel-actions .btn-primary {
-  background: var(--btn-primary-bg);
-  color: #FFFFFF;
+  background: rgba(100, 134, 16, 0.35);
+  color: var(--text-primary);
   box-shadow: var(--shadow-subtle);
-  border: none;
+  border: 2px solid rgba(0, 0, 0, 0.18);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .mfy-panel-actions .btn-primary:hover {
-  background: var(--btn-primary-hover);
+  background: rgba(100, 134, 16, 0.45);
   box-shadow: var(--shadow-hover);
 }
 
@@ -1185,80 +1180,283 @@ body.hero-compact .hero-ctas {
 }
 
 /* --------------------------------------------------------------------------
-   Features Section
+   Features Section - Stacked Card Deck
    -------------------------------------------------------------------------- */
 .features {
-  padding-bottom: 96px;
+  padding: 0;
+  margin-top: -230px;
+  margin-bottom: 0;
 }
 
-.features .section-header h2 {
-  font-size: 1.75rem;
-}
-
-@media (min-width: 768px) {
-  .features .section-header h2 {
-    font-size: 2.25rem;
-  }
-}
-
-.features-grid {
+/* --- Deck container --- */
+.features-deck {
   display: grid;
-  gap: var(--space-l);
+  grid-template-areas: "stack";
+  place-items: center;
+  min-height: 580px;
+  padding: 96px 0;
+  padding: 0;
 }
 
+/* --- Each card --- */
 .feature-card {
-  background-color: var(--bg-surface);
+  grid-area: stack;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: clamp(28rem, 48vw, 38rem);
+  max-width: 85vw;
+  min-height: 16rem;
+  padding: 32px 32px;
   border-radius: var(--card-radius);
-  padding: var(--space-xl);
+  border: 2px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   box-shadow: var(--shadow-card);
-  border: 1px solid rgba(0, 0, 0, 0.02);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transform: skewY(-8deg)
+             translateX(var(--deck-offset-x, 0px))
+             translateY(var(--deck-offset-y, 0px))
+             scale(1);
+  z-index: var(--deck-z, 0);
+  transition: all 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
 }
 
-.feature-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-hover);
+/* --- Right-side gradient fade --- */
+.feature-card::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: -5%;
+  height: 110%;
+  width: 30%;
+  background: linear-gradient(to left, var(--bg-primary), transparent);
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 700ms ease;
+}
+
+/* --- Grayscale overlay for back cards --- */
+.feature-card::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  border-radius: var(--card-radius);
+  background: rgba(255, 255, 255, 0.5);
+  outline: 1px solid var(--border-subtle);
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 700ms ease;
+  opacity: 1;
+}
+
+/* --- Card header: icon + title inline --- */
+.feature-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 3;
 }
 
 .feature-icon {
-  width: 48px;
-  height: 48px;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg-secondary);
-  border-radius: 12px;
-  margin-bottom: var(--space-m);
+  width: 40px;
+  height: 40px;
+  padding: 7px;
+  background-color: rgba(100, 134, 16, 0.15);
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: background-color 400ms ease;
 }
 
 .feature-icon svg {
-  width: 24px;
-  height: 24px;
-  stroke: var(--text-primary);
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent-highlight);
   stroke-width: 2;
   fill: none;
 }
 
 .feature-card h3 {
-  margin-bottom: var(--space-s);
-  font-size: 1.125rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--accent-highlight);
+  margin: 0;
+  white-space: nowrap;
 }
 
+/* --- Description: always visible but blurred, clears on hover/active --- */
 .feature-card p {
-  font-size: 0.9375rem;
-  line-height: 1.6;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--text-primary);
+  max-height: 200px;
+  opacity: 0.5;
+  overflow: hidden;
+  margin-top: 14px;
+  position: relative;
+  z-index: 3;
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  transition: all 500ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@media (min-width: 768px) {
-  .features-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* --- Default stacking offsets (tighter, centered) --- */
+.feature-card[data-index="0"] { --deck-offset-x: -100px; --deck-offset-y: 0px;   --deck-z: 1; }
+.feature-card[data-index="1"] { --deck-offset-x: -30px;  --deck-offset-y: 50px;  --deck-z: 2; }
+.feature-card[data-index="2"] { --deck-offset-x: 40px;   --deck-offset-y: 100px; --deck-z: 3; }
+.feature-card[data-index="3"] { --deck-offset-x: 110px;  --deck-offset-y: 150px; --deck-z: 4; }
+
+/* --- Front card (highest z-index in stack): always green, no grayscale --- */
+.feature-card.deck-front {
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+  border-color: rgba(100, 134, 16, 0.4);
+  border-width: 3px;
+  box-shadow: var(--shadow-card),
+              0 0 0 2px rgba(100, 134, 16, 0.15);
+}
+
+.feature-card.deck-front::before {
+  opacity: 0;
+}
+
+.feature-card.deck-front::after {
+  opacity: 0;
+}
+
+.feature-card.deck-front p {
+  opacity: 0.5;
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+}
+
+/* --- HOVER on stack card: lift, less blur --- */
+.feature-card:not(.active):hover {
+  transform: skewY(-8deg)
+             translateX(var(--deck-offset-x, 0px))
+             translateY(calc(var(--deck-offset-y, 0px) - 36px));
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+}
+
+.feature-card:not(.active):hover::before {
+  opacity: 0;
+}
+
+.feature-card:not(.active):hover p {
+  opacity: 0.7;
+  filter: blur(1.5px);
+  -webkit-filter: blur(1.5px);
+}
+
+/* --- ACTIVE card: centered, flat, much bigger, description clear --- */
+.feature-card.active {
+  transform: skewY(0deg)
+             translateX(var(--deck-offset-x, 0px))
+             translateY(var(--deck-offset-y, 0px))
+             scale(1.45);
+  filter: grayscale(0%);
+  -webkit-filter: grayscale(0%);
+  border-color: rgba(100, 134, 16, 0.35);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.14), inset 0 0 0 1px rgba(100, 134, 16, 0.15);
+}
+
+.feature-card.active::before {
+  opacity: 0;
+}
+
+.feature-card.active::after {
+  opacity: 0;
+}
+
+.feature-card.active p {
+  opacity: 1;
+  filter: blur(0);
+  -webkit-filter: blur(0);
+}
+
+/* --- Hover on active card --- */
+.feature-card.active:hover {
+  transform: skewY(0deg)
+             translateX(var(--deck-offset-x, 0px))
+             translateY(calc(var(--deck-offset-y, 0px) - 6px))
+             scale(1.45);
+}
+
+/* --- Keyboard focus --- */
+.feature-card:focus-visible {
+  outline: 2px solid var(--accent-highlight);
+  outline-offset: 4px;
+}
+
+/* --- Mobile --- */
+@media (max-width: 767px) {
+  .features-deck {
+    min-height: 420px;
+    padding: 0;
+  }
+
+  .feature-card {
+    width: 20rem;
+    min-height: 13rem;
+    padding: 22px 24px;
+  }
+
+  .feature-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .feature-card p {
+    font-size: 0.95rem;
+  }
+
+  .feature-card[data-index="0"] { --deck-offset-x: -60px; --deck-offset-y: 0px;  }
+  .feature-card[data-index="1"] { --deck-offset-x: -20px; --deck-offset-y: 30px; }
+  .feature-card[data-index="2"] { --deck-offset-x: 20px;  --deck-offset-y: 60px; }
+  .feature-card[data-index="3"] { --deck-offset-x: 60px;  --deck-offset-y: 90px; }
+
+  .feature-card:not(.active):hover {
+    transform: skewY(-8deg)
+               translateX(var(--deck-offset-x, 0px))
+               translateY(calc(var(--deck-offset-y, 0px) - 20px));
+  }
+
+  .feature-card.active {
+    transform: skewY(0deg)
+               translateX(var(--deck-offset-x, 0px))
+               translateY(var(--deck-offset-y, 0px))
+               scale(1.35);
+  }
+
+  .feature-card.active:hover {
+    transform: skewY(0deg)
+               translateX(var(--deck-offset-x, 0px))
+               translateY(calc(var(--deck-offset-y, 0px) - 4px))
+               scale(1.35);
   }
 }
 
-@media (min-width: 1024px) {
-  .features-grid {
-    grid-template-columns: repeat(4, 1fr);
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .feature-card,
+  .feature-card.active {
+    transform: translateX(var(--deck-offset-x, 0px))
+               translateY(var(--deck-offset-y, 0px));
+  }
+
+  .feature-card:not(.active):hover {
+    transform: translateX(var(--deck-offset-x, 0px))
+               translateY(calc(var(--deck-offset-y, 0px) - 4px));
   }
 }
 
@@ -1266,7 +1464,8 @@ body.hero-compact .hero-ctas {
    How It Works (inside Download section)
    -------------------------------------------------------------------------- */
 .how-it-works-wrapper {
-  margin-bottom: 120px;
+  margin-top: 120px;
+  margin-bottom: 160px;
 }
 
 .how-it-works-heading {
@@ -1336,7 +1535,7 @@ body.hero-compact .hero-ctas {
    FAQ (inside Download section)
    -------------------------------------------------------------------------- */
 .faq-wrapper {
-  margin-top: 120px;
+  margin-top: 160px;
 }
 
 .faq-heading {
@@ -1457,38 +1656,6 @@ body.hero-compact .hero-ctas {
 /* --------------------------------------------------------------------------
    Download Section
    -------------------------------------------------------------------------- */
-.download {
-  padding-bottom: 96px;
-}
-
-.download .section-header h2 {
-  font-family: var(--font-serif);
-  font-size: 1.75rem;
-  letter-spacing: -0.01em;
-}
-
-@media (min-width: 768px) {
-  .download .section-header h2 {
-    font-size: 2.25rem;
-  }
-}
-
-.download-buttons {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-m);
-  align-items: center;
-  margin-bottom: var(--space-l);
-}
-
-/* .download-note removed - unused */
-
-@media (min-width: 768px) {
-  .download-buttons {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
 
 /* --------------------------------------------------------------------------
    Footer
@@ -1909,92 +2076,6 @@ body.hero-compact .hero-ctas {
 }
 
 /* --------------------------------------------------------------------------
-   Coming Soon Popup
-   -------------------------------------------------------------------------- */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* More opaque fallback */
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  z-index: 299;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 200ms ease, visibility 200ms;
-}
-
-@supports (backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px)) {
-  .popup-overlay {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-}
-
-.popup-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
-
-.popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.95);
-  background-color: var(--bg-surface);
-  border-radius: var(--card-radius);
-  padding: var(--space-xl) var(--space-xxl);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
-  z-index: 300;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 150ms ease, transform 150ms ease, visibility 150ms;
-  text-align: center;
-  min-width: 200px;
-}
-
-.popup.active {
-  opacity: 1;
-  visibility: visible;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.popup-text {
-  font-family: var(--font-sans);
-  font-size: 1.125rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin: 0 0 var(--space-l) 0;
-}
-
-.popup-close {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 32px;
-  font-family: var(--font-sans);
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  background-color: var(--btn-primary-bg);
-  border: none;
-  border-radius: var(--btn-radius);
-  cursor: pointer;
-  transition: transform var(--transition-fast), box-shadow var(--transition-base);
-}
-
-.popup-close:hover {
-  background-color: var(--btn-primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
-}
-
-.popup-close:active {
-  transform: translateY(0) scale(0.97);
-}
-
-/* --------------------------------------------------------------------------
    Page entrance animation (shared by dashboard, auth, legal)
    -------------------------------------------------------------------------- */
 @keyframes fadeSlideIn {
@@ -2126,7 +2207,7 @@ body.hero-compact .hero-ctas {
   grid-template-columns: 1.1fr 0.9fr;
   gap: var(--space-xxl);
   align-items: center;
-  margin-top: 120px;
+  margin-top: 160px;
 }
 
 /* --- Left column: visual panel --- */

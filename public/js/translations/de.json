@@ -513,7 +513,7 @@
     "subtitle": "BrainDock nutzt KI, um dir zu helfen, dich zu konzentrieren, intelligenter zu arbeiten und die Konzentration zu stärken.",
     "downloadBtn": "Herunterladen",
     "learnMoreBtn": "Mehr erfahren",
-    "note": "Verfügbar für macOS und Windows. Linux kommt bald.",
+    "note": "Verfügbar für macOS und Windows.",
     "imageAlt": "BrainDock - KI verbindet Geräte und Verstand"
   },
   "madeForYou": {
@@ -594,15 +594,15 @@
     "cards": {
       "timedSessions": {
         "title": "Zeitsitzungen",
-        "description": "Starte eine Zeitsitzung, wann immer du bereit bist. BrainDock hilft dir, in Echtzeit konzentriert zu bleiben, während du arbeitest."
+        "description": "Starte eine Zeitsitzung, wann immer du bereit bist. BrainDock hilft dir, in Echtzeit konzentriert zu bleiben, verfolgt deine produktiven Minuten und gibt dir ein klares Bild jeder Sitzung."
       },
       "attentionCoach": {
         "title": "Aufmerksamkeits-Coach",
-        "description": "Bemerkt sanft, wenn Geräte deine Aufmerksamkeit ablenken oder wenn du vom Schreibtisch aufstehst."
+        "description": "Bemerkt sanft, wenn Geraete deine Aufmerksamkeit ablenken oder wenn du vom Schreibtisch aufstehst. Erhalte hilfreiche Hinweise, um wieder auf Kurs zu kommen, ohne deinen Arbeitsfluss zu unterbrechen."
       },
       "screenAwareness": {
         "title": "Bildschirm-Bewusstsein",
-        "description": "Erkennt optional, wenn du zu ablenkenden Anwendungen oder Websites wechselst."
+        "description": "Erkennt optional, wenn du zu ablenkenden Anwendungen oder Websites wechselst. Hilft dir, bessere Gewohnheiten aufzubauen, indem du verstehst, wohin deine Bildschirmzeit tatsaechlich geht."
       },
       "detailedReports": {
         "title": "Leistungsbericht",
@@ -616,7 +616,7 @@
     "steps": {
       "step1": {
         "title": "App herunterladen",
-        "description": "Klicke auf den Download-Button entsprechend deinem Betriebssystem (macOS, Windows, Linux). Konfiguriere deine Einstellungen und du kannst loslegen!"
+        "description": "Klicke auf den Download-Button entsprechend deinem Betriebssystem (macOS oder Windows). Konfiguriere deine Einstellungen und du kannst loslegen!"
       },
       "step2": {
         "title": "Sitzung starten",
@@ -640,31 +640,31 @@
   },
   "download": {
     "sectionTitle": "BrainDock herunterladen",
-    "sectionSubtitle": "Verfügbar für macOS und Windows. Linux kommt bald.",
+    "sectionSubtitle": "Verfügbar für macOS und Windows.",
     "macOS": "macOS",
-    "windows": "Windows",
-    "linux": "Linux"
+    "windows": "Windows"
   },
   "pricing": {
     "title": "Preise",
-    "subtitle": "Nutze Kamera- oder Bildschirmsitzungen - die Zeit wird von deinem Guthaben abgezogen. Jederzeit aufladen.",
+    "subtitleFree": "<strong>Jedes Konto startet mit 30 kostenlosen Minuten.</strong>",
+    "subtitleDesc": "Nutze Kamera- oder Bildschirmsitzungen - jederzeit aufladen.",
+    "perHourSuffix": "/Std.",
+    "hourSingular": "1 Stunde",
+    "hourPlural": "{n} Stunden",
     "tier": {
       "1": {
         "name": "Pro",
-        "perHour": "A$1,99 pro Stunde",
-        "desc": "1 Stunde BrainDock - Kamera, Bildschirm oder beides.",
+        "desc": "Perfekt, um BrainDock auszuprobieren und zu sehen, wie KI-gestützter Fokus für dich funktioniert.",
         "btn": "Pro holen"
       },
       "10": {
         "name": "Ultra",
-        "perHour": "A$1,50 pro Stunde",
-        "desc": "10 Stunden BrainDock - Kamera, Bildschirm oder beides.",
+        "desc": "Für die Engagierten. Genug Stunden, um eine echte Fokus-Routine zu einem besseren Preis aufzubauen.",
         "btn": "Ultra holen"
       },
       "30": {
         "name": "Max",
-        "perHour": "A$1,17 pro Stunde",
-        "desc": "30 Stunden BrainDock - Kamera, Bildschirm oder beides.",
+        "desc": "Für alle, die voll durchstarten wollen. Das beste Preis-Leistungs-Verhältnis für ultimativen KI-gestützten Fokus.",
         "btn": "Max holen"
       }
     },
@@ -744,10 +744,6 @@
     "contact": {
       "title": "Kontakt"
     }
-  },
-  "popup": {
-    "comingSoon": "Demnächst verfügbar!",
-    "ok": "OK"
   },
   "language": {
     "en": "English",
@@ -1057,7 +1053,6 @@
       "subtitle": "Installieren Sie die Desktop-App, um Ihren Fokus zu verbessern. Verfügbar für macOS und Windows.",
       "macOS": "macOS",
       "windows": "Windows",
-      "linuxComingSoon": "Linux (Demnächst)",
       "afterInstalling": "Öffnen Sie nach der Installation BrainDock und melden Sie sich mit Ihrem Konto an, um dieses Gerät zu verbinden."
     }
   },

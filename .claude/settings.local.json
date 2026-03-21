@@ -50,7 +50,10 @@
       "Bash(git --no-pager diff HEAD -- public/css/style.css)",
       "Bash(git --no-pager diff HEAD -- public/js/main.js)",
       "Bash(git:*)",
-      "Bash(do node:*)"
+      "Bash(do node:*)",
+      "mcp__supabase__execute_sql",
+      "mcp__supabase__get_project_url",
+      "mcp__supabase__list_edge_functions"
     ]
   },
   "enableAllProjectMcpServers": true,
