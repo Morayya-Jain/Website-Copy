@@ -262,8 +262,6 @@ async function handleSignOut() {
   // Clear session-scoped state to prevent stale values affecting the next login
   sessionStorage.removeItem('braindock_desktop')
   sessionStorage.removeItem('braindock_redirect')
-  sessionStorage.removeItem('braindock_signup_reload_count')
-  sessionStorage.removeItem('braindock_signup_reload_bail')
   sessionStorage.removeItem('braindock_checkout_tracked')
   // Reset PostHog identity so events are not attributed to the signed-out user
   try { window.posthog?.reset?.() } catch (_) { /* silent */ }

@@ -594,7 +594,7 @@
     "cards": {
       "timedSessions": {
         "title": "Zeitsitzungen",
-        "description": "Starte eine Sitzung, wann immer du bereit bist. BrainDock unterstützt deinen Fokus in Echtzeit, während du arbeitest."
+        "description": "Starte eine Zeitsitzung, wann immer du bereit bist. BrainDock hilft dir, in Echtzeit konzentriert zu bleiben, während du arbeitest."
       },
       "attentionCoach": {
         "title": "Aufmerksamkeits-Coach",
@@ -602,7 +602,7 @@
       },
       "screenAwareness": {
         "title": "Bildschirm-Bewusstsein",
-        "description": "Prüft optional das aktive Fenster, um Wechsel zu ablenkenden Anwendungen oder Websites zu erkennen."
+        "description": "Erkennt optional, wenn du zu ablenkenden Anwendungen oder Websites wechselst."
       },
       "detailedReports": {
         "title": "Leistungsbericht",
@@ -728,7 +728,7 @@
   "about": {
     "backHome": "← Zurück zur Startseite",
     "title": "Über BrainDock",
-    "subtitle": "BrainDock ist ein KI-gestützter Fokus-Assistent, der Ihnen hilft, bei der Arbeit und beim Lernen konzentriert zu bleiben. Er nutzt KI, um Ihren Fokus zu unterstützen - ohne jemals Videos zu speichern oder Gesichtserkennung zu verwenden.",
+    "subtitle": "BrainDock ist ein KI-gestützter Fokus-Assistent, der Ihnen hilft, bei der Arbeit und beim Lernen konzentriert zu bleiben. Er nutzt AI-Vision, um Ablenkungen zu erkennen - ohne jemals Videos zu speichern oder Gesichtserkennung zu verwenden.",
     "mission": {
       "title": "Unsere Mission",
       "description": "Wir glauben, dass tiefe Konzentration eine trainierbare Fähigkeit ist. BrainDock wurde entwickelt, um Menschen einen sanften, intelligenten Begleiter zu geben, der bemerkt, wenn die Aufmerksamkeit nachlässt."
@@ -824,7 +824,7 @@
       "title": "Dashboard",
       "welcome": "Willkommen zurück,",
       "allSetTitle": "Alles bereit! BrainDock herunterladen",
-      "allSetDesc": "Sie haben verfügbare Stunden. Laden Sie die Desktop-App herunter und melden Sie sich mit demselben Konto an, um Ihren Fokus zu stärken.",
+      "allSetDesc": "Sie haben verfügbare Stunden. Laden Sie die Desktop-App herunter und melden Sie sich mit demselben Konto an, um Ihren Fokus zu verbessern.",
       "downloadMac": "Für macOS herunterladen",
       "downloadWin": "Für Windows herunterladen",
       "todaysFocus": "Heutiger Fokus",
@@ -898,8 +898,8 @@
       "appNamePlaceholder": "App-Name",
       "levelTitle": "Ablenkungsmodus",
       "levelDesc": "Wählen Sie, was passiert, wenn eine Ablenkung während einer Sitzung erkannt wird.",
-      "trackOnlyTitle": "Ruhemodus",
-      "trackOnlyDesc": "Ereignisse werden leise protokolliert. Sie werden nicht unterbrochen.",
+      "trackOnlyTitle": "Nur protokollieren",
+      "trackOnlyDesc": "Ablenkungen werden protokolliert, aber Sie werden nicht unterbrochen.",
       "warningTitle": "Warnung + Verzögerung",
       "warningDesc": "Ein 15-Sekunden-Pausenbildschirm erscheint. Sie entscheiden, ob Sie fortfahren möchten.",
       "items": {
@@ -1075,6 +1075,8 @@
       "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
     },
     "signup": {
+      "title": "Konto erstellen",
+      "subtitle": "Behalte deine Aufmerksamkeit mit BrainDock",
       "signingIn": "Sie werden angemeldet...",
       "emptyFields": "Bitte füllen Sie alle Felder aus.",
       "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
@@ -1096,6 +1098,26 @@
       "mismatch": "Passwörter stimmen nicht überein.",
       "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
       "success": "Passwort erfolgreich aktualisiert! Weiterleitung zur Anmeldung..."
+    },
+    "common": {
+      "passwordLength": "Passwort muss 8-128 Zeichen lang sein.",
+      "loading": "Laden..."
+    },
+    "helpers": {
+      "sessionExpired": "Sitzung abgelaufen. Bitte melden Sie sich erneut an.",
+      "configError": "App-Konfigurationsfehler. Bitte versuchen Sie es später erneut.",
+      "desktopFailed": "Desktop-Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
+      "openingApp": "BrainDock wird geöffnet...",
+      "copyInstruction": "Falls die App nicht angemeldet wurde, kopieren Sie diesen Code und fügen Sie ihn in BrainDock ein:",
+      "copy": "Kopieren",
+      "copied": "Kopiert!",
+      "copyFailed": "Kopieren fehlgeschlagen",
+      "somethingWrong": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "disposableEmail": "Dieser E-Mail-Anbieter wird nicht unterstützt. Bitte verwenden Sie eine andere E-Mail-Adresse.",
+      "incorrectCredentials": "E-Mail oder Passwort falsch. Bitte versuchen Sie es erneut.",
+      "alreadyRegistered": "Ein Konto mit dieser E-Mail existiert bereits. Versuchen Sie sich stattdessen anzumelden.",
+      "passwordTooShort": "Passwort muss mindestens 6 Zeichen lang sein.",
+      "tooManyAttempts": "Zu viele Versuche. Bitte warten Sie einen Moment und versuchen Sie es erneut."
     }
   }
 }

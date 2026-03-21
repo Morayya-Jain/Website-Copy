@@ -594,7 +594,7 @@
     "cards": {
       "timedSessions": {
         "title": "Timed Sessions",
-        "description": "Start a timed session whenever you're ready. BrainDock supports your focus in real-time while you work."
+        "description": "Start a timed session whenever you're ready. BrainDock helps you stay focused in real-time while you work."
       },
       "attentionCoach": {
         "title": "Attention Coach",
@@ -602,7 +602,7 @@
       },
       "screenAwareness": {
         "title": "Screen Awareness",
-        "description": "Optionally checks the active window to identify shifts to distracting applications or websites."
+        "description": "Optionally identifies when you switch to distracting applications or websites."
       },
       "detailedReports": {
         "title": "Performance Report",
@@ -728,7 +728,7 @@
   "about": {
     "backHome": "← Back to home",
     "title": "About BrainDock",
-    "subtitle": "BrainDock is an AI-powered focus assistant that helps you stay on task during work and study sessions. It uses AI to help you stay focused - without ever storing video or using facial recognition.",
+    "subtitle": "BrainDock is an AI-powered focus assistant that helps you stay on task during work and study sessions. It uses AI vision to notice distractions - without ever storing video or using facial recognition.",
     "mission": {
       "title": "Our Mission",
       "description": "We believe deep focus is a skill that can be trained. BrainDock was built to give people a gentle, intelligent companion that notices when attention drifts - so you can build stronger focus habits over time."
@@ -824,7 +824,7 @@
       "title": "Dashboard",
       "welcome": "Welcome back,",
       "allSetTitle": "You're all set! Download BrainDock",
-      "allSetDesc": "You have hours available. Download the desktop app and sign in with the same account to start building your focus.",
+      "allSetDesc": "You have hours available. Download the desktop app and sign in with the same account to start improving your focus.",
       "downloadMac": "Download for macOS",
       "downloadWin": "Download for Windows",
       "todaysFocus": "Today's Focus",
@@ -898,8 +898,8 @@
       "appNamePlaceholder": "App name",
       "levelTitle": "Distraction Mode",
       "levelDesc": "Choose what happens when a distraction is detected during a session.",
-      "trackOnlyTitle": "Quiet Mode",
-      "trackOnlyDesc": "Events are logged silently. You won't be interrupted.",
+      "trackOnlyTitle": "Log Only",
+      "trackOnlyDesc": "Distractions are logged but you won't be interrupted.",
       "warningTitle": "Warning + Delay",
       "warningDesc": "A 15-second pause screen appears. You choose whether to continue.",
       "items": {
@@ -1075,9 +1075,12 @@
       "invalidEmail": "Please enter a valid email address."
     },
     "signup": {
+      "title": "Create your account",
+      "subtitle": "Own your attention with BrainDock",
       "signingIn": "Signing you in...",
       "emptyFields": "Please fill in all fields.",
       "invalidEmail": "Please enter a valid email address.",
+      "nameValidation": "Name must be 1-50 characters and cannot contain < or >.",
       "termsRequired": "Please agree to the Terms of Service to continue.",
       "alreadyExists": "An account with this email already exists. Try logging in instead.",
       "checkEmail": "Check your email for a confirmation link. Once confirmed, you can log in."
@@ -1095,6 +1098,26 @@
       "mismatch": "Passwords do not match.",
       "networkError": "Network error. Please check your connection and try again.",
       "success": "Password updated successfully! Redirecting to login..."
+    },
+    "common": {
+      "passwordLength": "Password must be 8-128 characters.",
+      "loading": "Loading..."
+    },
+    "helpers": {
+      "sessionExpired": "Session expired. Please try logging in again.",
+      "configError": "App configuration error. Please try again later.",
+      "desktopFailed": "Desktop login failed. Please try again.",
+      "openingApp": "Opening BrainDock...",
+      "copyInstruction": "If the app did not log in, copy this code and paste it in BrainDock:",
+      "copy": "Copy",
+      "copied": "Copied!",
+      "copyFailed": "Copy failed",
+      "somethingWrong": "Something went wrong. Please try again.",
+      "disposableEmail": "This email provider is not supported. Please use a different email address.",
+      "incorrectCredentials": "Incorrect email or password. Please try again.",
+      "alreadyRegistered": "An account with this email already exists. Try logging in instead.",
+      "passwordTooShort": "Password must be at least 6 characters.",
+      "tooManyAttempts": "Too many attempts. Please wait a moment and try again."
     }
   }
 }

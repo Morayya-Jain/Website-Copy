@@ -83,7 +83,7 @@ form.addEventListener('submit', async (e) => {
     return
   }
   if (!isValidPassword(password)) {
-    showError(card, `Password must be ${LIMITS.PASSWORD_MIN}-${LIMITS.PASSWORD_MAX} characters.`)
+    showError(card, t('auth.common.passwordLength', `Password must be ${LIMITS.PASSWORD_MIN}-${LIMITS.PASSWORD_MAX} characters.`))
     return
   }
   if (password !== confirmPassword) {

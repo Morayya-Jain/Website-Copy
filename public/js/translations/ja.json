@@ -594,7 +594,7 @@
     "cards": {
       "timedSessions": {
         "title": "タイマーセッション",
-        "description": "準備ができたらいつでもセッションを開始。BrainDockが作業中の集中をリアルタイムでサポートします。"
+        "description": "準備ができたらタイマーセッションを開始しましょう。BrainDockが作業中の集中をリアルタイムでサポートします。"
       },
       "attentionCoach": {
         "title": "集中コーチ",
@@ -602,7 +602,7 @@
       },
       "screenAwareness": {
         "title": "スクリーン認識",
-        "description": "オプションでアクティブウィンドウを確認し、気が散るアプリケーションやウェブサイトへの切り替えを検出します。"
+        "description": "気が散るアプリケーションやウェブサイトへの切り替えをオプションで検出します。"
       },
       "detailedReports": {
         "title": "パフォーマンスレポート",
@@ -728,7 +728,7 @@
   "about": {
     "backHome": "← ホームに戻る",
     "title": "BrainDockについて",
-    "subtitle": "BrainDockは、仕事や勉強中に集中力を維持するAI搭載フォーカスアシスタントです。AIを活用して集中をサポートします - 動画の保存や顔認識は一切行いません。",
+    "subtitle": "BrainDockは、仕事や勉強中に集中力を維持するAI搭載フォーカスアシスタントです。AIビジョンを使って気が散った瞬間を検知します - 動画の保存や顔認識は一切行いません。",
     "mission": {
       "title": "私たちのミッション",
       "description": "深い集中力はトレーニングできるスキルだと信じています。BrainDockは、注意が逸れた時にそっと気づかせてくれるインテリジェントなコンパニオンとして作られました。"
@@ -824,7 +824,7 @@
       "title": "ダッシュボード",
       "welcome": "おかえりなさい、",
       "allSetTitle": "準備完了！BrainDockをダウンロード",
-      "allSetDesc": "利用可能な時間があります。デスクトップアプリをダウンロードし、同じアカウントでサインインして集中力の向上を始めましょう。",
+      "allSetDesc": "利用可能な時間があります。デスクトップアプリをダウンロードし、同じアカウントでサインインして集中力を改善しましょう。",
       "downloadMac": "macOS用ダウンロード",
       "downloadWin": "Windows用ダウンロード",
       "todaysFocus": "今日の集中時間",
@@ -898,8 +898,8 @@
       "appNamePlaceholder": "アプリ名",
       "levelTitle": "気が散った時の対応",
       "levelDesc": "セッション中に気が散った時の対応を選択してください。",
-      "trackOnlyTitle": "サイレントモード",
-      "trackOnlyDesc": "イベントはサイレントに記録されます。中断されることはありません。",
+      "trackOnlyTitle": "ログのみ",
+      "trackOnlyDesc": "気が散った記録はログに残りますが、中断されることはありません。",
       "warningTitle": "警告 + 遅延",
       "warningDesc": "15秒の一時停止画面が表示されます。続行するかどうかを選択できます。",
       "items": {
@@ -1075,6 +1075,8 @@
       "invalidEmail": "有効なメールアドレスを入力してください。"
     },
     "signup": {
+      "title": "アカウントを作成",
+      "subtitle": "BrainDockで集中力を手に入れよう",
       "signingIn": "サインイン中...",
       "emptyFields": "すべてのフィールドに入力してください。",
       "invalidEmail": "有効なメールアドレスを入力してください。",
@@ -1096,6 +1098,26 @@
       "mismatch": "パスワードが一致しません。",
       "networkError": "ネットワークエラー。接続を確認してもう一度お試しください。",
       "success": "パスワードが正常に更新されました！ログインページにリダイレクト中..."
+    },
+    "common": {
+      "passwordLength": "パスワードは8〜128文字である必要があります。",
+      "loading": "読み込み中..."
+    },
+    "helpers": {
+      "sessionExpired": "セッションが期限切れです。もう一度ログインしてください。",
+      "configError": "アプリの設定エラー。後でもう一度お試しください。",
+      "desktopFailed": "デスクトップログインに失敗しました。もう一度お試しください。",
+      "openingApp": "BrainDockを開いています...",
+      "copyInstruction": "アプリにログインされなかった場合は、このコードをコピーしてBrainDockに貼り付けてください:",
+      "copy": "コピー",
+      "copied": "コピーしました！",
+      "copyFailed": "コピー失敗",
+      "somethingWrong": "エラーが発生しました。もう一度お試しください。",
+      "disposableEmail": "このメールプロバイダーはサポートされていません。別のメールアドレスをお使いください。",
+      "incorrectCredentials": "メールアドレスまたはパスワードが正しくありません。もう一度お試しください。",
+      "alreadyRegistered": "このメールアドレスのアカウントは既に存在します。ログインをお試しください。",
+      "passwordTooShort": "パスワードは6文字以上である必要があります。",
+      "tooManyAttempts": "試行回数が多すぎます。しばらくしてからもう一度お試しください。"
     }
   }
 }

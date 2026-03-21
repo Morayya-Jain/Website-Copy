@@ -594,7 +594,7 @@
     "cards": {
       "timedSessions": {
         "title": "计时会话",
-        "description": "准备好后随时开始会话。BrainDock在你工作时实时支持你的专注。"
+        "description": "准备好后随时开始计时会话。BrainDock在你工作时实时帮助你保持专注。"
       },
       "attentionCoach": {
         "title": "专注教练",
@@ -602,7 +602,7 @@
       },
       "screenAwareness": {
         "title": "屏幕感知",
-        "description": "可选择检查活动窗口，识别切换到分散注意力的应用程序或网站。"
+        "description": "可选择识别您切换到分散注意力的应用程序或网站。"
       },
       "detailedReports": {
         "title": "绩效报告",
@@ -728,7 +728,7 @@
   "about": {
     "backHome": "← 返回首页",
     "title": "关于 BrainDock",
-    "subtitle": "BrainDock 是一款 AI 驱动的专注助手，帮助您在工作和学习期间保持专注。它利用AI帮助你保持专注 - 不存储任何视频，也不使用面部识别。",
+    "subtitle": "BrainDock 是一款 AI 驱动的专注助手，帮助您在工作和学习期间保持专注。它利用AI视觉来识别分心行为 - 不存储任何视频，也不使用面部识别。",
     "mission": {
       "title": "我们的使命",
       "description": "我们相信深度专注是一项可以训练的技能。BrainDock 旨在为人们提供一个温和、智能的伙伴，在注意力分散时及时提醒。"
@@ -824,7 +824,7 @@
       "title": "仪表盘",
       "welcome": "欢迎回来，",
       "allSetTitle": "准备就绪！下载BrainDock",
-      "allSetDesc": "您有可用时长。下载桌面应用并使用同一账户登录，开始建立您的专注。",
+      "allSetDesc": "您有可用时长。下载桌面应用并使用同一账户登录，开始提升您的专注力。",
       "downloadMac": "下载macOS版",
       "downloadWin": "下载Windows版",
       "todaysFocus": "今日专注",
@@ -898,8 +898,8 @@
       "appNamePlaceholder": "应用名称",
       "levelTitle": "分心模式",
       "levelDesc": "选择在会话中检测到分心时的处理方式。",
-      "trackOnlyTitle": "静默模式",
-      "trackOnlyDesc": "事件被静默记录。您不会被打断。",
+      "trackOnlyTitle": "仅记录",
+      "trackOnlyDesc": "分心行为会被记录，但不会打断您。",
       "warningTitle": "警告 + 延迟",
       "warningDesc": "出现15秒暂停屏幕。您可以选择是否继续。",
       "items": {
@@ -1075,6 +1075,8 @@
       "invalidEmail": "请输入有效的邮箱地址。"
     },
     "signup": {
+      "title": "创建您的账户",
+      "subtitle": "用BrainDock掌控你的注意力",
       "signingIn": "正在登录...",
       "emptyFields": "请填写所有字段。",
       "invalidEmail": "请输入有效的邮箱地址。",
@@ -1096,6 +1098,26 @@
       "mismatch": "密码不匹配。",
       "networkError": "网络错误。请检查您的连接并重试。",
       "success": "密码更新成功！正在跳转到登录页面..."
+    },
+    "common": {
+      "passwordLength": "密码长度必须为 8-128 个字符。",
+      "loading": "加载中..."
+    },
+    "helpers": {
+      "sessionExpired": "会话已过期。请重新登录。",
+      "configError": "应用配置错误。请稍后重试。",
+      "desktopFailed": "桌面登录失败。请重试。",
+      "openingApp": "正在打开 BrainDock...",
+      "copyInstruction": "如果应用未登录，请复制此代码并粘贴到 BrainDock 中：",
+      "copy": "复制",
+      "copied": "已复制！",
+      "copyFailed": "复制失败",
+      "somethingWrong": "出了点问题。请重试。",
+      "disposableEmail": "不支持此邮箱服务商。请使用其他邮箱地址。",
+      "incorrectCredentials": "邮箱或密码不正确。请重试。",
+      "alreadyRegistered": "此邮箱已注册账户。请尝试登录。",
+      "passwordTooShort": "密码至少需要 6 个字符。",
+      "tooManyAttempts": "尝试次数过多。请稍等片刻后重试。"
     }
   }
 }

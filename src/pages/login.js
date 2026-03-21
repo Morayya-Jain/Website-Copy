@@ -3,6 +3,7 @@ import {
   captureDesktopSource,
   captureRedirect,
   hasStoredSession,
+  clearStaleAuthTokens,
   isDesktopSource,
   handlePostAuthRedirect,
   showError,
@@ -102,7 +103,9 @@ if (hasStoredSession()) {
     // For desktop deep-link flow handled=true — keep the spinner visible.
     if (!handled) restoreLoginForm()
   } else if (spinnerWrap) {
-    // Spinner was shown synchronously but session is stale/expired — restore form
+    // Spinner was shown synchronously but session is stale/expired — clean up and restore form
+    try { await supabase.auth.signOut() } catch (_) { /* ignore */ }
+    clearStaleAuthTokens()
     restoreLoginForm()
   }
 })()
@@ -124,7 +127,7 @@ loginForm.addEventListener('submit', async (e) => {
     return
   }
   if (!isValidPassword(password)) {
-    showError(authCard, `Password must be ${LIMITS.PASSWORD_MIN}-${LIMITS.PASSWORD_MAX} characters.`)
+    showError(authCard, t('auth.common.passwordLength', `Password must be ${LIMITS.PASSWORD_MIN}-${LIMITS.PASSWORD_MAX} characters.`))
     return
   }
 

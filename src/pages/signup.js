@@ -3,6 +3,7 @@ import {
   captureDesktopSource,
   captureRedirect,
   hasStoredSession,
+  clearStaleAuthTokens,
   isDesktopSource,
   REDIRECT_STORAGE_KEY,
   handlePostAuthRedirect,
@@ -25,53 +26,80 @@ initDashboardI18n()
 captureDesktopSource()
 captureRedirect()
 
-const RELOAD_BAIL_KEY = 'braindock_signup_reload_bail'
-
-// If we bailed out of reload loop (corrupt token), clear the flag and show form
-const wasBailed = !!sessionStorage.getItem(RELOAD_BAIL_KEY)
-if (wasBailed) {
-  sessionStorage.removeItem(RELOAD_BAIL_KEY)
-}
-
-// If already logged in (and not recovering from a bail), hide the form and show loading
-const reloadCountKey = 'braindock_signup_reload_count'
-if (hasStoredSession() && !wasBailed) {
-  const authCard = document.querySelector('.auth-card')
-  if (authCard) {
-    authCard.innerHTML = `
-      <div class="auth-loading">
-        <div class="auth-spinner"></div>
-        <p class="auth-loading-text">${t('auth.signup.signingIn', 'Signing you in...')}</p>
-      </div>
-    `
-  }
-
-  ;(async () => {
-    let session = null
-    for (let attempt = 0; attempt < 5; attempt++) {
-      try {
-        const res = await supabase.auth.getSession()
-        session = res.data?.session ?? null
-      } catch (_) { /* ignore */ }
-      if (session) break
-      await new Promise((r) => setTimeout(r, 100))
-    }
-    if (session) {
-      await handlePostAuthRedirect(supabase, authCard)
-    } else {
-      // Stale/corrupt token in localStorage - sign out to clear it and show the form
-      try { await supabase.auth.signOut() } catch (_) { /* ignore */ }
-      sessionStorage.removeItem(reloadCountKey)
-      // Restore the signup form
-      window.location.href = '/auth/signup/'
-    }
-  })()
-}
-
+// DOM elements used by both the auto-login check and form handlers
 const form = document.getElementById('signup-form')
 const signupBtn = document.getElementById('signup-btn')
 const googleBtn = document.getElementById('google-btn')
 const card = document.querySelector('.auth-card')
+
+// -- Helpers for the auto-login spinner state --
+let spinnerWrap = null
+
+/** Hide form elements and show the "Signing you in..." spinner. */
+function showSigningInSpinner() {
+  form.style.display = 'none'
+  const divider = card.querySelector('.auth-divider')
+  const footer = card.querySelector('.auth-footer')
+  const title = card.querySelector('.auth-title')
+  const subtitle = card.querySelector('.auth-subtitle')
+  if (divider) divider.style.display = 'none'
+  if (googleBtn) googleBtn.style.display = 'none'
+  if (footer) footer.style.display = 'none'
+  if (title) title.textContent = t('auth.signup.signingIn', 'Signing you in...')
+  if (subtitle) subtitle.textContent = ''
+  spinnerWrap = document.createElement('div')
+  spinnerWrap.className = 'auth-loading'
+  spinnerWrap.innerHTML = `<div class="auth-spinner"></div><p class="auth-loading-text">${t('auth.signup.signingIn', 'Signing you in...')}</p>`
+  card.appendChild(spinnerWrap)
+}
+
+/** Restore the signup form after a failed auto-login attempt. */
+function restoreSignupForm() {
+  form.style.display = ''
+  const divider = card.querySelector('.auth-divider')
+  const footer = card.querySelector('.auth-footer')
+  const title = card.querySelector('.auth-title')
+  const subtitle = card.querySelector('.auth-subtitle')
+  if (divider) divider.style.display = ''
+  if (googleBtn) googleBtn.style.display = ''
+  if (footer) footer.style.display = ''
+  if (title) title.textContent = t('auth.signup.title', 'Create your account')
+  if (subtitle) subtitle.textContent = t('auth.signup.subtitle', 'Own your attention with BrainDock')
+  if (spinnerWrap) {
+    spinnerWrap.remove()
+    spinnerWrap = null
+  }
+}
+
+// Show spinner immediately if a stored session exists (avoids form flash)
+if (hasStoredSession()) {
+  showSigningInSpinner()
+}
+
+// Validate session async and proceed with redirect or restore form
+;(async () => {
+  let session = null
+  for (let attempt = 0; attempt < 5; attempt++) {
+    try {
+      const res = await supabase.auth.getSession()
+      session = res.data?.session ?? null
+    } catch (_) { /* ignore */ }
+    if (session) break
+    await new Promise((r) => setTimeout(r, 100))
+  }
+
+  if (session) {
+    if (!spinnerWrap) showSigningInSpinner()
+    const handled = await handlePostAuthRedirect(supabase, card)
+    // Restore the form on error (handled=falsy); for desktop deep-link flow handled=true
+    if (!handled) restoreSignupForm()
+  } else if (spinnerWrap) {
+    // Stale/corrupt token - clean up and restore form (no redirect)
+    try { await supabase.auth.signOut() } catch (_) { /* ignore */ }
+    clearStaleAuthTokens()
+    restoreSignupForm()
+  }
+})()
 
 // Email + password signup
 form.addEventListener('submit', async (e) => {
@@ -95,7 +123,7 @@ form.addEventListener('submit', async (e) => {
     return
   }
   if (!isValidPassword(password)) {
-    showError(card, `Password must be ${LIMITS.PASSWORD_MIN}-${LIMITS.PASSWORD_MAX} characters.`)
+    showError(card, t('auth.common.passwordLength', `Password must be ${LIMITS.PASSWORD_MIN}-${LIMITS.PASSWORD_MAX} characters.`))
     return
   }
 
@@ -146,13 +174,13 @@ form.addEventListener('submit', async (e) => {
     // For desktop flow, switch to spinner so the paste-code fallback
     // appears on a spinner page rather than the signup form.
     if (isDesktopSource()) {
-      card.innerHTML = `
-        <div class="auth-loading">
-          <div class="auth-spinner"></div>
-          <p class="auth-loading-text">${t('auth.signup.signingIn', 'Signing you in...')}</p>
-        </div>`
+      showSigningInSpinner()
     }
-    await handlePostAuthRedirect(supabase, card)
+    const handled = await handlePostAuthRedirect(supabase, card)
+    if (!handled) {
+      hideLoading(signupBtn)
+      if (spinnerWrap) restoreSignupForm()
+    }
     return
   } else {
     form.hidden = true

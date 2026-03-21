@@ -594,7 +594,7 @@
     "cards": {
       "timedSessions": {
         "title": "Sessions minutées",
-        "description": "Lancez une session quand vous êtes prêt. BrainDock soutient votre concentration en temps réel lorsque vous travaillez."
+        "description": "Lancez une session minutée quand vous êtes prêt. BrainDock vous aide à rester concentré en temps réel pendant que vous travaillez."
       },
       "attentionCoach": {
         "title": "Coach d'attention",
@@ -602,7 +602,7 @@
       },
       "screenAwareness": {
         "title": "Conscience de l'écran",
-        "description": "Vérifie optionnellement la fenêtre active pour identifier les passages vers des applications ou sites web distrayants."
+        "description": "Identifie optionnellement lorsque vous basculez vers des applications ou sites web distrayants."
       },
       "detailedReports": {
         "title": "Rapport de performance",
@@ -728,7 +728,7 @@
   "about": {
     "backHome": "← Retour à l'accueil",
     "title": "À propos de BrainDock",
-    "subtitle": "BrainDock est un assistant de concentration propulsé par l'IA qui vous aide à rester concentré pendant vos sessions de travail et d'étude. Il utilise l'IA pour soutenir votre concentration - sans jamais stocker de vidéo ni utiliser la reconnaissance faciale.",
+    "subtitle": "BrainDock est un assistant de concentration propulsé par l'IA qui vous aide à rester concentré pendant vos sessions de travail et d'étude. Il utilise la vision IA pour détecter les distractions - sans jamais stocker de vidéo ni utiliser la reconnaissance faciale.",
     "mission": {
       "title": "Notre mission",
       "description": "Nous croyons que la concentration profonde est une compétence qui peut être entraînée. BrainDock a été conçu pour offrir un compagnon intelligent et bienveillant qui remarque quand l'attention dérive."
@@ -824,7 +824,7 @@
       "title": "Tableau de bord",
       "welcome": "Bon retour,",
       "allSetTitle": "Vous êtes prêt ! Téléchargez BrainDock",
-      "allSetDesc": "Vous avez des heures disponibles. Téléchargez l'application et connectez-vous avec le même compte pour commencer à renforcer votre concentration.",
+      "allSetDesc": "Vous avez des heures disponibles. Téléchargez l'application et connectez-vous avec le même compte pour commencer à améliorer votre concentration.",
       "downloadMac": "Télécharger pour macOS",
       "downloadWin": "Télécharger pour Windows",
       "todaysFocus": "Concentration du jour",
@@ -898,8 +898,8 @@
       "appNamePlaceholder": "Nom de l'application",
       "levelTitle": "Mode de distraction",
       "levelDesc": "Choisissez ce qui se passe lorsqu'une distraction est détectée pendant une session.",
-      "trackOnlyTitle": "Mode silencieux",
-      "trackOnlyDesc": "Les événements sont enregistrés silencieusement. Vous ne serez pas interrompu.",
+      "trackOnlyTitle": "Journal uniquement",
+      "trackOnlyDesc": "Les distractions sont enregistrées mais vous ne serez pas interrompu.",
       "warningTitle": "Avertissement + Délai",
       "warningDesc": "Un écran de pause de 15 secondes apparaît. Vous choisissez de continuer ou non.",
       "items": {
@@ -1075,6 +1075,8 @@
       "invalidEmail": "Veuillez entrer une adresse e-mail valide."
     },
     "signup": {
+      "title": "Créez votre compte",
+      "subtitle": "Maîtrisez votre attention avec BrainDock",
       "signingIn": "Connexion en cours...",
       "emptyFields": "Veuillez remplir tous les champs.",
       "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
@@ -1096,6 +1098,26 @@
       "mismatch": "Les mots de passe ne correspondent pas.",
       "networkError": "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
       "success": "Mot de passe mis à jour avec succès ! Redirection vers la connexion..."
+    },
+    "common": {
+      "passwordLength": "Le mot de passe doit contenir 8 à 128 caractères.",
+      "loading": "Chargement..."
+    },
+    "helpers": {
+      "sessionExpired": "Session expirée. Veuillez vous reconnecter.",
+      "configError": "Erreur de configuration de l'application. Veuillez réessayer plus tard.",
+      "desktopFailed": "La connexion bureau a échoué. Veuillez réessayer.",
+      "openingApp": "Ouverture de BrainDock...",
+      "copyInstruction": "Si l'application ne s'est pas connectée, copiez ce code et collez-le dans BrainDock :",
+      "copy": "Copier",
+      "copied": "Copié !",
+      "copyFailed": "Échec de la copie",
+      "somethingWrong": "Une erreur s'est produite. Veuillez réessayer.",
+      "disposableEmail": "Ce fournisseur de messagerie n'est pas pris en charge. Veuillez utiliser une autre adresse e-mail.",
+      "incorrectCredentials": "E-mail ou mot de passe incorrect. Veuillez réessayer.",
+      "alreadyRegistered": "Un compte avec cet e-mail existe déjà. Essayez de vous connecter.",
+      "passwordTooShort": "Le mot de passe doit contenir au moins 6 caractères.",
+      "tooManyAttempts": "Trop de tentatives. Veuillez patienter un moment et réessayer."
     }
   }
 }

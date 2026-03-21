@@ -5,6 +5,7 @@
 
 import { supabaseUrl, supabaseAnonKey } from './supabase.js'
 import { logError } from './logger.js'
+import { t } from './dashboard-i18n.js'
 
 const DESKTOP_SOURCE_KEY = 'braindock_desktop'
 /** Used by signup to pass redirect into emailRedirectTo; also read in getRedirectPath(). */
@@ -96,6 +97,21 @@ export function hasStoredSession() {
 }
 
 /**
+ * Remove ALL Supabase auth tokens from localStorage.
+ * Handles stale tokens from different project refs that signOut() won't clear.
+ * Keys are snapshot into an array first because removing during iteration shifts indices.
+ */
+export function clearStaleAuthTokens() {
+  try {
+    const keys = Array.from(
+      { length: localStorage.length },
+      (_, i) => localStorage.key(i)
+    ).filter((k) => k && k.startsWith('sb-') && k.endsWith('-auth-token'))
+    keys.forEach((k) => localStorage.removeItem(k))
+  } catch (_) { /* ignore */ }
+}
+
+/**
  * Redirect after successful auth.
  * If the user came from the desktop app (?source=desktop), generates
  * a one-time linking code via Edge Function and redirects to
@@ -122,13 +138,13 @@ export async function handlePostAuthRedirect(supabase, card = null) {
     const { data: refreshed } = await supabase.auth.refreshSession()
     const session = refreshed?.session
     if (!session) {
-      if (card) showError(card, 'Session expired. Please try logging in again.')
+      if (card) showError(card, t('auth.helpers.sessionExpired', 'Session expired. Please try logging in again.'))
       else window.location.href = getRedirectPath()
       return
     }
 
     if (!supabaseUrl || !supabaseAnonKey) {
-      if (card) showError(card, 'App configuration error. Please try again later.')
+      if (card) showError(card, t('auth.helpers.configError', 'App configuration error. Please try again later.'))
       else window.location.href = getRedirectPath()
       return
     }
@@ -160,7 +176,7 @@ export async function handlePostAuthRedirect(supabase, card = null) {
     if (!resp.ok || !result?.code) {
       const detail = result?.error || result?.message || result?.msg || `HTTP ${resp.status}`
       logError('Failed to generate linking code:', resp.status, detail, result)
-      if (card) showError(card, 'Desktop login failed. Please try again.')
+      if (card) showError(card, t('auth.helpers.desktopFailed', 'Desktop login failed. Please try again.'))
       else window.location.href = getRedirectPath()
       return
     }
@@ -171,7 +187,7 @@ export async function handlePostAuthRedirect(supabase, card = null) {
     // Update any visible spinner text to reflect the deep-link step
     if (card) {
       const spinnerText = card.querySelector('.auth-loading-text')
-      if (spinnerText) spinnerText.textContent = 'Opening BrainDock...'
+      if (spinnerText) spinnerText.textContent = t('auth.helpers.openingApp', 'Opening BrainDock...')
     }
 
     const deepLink = `braindock://callback?code=${encodeURIComponent(result.code)}`
@@ -187,7 +203,7 @@ export async function handlePostAuthRedirect(supabase, card = null) {
           codeDisplay.className = 'auth-linking-fallback'
 
           const msg = document.createElement('p')
-          msg.textContent = 'If the app did not log in, copy this code and paste it in BrainDock:'
+          msg.textContent = t('auth.helpers.copyInstruction', 'If the app did not log in, copy this code and paste it in BrainDock:')
           codeDisplay.appendChild(msg)
 
           const row = document.createElement('div')
@@ -202,12 +218,12 @@ export async function handlePostAuthRedirect(supabase, card = null) {
           copyBtn.type = 'button'
           copyBtn.className = 'btn btn-secondary'
           copyBtn.style.cssText = 'padding:4px 12px;font-size:0.85rem;'
-          copyBtn.textContent = 'Copy'
+          copyBtn.textContent = t('auth.helpers.copy', 'Copy')
           copyBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(result.code).then(() => {
-              copyBtn.textContent = 'Copied!'
+              copyBtn.textContent = t('auth.helpers.copied', 'Copied!')
             }).catch(() => {
-              copyBtn.textContent = 'Copy failed'
+              copyBtn.textContent = t('auth.helpers.copyFailed', 'Copy failed')
             })
           })
           row.appendChild(copyBtn)
@@ -228,7 +244,7 @@ export async function handlePostAuthRedirect(supabase, card = null) {
     return true
   } catch (err) {
     logError('Desktop linking error:', err)
-    if (card) showError(card, 'Desktop login failed. Please try again.')
+    if (card) showError(card, t('auth.helpers.desktopFailed', 'Desktop login failed. Please try again.'))
     else window.location.href = getRedirectPath()
   }
 }
@@ -284,7 +300,7 @@ export function showSuccess(container, message) {
  */
 export function showLoading(button) {
   button.dataset.originalLabel = button.textContent
-  button.textContent = 'Loading...'
+  button.textContent = t('auth.common.loading', 'Loading...')
   button.disabled = true
   button.classList.add('btn-loading')
 }
@@ -300,28 +316,25 @@ export function hideLoading(button) {
  * Map common Supabase auth error messages to user-friendly strings.
  */
 export function friendlyError(error) {
-  const msg = error?.message || 'Something went wrong. Please try again.'
+  const msg = error?.message || ''
 
   if (msg.includes('disposable email')) {
-    return 'This email provider is not supported. Please use a different email address.'
+    return t('auth.helpers.disposableEmail', 'This email provider is not supported. Please use a different email address.')
   }
   if (msg.includes('Invalid login credentials')) {
-    return 'Incorrect email or password. Please try again.'
+    return t('auth.helpers.incorrectCredentials', 'Incorrect email or password. Please try again.')
   }
   if (msg.includes('User already registered')) {
-    return 'An account with this email already exists. Try logging in instead.'
+    return t('auth.helpers.alreadyRegistered', 'An account with this email already exists. Try logging in instead.')
   }
   if (msg.includes('Password should be at least')) {
-    return 'Password must be at least 6 characters.'
+    return t('auth.helpers.passwordTooShort', 'Password must be at least 6 characters.')
   }
-  if (msg.includes('Email rate limit exceeded')) {
-    return 'Too many attempts. Please wait a moment and try again.'
-  }
-  if (msg.includes('For security purposes')) {
-    return 'Too many attempts. Please wait a moment and try again.'
+  if (msg.includes('Email rate limit exceeded') || msg.includes('For security purposes')) {
+    return t('auth.helpers.tooManyAttempts', 'Too many attempts. Please wait a moment and try again.')
   }
 
   // Don't leak raw Supabase error details to user - log for debugging
   logError('Unmapped auth error:', msg)
-  return 'Something went wrong. Please try again.'
+  return t('auth.helpers.somethingWrong', 'Something went wrong. Please try again.')
 }

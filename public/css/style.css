@@ -73,6 +73,7 @@ html {
   color-scheme: light; /* Ensure browser chrome matches our light theme */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip; /* Defensive: prevent accidental horizontal overflow */
 }
 
 body {
@@ -501,6 +502,8 @@ p {
   display: grid;
   place-items: center;
   background: rgba(255, 255, 255, 0.15);
+  contain: layout style;
+  will-change: width;
   transition: width 500ms ease, transform 150ms ease;
 }
 
@@ -597,7 +600,7 @@ p {
   gap: var(--space-m);
   flex-shrink: 0;
   border-left: 1px solid var(--border-subtle);
-  padding-left: var(--space-m);
+  padding-left: var(--space-xl);
 }
 
 .nav-links a {

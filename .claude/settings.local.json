@@ -42,7 +42,15 @@
       "WebFetch(domain:trackermode.app)",
       "Bash(find /Users/morayyajain/Developer/BrainDock-Website/public/js/translations -name \"*.json\" -exec wc -l {} +)",
       "Bash(npx vite:*)",
-      "Bash(ls -la /private/tmp/claude-501/-Users-morayyajain-Developer-BrainDock-Website/ccecec05-7ab2-49bc-8cff-69da847dfdeb/tasks/*.output)"
+      "Bash(ls -la /private/tmp/claude-501/-Users-morayyajain-Developer-BrainDock-Website/ccecec05-7ab2-49bc-8cff-69da847dfdeb/tasks/*.output)",
+      "Bash(for file:*)",
+      "Bash(do)",
+      "Bash(echo \"=== Validating $file.json JSON structure ===\")",
+      "Bash(ls /Users/morayyajain/Developer/BrainDock-Website/.env*)",
+      "Bash(git --no-pager diff HEAD -- public/css/style.css)",
+      "Bash(git --no-pager diff HEAD -- public/js/main.js)",
+      "Bash(git:*)",
+      "Bash(do node:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
