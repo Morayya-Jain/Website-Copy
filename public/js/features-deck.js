@@ -146,9 +146,11 @@
       })
     })
 
-    // Click anywhere outside cards to dismiss active card
-    document.addEventListener('click', function () {
-      deactivate()
+    // Click anywhere outside the deck to dismiss active card
+    document.addEventListener('click', function (e) {
+      if (deck && !deck.contains(e.target)) {
+        deactivate()
+      }
     })
 
     var resizeTimer

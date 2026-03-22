@@ -1067,7 +1067,16 @@
       "welcomeBack": "वापसी पर स्वागत है",
       "subtitle": "अपने BrainDock खाते में लॉग इन करें",
       "emptyFields": "कृपया अपना ईमेल और पासवर्ड दर्ज करें।",
-      "invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।"
+      "invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
+      "emailLabel": "ईमेल",
+      "passwordLabel": "पासवर्ड",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "आपका पासवर्ड",
+      "forgotPassword": "पासवर्ड भूल गए?",
+      "loginButton": "लॉग इन",
+      "googleButton": "Google से साइन इन करें",
+      "noAccount": "खाता नहीं है?",
+      "signupLink": "साइन अप करें"
     },
     "signup": {
       "title": "अपना खाता बनाएं",
@@ -1078,13 +1087,30 @@
       "nameValidation": "नाम 1-50 अक्षरों का होना चाहिए और इसमें < या > नहीं हो सकते।",
       "termsRequired": "जारी रखने के लिए कृपया सेवा की शर्तों से सहमत हों।",
       "alreadyExists": "इस ईमेल के साथ एक खाता पहले से मौजूद है। इसके बजाय लॉग इन करने का प्रयास करें।",
-      "checkEmail": "पुष्टि लिंक के लिए अपना ईमेल जांचें। पुष्टि के बाद, आप लॉग इन कर सकते हैं।"
+      "checkEmail": "पुष्टि लिंक के लिए अपना ईमेल जांचें। पुष्टि के बाद, आप लॉग इन कर सकते हैं।",
+      "nameLabel": "पूरा नाम",
+      "emailLabel": "ईमेल",
+      "passwordLabel": "पासवर्ड",
+      "namePlaceholder": "आपका पूरा नाम",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "पासवर्ड चुनें",
+      "signupButton": "साइन अप",
+      "googleButton": "Google से साइन अप करें",
+      "hasAccount": "पहले से खाता है?",
+      "loginLink": "लॉग इन करें",
+      "termsText": "मैं <a href=\"/terms.html\" target=\"_blank\" rel=\"noopener noreferrer\">सेवा की शर्तों</a> से सहमत हूं"
     },
     "forgot": {
       "emptyEmail": "कृपया अपना ईमेल पता दर्ज करें।",
       "invalidEmail": "कृपया एक मान्य ईमेल पता दर्ज करें।",
       "networkError": "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।",
-      "checkEmail": "पासवर्ड रीसेट लिंक के लिए अपना ईमेल जांचें। आने में एक मिनट लग सकता है।"
+      "checkEmail": "पासवर्ड रीसेट लिंक के लिए अपना ईमेल जांचें। आने में एक मिनट लग सकता है।",
+      "title": "अपना पासवर्ड रीसेट करें",
+      "subtitle": "अपना ईमेल दर्ज करें और हम आपको एक रीसेट लिंक भेजेंगे",
+      "emailLabel": "ईमेल",
+      "emailPlaceholder": "you@example.com",
+      "sendButton": "रीसेट लिंक भेजें",
+      "backToLogin": "लॉगिन पर वापस जाएं"
     },
     "reset": {
       "expired": "यह रीसेट लिंक समाप्त हो गया है या अमान्य है। कृपया नया अनुरोध करें।",
@@ -1092,11 +1118,22 @@
       "emptyFields": "कृपया दोनों पासवर्ड फ़ील्ड भरें।",
       "mismatch": "पासवर्ड मेल नहीं खाते।",
       "networkError": "नेटवर्क त्रुटि। कृपया अपना कनेक्शन जांचें और पुनः प्रयास करें।",
-      "success": "पासवर्ड सफलतापूर्वक अपडेट हो गया! लॉगिन पर रीडायरेक्ट हो रहा है..."
+      "success": "पासवर्ड सफलतापूर्वक अपडेट हो गया! लॉगिन पर रीडायरेक्ट हो रहा है...",
+      "title": "नया पासवर्ड सेट करें",
+      "subtitle": "नीचे अपना नया पासवर्ड दर्ज करें",
+      "verifying": "रीसेट लिंक सत्यापित हो रहा है...",
+      "newPasswordLabel": "नया पासवर्ड",
+      "confirmPasswordLabel": "पासवर्ड की पुष्टि करें",
+      "newPasswordPlaceholder": "नया पासवर्ड दर्ज करें",
+      "confirmPasswordPlaceholder": "नया पासवर्ड दोबारा दर्ज करें",
+      "updateButton": "पासवर्ड अपडेट करें",
+      "backToLogin": "लॉगिन पर वापस जाएं"
     },
     "common": {
       "passwordLength": "पासवर्ड 8-128 अक्षरों का होना चाहिए।",
-      "loading": "लोड हो रहा है..."
+      "loading": "लोड हो रहा है...",
+      "or": "या",
+      "jsRequired": "BrainDock का उपयोग करने के लिए JavaScript आवश्यक है। कृपया इसे अपनी ब्राउज़र सेटिंग्स में सक्षम करें।"
     },
     "helpers": {
       "sessionExpired": "सत्र समाप्त हो गया। कृपया पुनः लॉग इन करें।",

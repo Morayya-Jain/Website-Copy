@@ -984,7 +984,7 @@ body.hero-compact .hero-ctas {
 /* Pills - 3 per row, 2 rows */
 .mfy-pills {
   display: grid;
-  grid-template-columns: repeat(3, max-content);
+  grid-template-columns: repeat(3, auto);
   gap: 0.75rem;
 }
 
@@ -1131,7 +1131,7 @@ body.hero-compact .hero-ctas {
   }
 
   .mfy-pills {
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(3, auto);
     gap: 0.5rem;
     justify-content: center;
   }
@@ -1163,7 +1163,7 @@ body.hero-compact .hero-ctas {
 /* Narrow phones - covers iPhone 14/15 (390px), Pixel/Galaxy (412px) */
 @media (max-width: 480px) {
   .mfy-pills {
-    grid-template-columns: repeat(2, max-content);
+    grid-template-columns: repeat(2, auto);
     gap: 0.375rem;
   }
 
@@ -1188,13 +1188,19 @@ body.hero-compact .hero-ctas {
   margin-bottom: 0;
 }
 
+/* Reduce overlap on very short viewports (landscape phones) */
+@media (max-height: 600px) {
+  .features {
+    margin-top: -120px;
+  }
+}
+
 /* --- Deck container --- */
 .features-deck {
   display: grid;
   grid-template-areas: "stack";
   place-items: center;
   min-height: 580px;
-  padding: 96px 0;
   padding: 0;
 }
 

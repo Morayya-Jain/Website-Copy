@@ -1067,7 +1067,16 @@
       "welcomeBack": "Willkommen zurück",
       "subtitle": "Melden Sie sich bei Ihrem BrainDock-Konto an",
       "emptyFields": "Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.",
-      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+      "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+      "emailLabel": "E-Mail",
+      "passwordLabel": "Passwort",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "Ihr Passwort",
+      "forgotPassword": "Passwort vergessen?",
+      "loginButton": "Anmelden",
+      "googleButton": "Mit Google anmelden",
+      "noAccount": "Noch kein Konto?",
+      "signupLink": "Registrieren"
     },
     "signup": {
       "title": "Konto erstellen",
@@ -1078,13 +1087,30 @@
       "nameValidation": "Der Name muss 1-50 Zeichen lang sein und darf kein < oder > enthalten.",
       "termsRequired": "Bitte stimmen Sie den Nutzungsbedingungen zu, um fortzufahren.",
       "alreadyExists": "Ein Konto mit dieser E-Mail-Adresse existiert bereits. Versuchen Sie sich stattdessen anzumelden.",
-      "checkEmail": "Überprüfen Sie Ihre E-Mails auf einen Bestätigungslink. Nach der Bestätigung können Sie sich anmelden."
+      "checkEmail": "Überprüfen Sie Ihre E-Mails auf einen Bestätigungslink. Nach der Bestätigung können Sie sich anmelden.",
+      "nameLabel": "Vollständiger Name",
+      "emailLabel": "E-Mail",
+      "passwordLabel": "Passwort",
+      "namePlaceholder": "Ihr vollständiger Name",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "Passwort wählen",
+      "signupButton": "Registrieren",
+      "googleButton": "Mit Google registrieren",
+      "hasAccount": "Haben Sie bereits ein Konto?",
+      "loginLink": "Anmelden",
+      "termsText": "Ich stimme den <a href=\"/terms.html\" target=\"_blank\" rel=\"noopener noreferrer\">Nutzungsbedingungen</a> zu"
     },
     "forgot": {
       "emptyEmail": "Bitte geben Sie Ihre E-Mail-Adresse ein.",
       "invalidEmail": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
       "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
-      "checkEmail": "Überprüfen Sie Ihre E-Mails auf einen Link zum Zurücksetzen des Passworts. Es kann eine Minute dauern, bis er ankommt."
+      "checkEmail": "Überprüfen Sie Ihre E-Mails auf einen Link zum Zurücksetzen des Passworts. Es kann eine Minute dauern, bis er ankommt.",
+      "title": "Passwort zurücksetzen",
+      "subtitle": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen",
+      "emailLabel": "E-Mail",
+      "emailPlaceholder": "you@example.com",
+      "sendButton": "Link zum Zurücksetzen senden",
+      "backToLogin": "Zurück zur Anmeldung"
     },
     "reset": {
       "expired": "Dieser Link zum Zurücksetzen ist abgelaufen oder ungültig. Bitte fordern Sie einen neuen an.",
@@ -1092,11 +1118,22 @@
       "emptyFields": "Bitte füllen Sie beide Passwortfelder aus.",
       "mismatch": "Passwörter stimmen nicht überein.",
       "networkError": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung und versuchen Sie es erneut.",
-      "success": "Passwort erfolgreich aktualisiert! Weiterleitung zur Anmeldung..."
+      "success": "Passwort erfolgreich aktualisiert! Weiterleitung zur Anmeldung...",
+      "title": "Neues Passwort festlegen",
+      "subtitle": "Geben Sie unten Ihr neues Passwort ein",
+      "verifying": "Link wird überprüft...",
+      "newPasswordLabel": "Neues Passwort",
+      "confirmPasswordLabel": "Passwort bestätigen",
+      "newPasswordPlaceholder": "Neues Passwort eingeben",
+      "confirmPasswordPlaceholder": "Neues Passwort bestätigen",
+      "updateButton": "Passwort aktualisieren",
+      "backToLogin": "Zurück zur Anmeldung"
     },
     "common": {
       "passwordLength": "Passwort muss 8-128 Zeichen lang sein.",
-      "loading": "Laden..."
+      "loading": "Laden...",
+      "or": "oder",
+      "jsRequired": "JavaScript ist erforderlich, um BrainDock zu verwenden. Bitte aktivieren Sie es in Ihren Browsereinstellungen."
     },
     "helpers": {
       "sessionExpired": "Sitzung abgelaufen. Bitte melden Sie sich erneut an.",

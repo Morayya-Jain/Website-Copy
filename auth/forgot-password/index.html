@@ -21,37 +21,39 @@
       </a>
 
       <div class="auth-card">
-        <h1 class="auth-title">Reset your password</h1>
-        <p class="auth-subtitle">Enter your email and we'll send you a reset link</p>
+        <h1 class="auth-title" data-i18n="auth.forgot.title">Reset your password</h1>
+        <p class="auth-subtitle" data-i18n="auth.forgot.subtitle">Enter your email and we'll send you a reset link</p>
 
         <div class="auth-error" role="alert" hidden></div>
         <div class="auth-success" role="status" hidden></div>
 
         <form class="auth-form" id="forgot-form" novalidate>
           <div class="auth-field">
-            <label class="auth-label" for="email">Email</label>
+            <label class="auth-label" for="email" data-i18n="auth.forgot.emailLabel">Email</label>
             <input
               class="auth-input"
               id="email"
               type="email"
               placeholder="you@example.com"
+              data-i18n-placeholder="auth.forgot.emailPlaceholder"
               autocomplete="email"
               maxlength="254"
               required
             >
           </div>
 
-          <button type="submit" class="btn btn-primary" id="reset-btn">Send Reset Link</button>
+          <button type="submit" class="btn btn-primary" id="reset-btn" data-i18n="auth.forgot.sendButton">Send Reset Link</button>
         </form>
 
         <p class="auth-footer">
-          <a id="login-link" href="/auth/login/">Back to login</a>
+          <a id="login-link" href="/auth/login/" data-i18n="auth.forgot.backToLogin">Back to login</a>
         </p>
       </div>
     </div>
   </div>
 
-  <noscript><p style="text-align:center;padding:2rem;">JavaScript is required to use BrainDock. Please enable it in your browser settings.</p></noscript>
+  <noscript><p style="text-align:center;padding:2rem;" data-i18n="auth.common.jsRequired">JavaScript is required to use BrainDock. Please enable it in your browser settings.</p></noscript>
+  <script src="/js/i18n.js"></script>
   <script type="module" src="/src/pages/forgot-password.js"></script>
 </body>
 </html>

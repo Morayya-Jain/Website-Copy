@@ -23,19 +23,20 @@
       <div class="auth-card">
         <div class="auth-loading" id="loading-state">
           <div class="auth-spinner"></div>
-          <p class="auth-loading-text">Completing sign in...</p>
+          <p class="auth-loading-text" data-i18n="auth.callback.connecting">Completing sign in...</p>
         </div>
 
         <div class="auth-error" role="alert" hidden></div>
 
         <p class="auth-footer" id="fallback-link" hidden>
-          <a href="/auth/login/">Back to login</a>
+          <a href="/auth/login/" data-i18n="auth.forgot.backToLogin">Back to login</a>
         </p>
       </div>
     </div>
   </div>
 
-  <noscript><p style="text-align:center;padding:2rem;">JavaScript is required to use BrainDock. Please enable it in your browser settings.</p></noscript>
+  <noscript><p style="text-align:center;padding:2rem;" data-i18n="auth.common.jsRequired">JavaScript is required to use BrainDock. Please enable it in your browser settings.</p></noscript>
+  <script src="/js/i18n.js"></script>
   <script type="module" src="/src/pages/callback.js"></script>
 </body>
 </html>

@@ -1067,7 +1067,16 @@
       "welcomeBack": "おかえりなさい",
       "subtitle": "BrainDockアカウントにログイン",
       "emptyFields": "メールアドレスとパスワードを入力してください。",
-      "invalidEmail": "有効なメールアドレスを入力してください。"
+      "invalidEmail": "有効なメールアドレスを入力してください。",
+      "emailLabel": "メールアドレス",
+      "passwordLabel": "パスワード",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "パスワードを入力",
+      "forgotPassword": "パスワードをお忘れですか?",
+      "loginButton": "ログイン",
+      "googleButton": "Googleでサインイン",
+      "noAccount": "アカウントをお持ちでないですか?",
+      "signupLink": "新規登録"
     },
     "signup": {
       "title": "アカウントを作成",
@@ -1078,13 +1087,30 @@
       "nameValidation": "名前は1〜50文字で、< や > を含めることはできません。",
       "termsRequired": "続行するには利用規約に同意してください。",
       "alreadyExists": "このメールアドレスのアカウントは既に存在します。ログインをお試しください。",
-      "checkEmail": "確認リンクが記載されたメールをご確認ください。確認後、ログインできます。"
+      "checkEmail": "確認リンクが記載されたメールをご確認ください。確認後、ログインできます。",
+      "nameLabel": "氏名",
+      "emailLabel": "メールアドレス",
+      "passwordLabel": "パスワード",
+      "namePlaceholder": "氏名を入力",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "パスワードを選択",
+      "signupButton": "新規登録",
+      "googleButton": "Googleで登録",
+      "hasAccount": "すでにアカウントをお持ちですか?",
+      "loginLink": "ログイン",
+      "termsText": "<a href=\"/terms.html\" target=\"_blank\" rel=\"noopener noreferrer\">利用規約</a>に同意します"
     },
     "forgot": {
       "emptyEmail": "メールアドレスを入力してください。",
       "invalidEmail": "有効なメールアドレスを入力してください。",
       "networkError": "ネットワークエラー。接続を確認してもう一度お試しください。",
-      "checkEmail": "パスワードリセットリンクが記載されたメールをご確認ください。届くまで少しお待ちください。"
+      "checkEmail": "パスワードリセットリンクが記載されたメールをご確認ください。届くまで少しお待ちください。",
+      "title": "パスワードをリセット",
+      "subtitle": "メールアドレスを入力すると、リセットリンクをお送りします",
+      "emailLabel": "メールアドレス",
+      "emailPlaceholder": "you@example.com",
+      "sendButton": "リセットリンクを送信",
+      "backToLogin": "ログインに戻る"
     },
     "reset": {
       "expired": "このリセットリンクは期限切れまたは無効です。新しいリンクをリクエストしてください。",
@@ -1092,11 +1118,22 @@
       "emptyFields": "両方のパスワードフィールドに入力してください。",
       "mismatch": "パスワードが一致しません。",
       "networkError": "ネットワークエラー。接続を確認してもう一度お試しください。",
-      "success": "パスワードが正常に更新されました！ログインページにリダイレクト中..."
+      "success": "パスワードが正常に更新されました！ログインページにリダイレクト中...",
+      "title": "新しいパスワードを設定",
+      "subtitle": "新しいパスワードを以下に入力してください",
+      "verifying": "リセットリンクを確認中...",
+      "newPasswordLabel": "新しいパスワード",
+      "confirmPasswordLabel": "パスワードを確認",
+      "newPasswordPlaceholder": "新しいパスワードを入力",
+      "confirmPasswordPlaceholder": "パスワードを再入力",
+      "updateButton": "パスワードを更新",
+      "backToLogin": "ログインに戻る"
     },
     "common": {
       "passwordLength": "パスワードは8〜128文字である必要があります。",
-      "loading": "読み込み中..."
+      "loading": "読み込み中...",
+      "or": "または",
+      "jsRequired": "BrainDockを使用するにはJavaScriptが必要です。ブラウザの設定で有効にしてください。"
     },
     "helpers": {
       "sessionExpired": "セッションが期限切れです。もう一度ログインしてください。",

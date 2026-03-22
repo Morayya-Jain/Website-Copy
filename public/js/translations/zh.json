@@ -1067,7 +1067,16 @@
       "welcomeBack": "欢迎回来",
       "subtitle": "登录您的 BrainDock 账户",
       "emptyFields": "请输入您的邮箱地址和密码。",
-      "invalidEmail": "请输入有效的邮箱地址。"
+      "invalidEmail": "请输入有效的邮箱地址。",
+      "emailLabel": "邮箱",
+      "passwordLabel": "密码",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "您的密码",
+      "forgotPassword": "忘记密码?",
+      "loginButton": "登录",
+      "googleButton": "使用 Google 登录",
+      "noAccount": "还没有账户?",
+      "signupLink": "注册"
     },
     "signup": {
       "title": "创建您的账户",
@@ -1078,13 +1087,30 @@
       "nameValidation": "名称必须为 1-50 个字符，且不能包含 < 或 >。",
       "termsRequired": "请同意服务条款以继续。",
       "alreadyExists": "使用此邮箱的账户已存在。请尝试登录。",
-      "checkEmail": "请查看您的邮箱以获取确认链接。确认后即可登录。"
+      "checkEmail": "请查看您的邮箱以获取确认链接。确认后即可登录。",
+      "nameLabel": "姓名",
+      "emailLabel": "邮箱",
+      "passwordLabel": "密码",
+      "namePlaceholder": "您的全名",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "选择密码",
+      "signupButton": "注册",
+      "googleButton": "使用 Google 注册",
+      "hasAccount": "已有账户?",
+      "loginLink": "登录",
+      "termsText": "我同意<a href=\"/terms.html\" target=\"_blank\" rel=\"noopener noreferrer\">服务条款</a>"
     },
     "forgot": {
       "emptyEmail": "请输入您的邮箱地址。",
       "invalidEmail": "请输入有效的邮箱地址。",
       "networkError": "网络错误。请检查您的连接并重试。",
-      "checkEmail": "请查看您的邮箱以获取密码重置链接。可能需要一分钟才能收到。"
+      "checkEmail": "请查看您的邮箱以获取密码重置链接。可能需要一分钟才能收到。",
+      "title": "重置密码",
+      "subtitle": "输入您的邮箱，我们将发送重置链接",
+      "emailLabel": "邮箱",
+      "emailPlaceholder": "you@example.com",
+      "sendButton": "发送重置链接",
+      "backToLogin": "返回登录"
     },
     "reset": {
       "expired": "此重置链接已过期或无效。请申请新链接。",
@@ -1092,11 +1118,22 @@
       "emptyFields": "请填写两个密码字段。",
       "mismatch": "密码不匹配。",
       "networkError": "网络错误。请检查您的连接并重试。",
-      "success": "密码更新成功！正在跳转到登录页面..."
+      "success": "密码更新成功！正在跳转到登录页面...",
+      "title": "设置新密码",
+      "subtitle": "请在下方输入您的新密码",
+      "verifying": "正在验证重置链接...",
+      "newPasswordLabel": "新密码",
+      "confirmPasswordLabel": "确认密码",
+      "newPasswordPlaceholder": "输入新密码",
+      "confirmPasswordPlaceholder": "确认新密码",
+      "updateButton": "更新密码",
+      "backToLogin": "返回登录"
     },
     "common": {
       "passwordLength": "密码长度必须为 8-128 个字符。",
-      "loading": "加载中..."
+      "loading": "加载中...",
+      "or": "或",
+      "jsRequired": "使用 BrainDock 需要启用 JavaScript。请在浏览器设置中启用。"
     },
     "helpers": {
       "sessionExpired": "会话已过期。请重新登录。",

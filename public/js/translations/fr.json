@@ -1067,7 +1067,16 @@
       "welcomeBack": "Bon retour",
       "subtitle": "Connectez-vous à votre compte BrainDock",
       "emptyFields": "Veuillez entrer votre adresse e-mail et votre mot de passe.",
-      "invalidEmail": "Veuillez entrer une adresse e-mail valide."
+      "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
+      "emailLabel": "E-mail",
+      "passwordLabel": "Mot de passe",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "Votre mot de passe",
+      "forgotPassword": "Mot de passe oublié ?",
+      "loginButton": "Se connecter",
+      "googleButton": "Se connecter avec Google",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "signupLink": "S'inscrire"
     },
     "signup": {
       "title": "Créez votre compte",
@@ -1078,13 +1087,30 @@
       "nameValidation": "Le nom doit contenir 1 à 50 caractères et ne peut pas contenir < ou >.",
       "termsRequired": "Veuillez accepter les Conditions d'utilisation pour continuer.",
       "alreadyExists": "Un compte avec cette adresse e-mail existe déjà. Essayez de vous connecter.",
-      "checkEmail": "Consultez votre e-mail pour un lien de confirmation. Une fois confirmé, vous pourrez vous connecter."
+      "checkEmail": "Consultez votre e-mail pour un lien de confirmation. Une fois confirmé, vous pourrez vous connecter.",
+      "nameLabel": "Nom complet",
+      "emailLabel": "E-mail",
+      "passwordLabel": "Mot de passe",
+      "namePlaceholder": "Votre nom complet",
+      "emailPlaceholder": "you@example.com",
+      "passwordPlaceholder": "Choisir un mot de passe",
+      "signupButton": "S'inscrire",
+      "googleButton": "S'inscrire avec Google",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "loginLink": "Se connecter",
+      "termsText": "J'accepte les <a href=\"/terms.html\" target=\"_blank\" rel=\"noopener noreferrer\">Conditions d'utilisation</a>"
     },
     "forgot": {
       "emptyEmail": "Veuillez entrer votre adresse e-mail.",
       "invalidEmail": "Veuillez entrer une adresse e-mail valide.",
       "networkError": "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
-      "checkEmail": "Consultez votre e-mail pour un lien de réinitialisation du mot de passe. L'envoi peut prendre une minute."
+      "checkEmail": "Consultez votre e-mail pour un lien de réinitialisation du mot de passe. L'envoi peut prendre une minute.",
+      "title": "Réinitialiser votre mot de passe",
+      "subtitle": "Entrez votre e-mail et nous vous enverrons un lien de réinitialisation",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "you@example.com",
+      "sendButton": "Envoyer le lien de réinitialisation",
+      "backToLogin": "Retour à la connexion"
     },
     "reset": {
       "expired": "Ce lien de réinitialisation a expiré ou est invalide. Veuillez en demander un nouveau.",
@@ -1092,11 +1118,22 @@
       "emptyFields": "Veuillez remplir les deux champs de mot de passe.",
       "mismatch": "Les mots de passe ne correspondent pas.",
       "networkError": "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
-      "success": "Mot de passe mis à jour avec succès ! Redirection vers la connexion..."
+      "success": "Mot de passe mis à jour avec succès ! Redirection vers la connexion...",
+      "title": "Définir un nouveau mot de passe",
+      "subtitle": "Entrez votre nouveau mot de passe ci-dessous",
+      "verifying": "Vérification du lien de réinitialisation...",
+      "newPasswordLabel": "Nouveau mot de passe",
+      "confirmPasswordLabel": "Confirmer le mot de passe",
+      "newPasswordPlaceholder": "Entrer le nouveau mot de passe",
+      "confirmPasswordPlaceholder": "Confirmer le nouveau mot de passe",
+      "updateButton": "Mettre à jour le mot de passe",
+      "backToLogin": "Retour à la connexion"
     },
     "common": {
       "passwordLength": "Le mot de passe doit contenir 8 à 128 caractères.",
-      "loading": "Chargement..."
+      "loading": "Chargement...",
+      "or": "ou",
+      "jsRequired": "JavaScript est requis pour utiliser BrainDock. Veuillez l'activer dans les paramètres de votre navigateur."
     },
     "helpers": {
       "sessionExpired": "Session expirée. Veuillez vous reconnecter.",

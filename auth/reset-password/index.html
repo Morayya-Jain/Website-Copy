@@ -21,8 +21,8 @@
       </a>
 
       <div class="auth-card">
-        <h1 class="auth-title">Set new password</h1>
-        <p class="auth-subtitle">Enter your new password below</p>
+        <h1 class="auth-title" data-i18n="auth.reset.title">Set new password</h1>
+        <p class="auth-subtitle" data-i18n="auth.reset.subtitle">Enter your new password below</p>
 
         <div class="auth-error" role="alert" hidden></div>
         <div class="auth-success" role="status" hidden></div>
@@ -30,17 +30,18 @@
         <!-- Spinner shown while verifying the recovery token -->
         <div class="auth-loading" id="loading-state">
           <div class="auth-spinner"></div>
-          <p class="auth-loading-text">Verifying reset link...</p>
+          <p class="auth-loading-text" data-i18n="auth.reset.verifying">Verifying reset link...</p>
         </div>
 
         <form class="auth-form" id="reset-form" novalidate hidden>
           <div class="auth-field">
-            <label class="auth-label" for="password">New password</label>
+            <label class="auth-label" for="password" data-i18n="auth.reset.newPasswordLabel">New password</label>
             <input
               class="auth-input"
               id="password"
               type="password"
               placeholder="Enter new password"
+              data-i18n-placeholder="auth.reset.newPasswordPlaceholder"
               autocomplete="new-password"
               minlength="6"
               maxlength="128"
@@ -49,12 +50,13 @@
           </div>
 
           <div class="auth-field">
-            <label class="auth-label" for="confirm-password">Confirm password</label>
+            <label class="auth-label" for="confirm-password" data-i18n="auth.reset.confirmPasswordLabel">Confirm password</label>
             <input
               class="auth-input"
               id="confirm-password"
               type="password"
               placeholder="Confirm new password"
+              data-i18n-placeholder="auth.reset.confirmPasswordPlaceholder"
               autocomplete="new-password"
               minlength="6"
               maxlength="128"
@@ -62,17 +64,18 @@
             >
           </div>
 
-          <button type="submit" class="btn btn-primary" id="update-btn">Update Password</button>
+          <button type="submit" class="btn btn-primary" id="update-btn" data-i18n="auth.reset.updateButton">Update Password</button>
         </form>
 
         <p class="auth-footer">
-          <a id="login-link" href="/auth/login/">Back to login</a>
+          <a id="login-link" href="/auth/login/" data-i18n="auth.reset.backToLogin">Back to login</a>
         </p>
       </div>
     </div>
   </div>
 
-  <noscript><p style="text-align:center;padding:2rem;">JavaScript is required to use BrainDock. Please enable it in your browser settings.</p></noscript>
+  <noscript><p style="text-align:center;padding:2rem;" data-i18n="auth.common.jsRequired">JavaScript is required to use BrainDock. Please enable it in your browser settings.</p></noscript>
+  <script src="/js/i18n.js"></script>
   <script type="module" src="/src/pages/reset-password.js"></script>
 </body>
 </html>
