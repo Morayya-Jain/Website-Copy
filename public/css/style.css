@@ -938,6 +938,12 @@ body.hero-compact .hero-ctas {
   padding-bottom: 160px;
 }
 
+@media (max-width: 767px) {
+  .why-braindock {
+    padding-bottom: 80px;
+  }
+}
+
 /* --------------------------------------------------------------------------
    Made For You - Light Card
    -------------------------------------------------------------------------- */
@@ -1188,6 +1194,13 @@ body.hero-compact .hero-ctas {
   margin-bottom: 0;
 }
 
+/* Reduce overlap on mobile portrait */
+@media (max-width: 767px) {
+  .features {
+    margin-top: -100px;
+  }
+}
+
 /* Reduce overlap on very short viewports (landscape phones) */
 @media (max-height: 600px) {
   .features {
@@ -1413,7 +1426,7 @@ body.hero-compact .hero-ctas {
   }
 
   .feature-card {
-    width: 20rem;
+    width: 17rem;
     min-height: 13rem;
     padding: 22px 24px;
   }
@@ -1426,10 +1439,10 @@ body.hero-compact .hero-ctas {
     font-size: 0.95rem;
   }
 
-  .feature-card[data-index="0"] { --deck-offset-x: -60px; --deck-offset-y: 0px;  }
-  .feature-card[data-index="1"] { --deck-offset-x: -20px; --deck-offset-y: 30px; }
-  .feature-card[data-index="2"] { --deck-offset-x: 20px;  --deck-offset-y: 60px; }
-  .feature-card[data-index="3"] { --deck-offset-x: 60px;  --deck-offset-y: 90px; }
+  .feature-card[data-index="0"] { --deck-offset-x: -40px; --deck-offset-y: 0px;  }
+  .feature-card[data-index="1"] { --deck-offset-x: -14px; --deck-offset-y: 30px; }
+  .feature-card[data-index="2"] { --deck-offset-x: 14px;  --deck-offset-y: 60px; }
+  .feature-card[data-index="3"] { --deck-offset-x: 40px;  --deck-offset-y: 90px; }
 
   .feature-card:not(.active):hover {
     transform: skewY(-8deg)
@@ -1441,14 +1454,35 @@ body.hero-compact .hero-ctas {
     transform: skewY(0deg)
                translateX(var(--deck-offset-x, 0px))
                translateY(var(--deck-offset-y, 0px))
-               scale(1.35);
+               scale(1.2);
   }
 
   .feature-card.active:hover {
     transform: skewY(0deg)
                translateX(var(--deck-offset-x, 0px))
                translateY(calc(var(--deck-offset-y, 0px) - 4px))
-               scale(1.35);
+               scale(1.2);
+  }
+}
+
+/* --- Extra narrow phones --- */
+@media (max-width: 480px) {
+  .feature-card {
+    width: 15rem;
+  }
+
+  .feature-card.active {
+    transform: skewY(0deg)
+               translateX(var(--deck-offset-x, 0px))
+               translateY(var(--deck-offset-y, 0px))
+               scale(1.15);
+  }
+
+  .feature-card.active:hover {
+    transform: skewY(0deg)
+               translateX(var(--deck-offset-x, 0px))
+               translateY(calc(var(--deck-offset-y, 0px) - 4px))
+               scale(1.15);
   }
 }
 
@@ -1537,11 +1571,24 @@ body.hero-compact .hero-ctas {
   }
 }
 
+@media (max-width: 767px) {
+  .how-it-works-wrapper {
+    margin-top: 60px;
+    margin-bottom: 80px;
+  }
+}
+
 /* --------------------------------------------------------------------------
    FAQ (inside Download section)
    -------------------------------------------------------------------------- */
 .faq-wrapper {
   margin-top: 160px;
+}
+
+@media (max-width: 767px) {
+  .faq-wrapper {
+    margin-top: 80px;
+  }
 }
 
 .faq-heading {
@@ -2192,6 +2239,26 @@ body.hero-compact .hero-ctas {
   0%, 100% { opacity: 0; }
   50% { opacity: 0.15; }
 }
+
+/* --------------------------------------------------------------------------
+   Scroll-triggered reveal animations
+   -------------------------------------------------------------------------- */
+html[data-scroll-reveal-init] .scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms ease-out, transform 600ms ease-out;
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+html[data-scroll-reveal-init] .scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered how-it-works steps */
+html[data-scroll-reveal-init] .steps .step.scroll-reveal:nth-child(1) { --reveal-delay: 0ms; }
+html[data-scroll-reveal-init] .steps .step.scroll-reveal:nth-child(2) { --reveal-delay: 100ms; }
+html[data-scroll-reveal-init] .steps .step.scroll-reveal:nth-child(3) { --reveal-delay: 200ms; }
 
 /* --------------------------------------------------------------------------
    Respect user's motion preferences

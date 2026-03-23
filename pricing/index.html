@@ -20,8 +20,9 @@
   <link rel="apple-touch-icon" href="/assets/white-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/posthog.js" defer></script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,6 +45,47 @@
   </script>
 </head>
 <body>
+  <!-- Navigation (same as landing page - managed by main.js) -->
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="/" class="nav-logo">
+        <img src="/assets/logo_with_text.png" alt="BrainDock">
+      </a>
+      <div class="nav-center">
+        <div class="nav-links">
+          <a href="/#why-braindock" data-i18n="nav.whyBrainDock">Why?</a>
+          <a href="/#features" data-i18n="nav.features">Features</a>
+          <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+          <a href="/#faq" data-i18n="nav.faqs">FAQs</a>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <a href="/auth/signup/" class="btn btn-secondary nav-cta nav-cta-signup" data-i18n="nav.signup" target="_blank" rel="noopener">Sign Up</a>
+        <a href="/#download" class="btn btn-primary btn-cta nav-cta nav-cta-download">
+          <span class="btn-cta-label">
+            <span data-i18n="nav.download">Download</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </span>
+          <span class="btn-cta-slide" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-pressed="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="/#why-braindock" data-i18n="nav.whyBrainDock">Why?</a>
+      <a href="/#features" data-i18n="nav.features">Features</a>
+      <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+      <a href="/#faq" data-i18n="nav.faqs">FAQs</a>
+      <a href="/auth/signup/" data-i18n="nav.signup" target="_blank" rel="noopener">Sign Up</a>
+      <a href="/#download" data-i18n="nav.download">Download</a>
+    </div>
+  </nav>
+
   <div id="pricing-root">
     <noscript>
       <div style="text-align:center;padding:4rem 2rem;">
@@ -52,7 +94,55 @@
       </div>
     </noscript>
   </div>
+
+  <!-- Footer (same as landing page) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="/assets/logo_with_text.png" alt="BrainDock" loading="lazy">
+          <p data-i18n="footer.brandDescription">AI-powered focus assistant that helps you build better habits.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-i18n="footer.legalTitle">Legal</h4>
+          <a href="/privacy.html" target="_blank" rel="noopener noreferrer" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+          <a href="/terms.html" target="_blank" rel="noopener noreferrer" data-i18n="footer.termsOfService">Terms and Conditions</a>
+        </div>
+        <div class="footer-contact" id="contact">
+          <h4 data-i18n="footer.contactTitle">Contact</h4>
+          <a href="mailto:morayya@thebraindock.com">morayya@thebraindock.com</a>
+          <a href="mailto:help.thebraindock@gmail.com">help.thebraindock@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="footer.copyright">&copy; 2026 BrainDock. All rights reserved.</p>
+        <div class="language-selector">
+          <button class="language-toggle" id="footer-lang-toggle" aria-pressed="false" aria-haspopup="listbox" aria-label="Select language">
+            <svg class="globe-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="language-current">English</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <ul class="language-dropdown" role="listbox" aria-labelledby="footer-lang-toggle">
+            <li role="option" tabindex="0" aria-selected="false" data-lang="en">English</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="ja">日本語 (Japan)</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="de">Deutsch (Germany)</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="fr">Français (France)</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="zh">中文 (China)</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="hi">हिन्दी (India)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
   <script src="/js/i18n.js"></script>
+  <script src="/js/main.js"></script>
   <script type="module" src="/src/pages/pricing.js"></script>
 </body>
 </html>

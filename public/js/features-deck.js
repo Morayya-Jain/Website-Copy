@@ -16,10 +16,10 @@
   var DESKTOP_ACTIVE = { x: 0, y: -20 }
 
   var MOBILE_OFFSETS = [
-    { x: -60, y: 0  },
-    { x: -20, y: 30 },
-    { x: 20,  y: 60 },
-    { x: 60,  y: 90 }
+    { x: -40, y: 0  },
+    { x: -14, y: 30 },
+    { x: 14,  y: 60 },
+    { x: 40,  y: 90 }
   ]
   var MOBILE_ACTIVE = { x: 0, y: -15 }
 

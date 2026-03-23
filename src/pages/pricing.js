@@ -87,48 +87,7 @@ function render(root, packages, hasUser) {
   const defaultPackages = packages.length > 0 ? packages : []
   const packagesLoadFailed = packages.length === 0
 
-  const origin = window.location.origin
-
   root.innerHTML = `
-    <!-- Header (same as main website) -->
-    <nav class="nav">
-      <div class="container nav-container">
-        <a href="${origin}/" class="nav-logo" target="_blank" rel="noopener">
-          <img src="/assets/logo_with_text.png" alt="BrainDock">
-        </a>
-        <div class="nav-center">
-          <div class="nav-links">
-            <a href="${origin}/#why-braindock" target="_blank" rel="noopener" data-i18n="nav.whyBrainDock">Why?</a>
-            <a href="${origin}/#features" target="_blank" rel="noopener" data-i18n="nav.features">Features</a>
-            <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
-            <a href="${origin}/#faq" target="_blank" rel="noopener" data-i18n="nav.faqs">FAQs</a>
-          </div>
-        </div>
-        <div class="nav-actions">
-          <a href="/auth/signup/" class="btn btn-secondary nav-cta nav-cta-signup" target="_blank" rel="noopener" data-i18n="nav.signup">Sign Up</a>
-          <a href="${origin}/#download" class="btn btn-primary btn-cta nav-cta nav-cta-download" target="_blank" rel="noopener">
-            <span class="btn-cta-label">
-              <span data-i18n="nav.download">Download</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            </span>
-            ${ctaSlideHtml()}
-          </a>
-        </div>
-        <button class="nav-toggle" id="pricing-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-      <div class="nav-mobile" id="pricing-nav-mobile">
-        <a href="${origin}/#why-braindock" target="_blank" rel="noopener" data-i18n="nav.whyBrainDock">Why?</a>
-        <a href="${origin}/#features" target="_blank" rel="noopener" data-i18n="nav.features">Features</a>
-        <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
-        <a href="${origin}/#faq" target="_blank" rel="noopener" data-i18n="nav.faqs">FAQs</a>
-        <a href="/auth/signup/" target="_blank" rel="noopener" data-i18n="nav.signup">Sign Up</a>
-        <a href="${origin}/#download" target="_blank" rel="noopener" data-i18n="nav.download">Download</a>
-      </div>
-    </nav>
-
-    <!-- Pricing content -->
     <main class="pricing-main">
       <div class="container pricing-container">
         <div class="pricing-header">
@@ -226,57 +185,12 @@ function render(root, packages, hasUser) {
         </section>
       </div>
     </main>
-
-    <!-- Footer (same as main website) -->
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <img src="/assets/logo_with_text.png" alt="BrainDock" loading="lazy">
-            <p data-i18n="footer.brandDescription">AI-powered focus assistant that helps you build better habits.</p>
-          </div>
-          <div class="footer-links">
-            <h4 data-i18n="footer.legalTitle">Legal</h4>
-            <a href="${origin}/privacy.html" target="_blank" rel="noopener noreferrer" data-i18n="footer.privacyPolicy">Privacy Policy</a>
-            <a href="${origin}/terms.html" target="_blank" rel="noopener noreferrer" data-i18n="footer.termsOfService">Terms and Conditions</a>
-          </div>
-          <div class="footer-contact" id="pricing-contact">
-            <h4 data-i18n="footer.contactTitle">Contact</h4>
-            <a href="mailto:morayya@thebraindock.com">morayya@thebraindock.com</a>
-            <a href="mailto:help.thebraindock@gmail.com">help.thebraindock@gmail.com</a>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <p data-i18n="footer.copyright">&copy; 2026 BrainDock. All rights reserved.</p>
-          <div class="language-selector">
-            <button class="language-toggle" id="pricing-footer-lang-toggle" aria-expanded="false" aria-haspopup="listbox" aria-label="Select language">
-              <svg class="globe-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/>
-                <line x1="2" y1="12" x2="22" y2="12"/>
-                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-              </svg>
-              <span class="language-current">English</span>
-              <svg class="chevron-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <path d="M6 9l6 6 6-6"/>
-              </svg>
-            </button>
-            <ul class="language-dropdown" id="pricing-footer-lang-dropdown" role="listbox">
-              <li role="option" data-lang="en">English</li>
-              <li role="option" data-lang="ja">日本語 (Japan)</li>
-              <li role="option" data-lang="de">Deutsch (Germany)</li>
-              <li role="option" data-lang="fr">Français (France)</li>
-              <li role="option" data-lang="zh">中文 (China)</li>
-              <li role="option" data-lang="hi">हिन्दी (India)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </footer>
   `
 
-  // Initialize language so button labels are translated before we capture them for restore
-  if (typeof I18n !== 'undefined' && I18n.init) {
-    I18n.init()
+  // Re-apply translations to dynamically rendered pricing content
+  // (I18n.init() already ran on DOMContentLoaded for the static nav/footer)
+  if (typeof I18n !== 'undefined' && I18n.applyTranslations) {
+    I18n.applyTranslations()
   }
 
   root.querySelectorAll('[data-package-id]').forEach((btn) => {
@@ -338,16 +252,6 @@ function render(root, packages, hasUser) {
     })
   })
 
-  // Mobile nav toggle
-  const navToggle = document.getElementById('pricing-nav-toggle')
-  const navMobile = document.getElementById('pricing-nav-mobile')
-  if (navToggle && navMobile) {
-    navToggle.addEventListener('click', () => {
-      const expanded = navToggle.getAttribute('aria-expanded') === 'true'
-      navToggle.setAttribute('aria-expanded', !expanded)
-      navMobile.classList.toggle('active')
-    })
-  }
 }
 
 async function main() {
