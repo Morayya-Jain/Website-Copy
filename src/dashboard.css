@@ -1790,7 +1790,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  min-height: clamp(300px, 35vh, 400px);
+  min-height: clamp(380px, 45vh, 520px);
   padding: clamp(16px, 1.8vw, 24px) clamp(18px, 2.5vw, 32px) clamp(24px, 2.5vw, 32px) clamp(18px, 2vw, 28px);
   text-align: left;
 }
@@ -1804,7 +1804,7 @@
 }
 
 .pricing-card-price {
-  font-size: clamp(1.35rem, 1.2rem + 0.7vw, 1.85rem);
+  font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.55rem);
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 0.3vh;
@@ -1829,8 +1829,8 @@
 
 .pricing-card .btn {
   margin-top: auto;
-  padding: clamp(12px, 1.3vw, 16px) clamp(24px, 2.5vw, 36px);
-  font-size: clamp(0.9375rem, 0.9rem + 0.2vw, 1.0625rem);
+  padding: clamp(9px, 1vw, 12px) clamp(18px, 2vw, 28px);
+  font-size: clamp(0.84rem, 0.8rem + 0.18vw, 0.95rem);
 }
 
 /* Pricing FAQ section */
