@@ -5,12 +5,22 @@
  */
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const ALLOWED_ORIGIN = Deno.env.get("CORS_ALLOWED_ORIGIN") ?? "https://thebraindock.com";
-const corsHeaders = {
-  "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
-};
+// Production origins only; localhost is added automatically in local dev via DENO_ENV
+const ALLOWED_ORIGINS = ["https://thebraindock.com"];
+if (Deno.env.get("DENO_ENV") !== "production") {
+  ALLOWED_ORIGINS.push("http://localhost:5173", "http://localhost:4173");
+}
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const allowOrigin = origin && ALLOWED_ORIGINS.includes(origin) ? origin : null;
+  const h: Record<string, string> = {
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Content-Type": "application/json",
+  };
+  if (allowOrigin) h["Access-Control-Allow-Origin"] = allowOrigin;
+  return h;
+}
 
 // JWT-like tokens start with "ey" (base64 "ey...")
 const MAX_TOKEN_LENGTH = 4096;
@@ -49,6 +59,7 @@ function isValidToken(s: unknown): s is string {
 }
 
 Deno.serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req.headers.get("origin"));
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }

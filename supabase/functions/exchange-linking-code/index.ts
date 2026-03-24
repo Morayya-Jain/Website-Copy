@@ -5,12 +5,22 @@
  */
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
-const ALLOWED_ORIGIN = Deno.env.get("CORS_ALLOWED_ORIGIN") ?? "https://thebraindock.com";
-const corsHeaders = {
-  "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
-  "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type",
-};
+// Production origins only; localhost is added automatically in local dev via DENO_ENV
+const ALLOWED_ORIGINS = ["https://thebraindock.com"];
+if (Deno.env.get("DENO_ENV") !== "production") {
+  ALLOWED_ORIGINS.push("http://localhost:5173", "http://localhost:4173");
+}
+
+function getCorsHeaders(origin: string | null): Record<string, string> {
+  const allowOrigin = origin && ALLOWED_ORIGINS.includes(origin) ? origin : null;
+  const h: Record<string, string> = {
+    "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Content-Type": "application/json",
+  };
+  if (allowOrigin) h["Access-Control-Allow-Origin"] = allowOrigin;
+  return h;
+}
 
 // Linking code format: exactly XXXX-XXXX (9 chars: 8 alphanumeric + 1 dash)
 const LINKING_CODE_REGEX = /^[A-Z0-9]{4}-[A-Z0-9]{4}$/;
@@ -46,6 +56,12 @@ const ipAttempts = new Map<string, { count: number; resetAt: number }>();
 /** Check if an IP has exceeded the rate limit. Returns true if blocked. */
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
+  // Sweep expired entries to prevent unbounded memory growth
+  if (ipAttempts.size > 50) {
+    for (const [key, val] of ipAttempts) {
+      if (now >= val.resetAt) ipAttempts.delete(key);
+    }
+  }
   const entry = ipAttempts.get(ip);
   if (!entry || now >= entry.resetAt) {
     ipAttempts.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
@@ -56,6 +72,7 @@ function isRateLimited(ip: string): boolean {
 }
 
 Deno.serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req.headers.get("origin"));
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }

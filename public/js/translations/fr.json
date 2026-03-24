@@ -670,6 +670,8 @@
     },
     "faq": {
       "title": "Questions et reponses",
+      "q0": "Y a-t-il un forfait gratuit ?",
+      "a0": "Oui ! Chaque nouveau compte reçoit 30 minutes gratuites par mois. Votre temps gratuit se réinitialise automatiquement au début de chaque mois. Passez à un forfait supérieur à tout moment pour plus d'heures et des rapports PDF.",
       "q1": "Quel forfait devrais-je choisir ?",
       "a1": "Si vous debutez, Pro (1 heure) vous permet d'essayer BrainDock sans gros engagement. Pour une utilisation reguliere, Ultra (10 heures) offre un meilleur tarif horaire. Max (30 heures) est le meilleur rapport qualite-prix si vous prevoyez d'utiliser BrainDock quotidiennement.",
       "q2": "Comment fonctionne le systeme de credits ?",

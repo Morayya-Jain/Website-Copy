@@ -670,6 +670,8 @@
     },
     "faq": {
       "title": "Fragen & Antworten",
+      "q0": "Gibt es einen kostenlosen Plan?",
+      "a0": "Ja! Jedes neue Konto erhält 30 kostenlose Minuten pro Monat. Ihre Freiminuten werden automatisch zu Beginn jedes Monats zurückgesetzt. Upgraden Sie jederzeit für mehr Stunden und PDF-Berichte.",
       "q1": "Welchen Plan sollte ich wählen?",
       "a1": "Wenn Sie gerade erst anfangen, können Sie mit Pro (1 Stunde) BrainDock ohne große Verpflichtung ausprobieren. Für regelmäßige Nutzung bietet Ultra (10 Stunden) einen besseren Stundenpreis. Max (30 Stunden) ist am günstigsten, wenn Sie BrainDock täglich nutzen möchten.",
       "q2": "Wie funktioniert das Kreditsystem?",

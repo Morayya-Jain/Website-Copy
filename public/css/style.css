@@ -659,6 +659,7 @@ p {
   border-radius: 0 0 16px 16px;
   padding: var(--space-m) var(--space-l);
   max-height: calc(100vh - 80px);
+  max-height: calc(100dvh - 80px);
   overflow-y: auto;
   overscroll-behavior: contain;
 }
@@ -2205,6 +2206,7 @@ body.hero-compact .hero-ctas {
    -------------------------------------------------------------------------- */
 .dashboard-boot {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
