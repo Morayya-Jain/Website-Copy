@@ -135,9 +135,11 @@ export async function handlePostAuthRedirect(supabase, card = null) {
   try {
     // Refresh the session first to ensure the access token is valid.
     // getSession() returns stale tokens; refreshSession() gets fresh ones.
-    const { data: refreshed } = await supabase.auth.refreshSession()
+    const { data: refreshed, error: refreshError } = await supabase.auth.refreshSession()
+    console.log('[DEBUG] refreshSession result:', { refreshError, hasSession: !!refreshed?.session, tokenPrefix: refreshed?.session?.access_token?.substring(0, 20) })
     const session = refreshed?.session
     if (!session) {
+      console.error('[DEBUG] No session after refresh. Error:', refreshError)
       if (card) showError(card, t('auth.helpers.sessionExpired', 'Session expired. Please try logging in again.'))
       else window.location.href = getRedirectPath()
       return
@@ -148,6 +150,8 @@ export async function handlePostAuthRedirect(supabase, card = null) {
       else window.location.href = getRedirectPath()
       return
     }
+
+    console.log('[DEBUG] Calling generate-linking-code with:', { supabaseUrl, tokenLength: session.access_token?.length, tokenStart: session.access_token?.substring(0, 20) })
 
     // Abort after 8 seconds to prevent hanging forever
     const controller = new AbortController()
@@ -173,6 +177,7 @@ export async function handlePostAuthRedirect(supabase, card = null) {
     }
 
     const result = await resp.json().catch(() => ({}))
+    console.log('[DEBUG] generate-linking-code response:', { status: resp.status, ok: resp.ok, result })
     if (!resp.ok || !result?.code) {
       const detail = result?.error || result?.message || result?.msg || `HTTP ${resp.status}`
       logError('Failed to generate linking code:', resp.status, detail, result)
