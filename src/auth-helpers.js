@@ -133,22 +133,11 @@ export async function handlePostAuthRedirect(supabase, card = null) {
   // from the login form still use the desktop flow.  Cleared below on success.
 
   try {
-    // Get the current session. Try getSession() first (fast, local).
-    // Only fall back to refreshSession() if getSession() returns no session.
-    let session = null
-    const { data: current } = await supabase.auth.getSession()
-    session = current?.session
-    console.log('[DEBUG] getSession result:', { hasSession: !!session, tokenPrefix: session?.access_token?.substring(0, 20) })
-
+    // Refresh the session first to ensure the access token is valid.
+    // getSession() returns stale tokens; refreshSession() gets fresh ones.
+    const { data: refreshed } = await supabase.auth.refreshSession()
+    const session = refreshed?.session
     if (!session) {
-      // No local session — try refresh as fallback
-      const { data: refreshed, error: refreshError } = await supabase.auth.refreshSession()
-      console.log('[DEBUG] refreshSession fallback:', { refreshError, hasSession: !!refreshed?.session })
-      session = refreshed?.session
-    }
-
-    if (!session) {
-      console.error('[DEBUG] No session available')
       if (card) showError(card, t('auth.helpers.sessionExpired', 'Session expired. Please try logging in again.'))
       else window.location.href = getRedirectPath()
       return
@@ -159,8 +148,6 @@ export async function handlePostAuthRedirect(supabase, card = null) {
       else window.location.href = getRedirectPath()
       return
     }
-
-    console.log('[DEBUG] Calling generate-linking-code with:', { supabaseUrl, tokenLength: session.access_token?.length, tokenStart: session.access_token?.substring(0, 20) })
 
     // Abort after 8 seconds to prevent hanging forever
     const controller = new AbortController()
@@ -186,7 +173,6 @@ export async function handlePostAuthRedirect(supabase, card = null) {
     }
 
     const result = await resp.json().catch(() => ({}))
-    console.log('[DEBUG] generate-linking-code response:', { status: resp.status, ok: resp.ok, result })
     if (!resp.ok || !result?.code) {
       const detail = result?.error || result?.message || result?.msg || `HTTP ${resp.status}`
       logError('Failed to generate linking code:', resp.status, detail, result)

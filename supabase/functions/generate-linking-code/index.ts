@@ -1,6 +1,8 @@
 /**
  * Generate a short-lived linking code for desktop app auth.
- * Called by the website after login (?source=desktop). Requires valid JWT - do NOT use --no-verify-jwt.
+ * Called by the website after login (?source=desktop).
+ * Deployed with --no-verify-jwt so the gateway doesn't reject tokens.
+ * The function validates the user via getUser() internally.
  * Tokens are encrypted with AES-256-GCM before storage in the linking_codes table.
  */
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
@@ -84,7 +86,7 @@ Deno.serve(async (req) => {
   const access_token = body?.access_token;
   const refresh_token = body?.refresh_token;
   if (!isValidToken(access_token) || !isValidToken(refresh_token)) {
-    return new Response(JSON.stringify({ error: "Invalid token" }), {
+    return new Response(JSON.stringify({ error: "Invalid token format", detail: "Tokens must start with ey and be under 4096 chars" }), {
       status: 400,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
@@ -93,18 +95,32 @@ Deno.serve(async (req) => {
   const accessToken = (access_token as string).trim();
   const refreshToken = (refresh_token as string).trim();
 
-  // Validate the access token by extracting user info.
-  // Use the token from the Authorization header (already verified by Supabase gateway)
-  // to create an authenticated client, then verify the body token matches.
-  const authHeader = req.headers.get("authorization") ?? "";
-  const headerToken = authHeader.replace(/^Bearer\s+/i, "").trim();
-
-  // Create a client authenticated with the header JWT (gateway-verified)
+  // Validate by setting the session on a fresh client and calling getUser
   const userClient = createClient(
     Deno.env.get("SUPABASE_URL")!,
     Deno.env.get("SUPABASE_ANON_KEY")!,
-    { global: { headers: { Authorization: `Bearer ${headerToken}` } } }
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false,
+      },
+    }
   );
+
+  // Set session so the client uses these tokens
+  const { error: setError } = await userClient.auth.setSession({
+    access_token: accessToken,
+    refresh_token: refreshToken,
+  });
+
+  if (setError) {
+    console.error("[generate-linking-code] setSession failed:", setError.message);
+    return new Response(JSON.stringify({ error: "Invalid session", detail: setError.message }), {
+      status: 401,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
   const {
     data: { user },
     error,
