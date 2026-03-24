@@ -591,6 +591,7 @@
   },
   "features": {
     "sectionTitle": "Fonctionnalités",
+    "sectionSubtitle": "Votre boite a outils de concentration - cliquez sur une carte pour explorer.",
     "cards": {
       "timedSessions": {
         "title": "Sessions minutées",

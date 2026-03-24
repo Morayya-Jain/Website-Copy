@@ -591,6 +591,7 @@
   },
   "features": {
     "sectionTitle": "機能",
+    "sectionSubtitle": "集中力ツールキット - カードをクリックして詳細を見る",
     "cards": {
       "timedSessions": {
         "title": "タイマーセッション",

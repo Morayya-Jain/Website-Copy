@@ -591,6 +591,7 @@
   },
   "features": {
     "sectionTitle": "功能特点",
+    "sectionSubtitle": "你的专注工具箱 - 点击卡片了解更多",
     "cards": {
       "timedSessions": {
         "title": "计时会话",

@@ -591,6 +591,7 @@
   },
   "features": {
     "sectionTitle": "Features",
+    "sectionSubtitle": "Your focus toolkit - click a card to explore.",
     "cards": {
       "timedSessions": {
         "title": "Timed Sessions",
