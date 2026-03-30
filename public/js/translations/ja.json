@@ -547,6 +547,7 @@
     }
   },
   "useCases": {
+    "backHome": "ホームに戻る",
     "titlePart1": "BrainDockは",
     "titleAccent": "すべてに対応",
     "subtitle": "すべてのアプリ、タブ、ワークフローで集中を維持。BrainDockは既にお使いのツールとシームレスに連携します。",

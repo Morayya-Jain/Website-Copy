@@ -283,38 +283,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Note: drawRoadmapPath() already called by runAllResponsiveChecks() above
 
-  // Use Cases tab switching
-  var useCasesTabs = document.querySelectorAll('.use-cases-tab');
-  var useCasesPanels = document.querySelectorAll('.use-cases-grid[data-panel]');
-  if (useCasesTabs.length > 0) {
-    useCasesTabs.forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        var target = this.getAttribute('data-tab');
-        // Update active tab
-        useCasesTabs.forEach(function(t) { t.classList.remove('active'); });
-        this.classList.add('active');
-        // Show matching panel
-        useCasesPanels.forEach(function(panel) {
-          panel.style.display = panel.getAttribute('data-panel') === target ? '' : 'none';
-        });
-      });
-    });
-  }
-
-  // Spotlight card mouse-tracking effect (event delegation for all cards including hidden panels)
-  var useCasesSection = document.querySelector('.use-cases');
-  if (useCasesSection) {
-    useCasesSection.addEventListener('mousemove', function(e) {
-      var card = e.target.closest('.use-cases-card');
-      if (!card) return;
-      var rect = card.getBoundingClientRect();
-      var x = e.clientX - rect.left;
-      var y = e.clientY - rect.top;
-      card.style.setProperty('--mouse-x', x + 'px');
-      card.style.setProperty('--mouse-y', y + 'px');
-    });
-  }
-
   // Made For You audience pill switcher
   initMadeForYou();
 

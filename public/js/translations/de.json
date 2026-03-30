@@ -547,6 +547,7 @@
     }
   },
   "useCases": {
+    "backHome": "Zurück zur Startseite",
     "titlePart1": "BrainDock funktioniert mit",
     "titleAccent": "allem",
     "subtitle": "Fokus in jeder App, jedem Tab und jedem Workflow. BrainDock integriert sich nahtlos in die Tools, die Sie bereits nutzen.",

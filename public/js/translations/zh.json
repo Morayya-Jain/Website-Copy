@@ -547,6 +547,7 @@
     }
   },
   "useCases": {
+    "backHome": "返回首页",
     "titlePart1": "BrainDock适用于",
     "titleAccent": "一切",
     "subtitle": "在每个应用、每个标签页和每个工作流程中保持专注。BrainDock与您已经使用的工具无缝集成。",

@@ -547,6 +547,7 @@
     }
   },
   "useCases": {
+    "backHome": "Retour à l'accueil",
     "titlePart1": "BrainDock fonctionne avec",
     "titleAccent": "tout",
     "subtitle": "Concentrez-vous dans chaque application, chaque onglet et chaque workflow. BrainDock s'intègre parfaitement aux outils que vous utilisez déjà.",

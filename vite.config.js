@@ -8,7 +8,7 @@ const posthogTag = `<script src="${base}/js/posthog.js" defer></script>`
 const cspContent = "default-src 'self'; script-src 'self' https://js.stripe.com https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://yviegtpsklovoyltpnml.supabase.co https://api.stripe.com https://us.i.posthog.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://js.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'"
 
 // Known route prefixes for navigation link rewriting
-const routePrefixes = ['auth', 'sessions', 'settings', 'dashboard', 'download', 'pricing', 'about', 'how-to-use', 'account', 'privacy', 'terms']
+const routePrefixes = ['auth', 'sessions', 'settings', 'dashboard', 'download', 'pricing', 'about', 'how-to-use', 'account', 'privacy', 'terms', 'use-cases']
 const routePattern = routePrefixes.join('|')
 
 export default defineConfig({
@@ -72,6 +72,7 @@ export default defineConfig({
         howToUse: resolve(__dirname, 'how-to-use/index.html'),
         about: resolve(__dirname, 'about/index.html'),
         download: resolve(__dirname, 'download/index.html'),
+        useCases: resolve(__dirname, 'use-cases/index.html'),
       },
     },
   },

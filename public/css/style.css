@@ -1881,6 +1881,22 @@ body.hero-compact .hero-ctas {
 /* --------------------------------------------------------------------------
    Use Cases / Works With Everything Section
    -------------------------------------------------------------------------- */
+.use-cases-page {
+  padding: 4rem 0 2rem;
+}
+
+.use-cases-back {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+}
+
+.use-cases-back:hover {
+  color: var(--text-primary);
+}
+
 .use-cases {
   padding: var(--space-section) 0;
   background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(240, 238, 230, 0.5) 50%, var(--bg-primary) 100%);
