@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://js.stripe.com https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://yviegtpsklovoyltpnml.supabase.co https://api.stripe.com https://us.i.posthog.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://js.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Page Not Found - BrainDock</title>
-  <link rel="icon" type="image/png" href="/assets/white-logo.png">
-  <link rel="apple-touch-icon" href="/assets/white-logo.png">
+  <link rel="icon" type="image/png" href="/Website-Copy/assets/white-logo.png">
+  <link rel="apple-touch-icon" href="/Website-Copy/assets/white-logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/Website-Copy/css/style.css">
   <style>
     .error-page {
       min-height: 100vh;
@@ -42,16 +44,26 @@
     }
   </style>
   <!-- PostHog Analytics -->
-  <script src="/js/posthog.js"></script>
+  <script src="/Website-Copy/js/posthog.js"></script>
 </head>
 <body>
   <div class="error-page">
-    <a href="/" aria-label="BrainDock home">
-      <img src="/assets/logo_with_text.png" alt="BrainDock" width="180">
+    <a href="/Website-Copy/" aria-label="BrainDock home">
+      <img src="/Website-Copy/assets/logo_with_text.png" alt="BrainDock" width="180">
     </a>
     <h1>Page not found</h1>
     <p>The page you are looking for does not exist or has been moved.</p>
-    <a href="/" class="btn btn-primary">Back to Home</a>
+    <a href="/Website-Copy/" class="btn btn-primary">Back to Home</a>
   </div>
+  <script>
+    // GitHub Pages session detail redirect: /Website-Copy/sessions/<uuid> -> detail page
+    (function() {
+      var base = '/Website-Copy';
+      var match = window.location.pathname.match(new RegExp('^' + base + '/sessions/([0-9a-f-]{36})$'));
+      if (match) {
+        window.location.replace(base + '/sessions/detail/?id=' + match[1]);
+      }
+    })();
+  </script>
 </body>
 </html>

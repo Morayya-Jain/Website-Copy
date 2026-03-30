@@ -17,6 +17,7 @@ import {
 import { isValidName, isValidEmail, isValidPassword, LIMITS } from '../validators.js'
 import { track, EVENTS } from '../analytics.js'
 import { initDashboardI18n, t } from '../dashboard-i18n.js'
+import { BASE_PATH } from '../base-path.js'
 import '../auth.css'
 import { initAnimatedGrid } from '../animated-grid.js'
 initAnimatedGrid()
@@ -140,8 +141,8 @@ form.addEventListener('submit', async (e) => {
     sessionStorage.getItem(REDIRECT_STORAGE_KEY) ||
     ''
   const callbackUrl = redirectParam
-    ? `${window.location.origin}/auth/callback/?redirect=${encodeURIComponent(redirectParam)}`
-    : `${window.location.origin}/auth/callback/`
+    ? `${window.location.origin}${BASE_PATH}/auth/callback/?redirect=${encodeURIComponent(redirectParam)}`
+    : `${window.location.origin}${BASE_PATH}/auth/callback/`
 
   const { data, error } = await supabase.auth.signUp({
     email,
@@ -207,7 +208,7 @@ googleBtn.addEventListener('click', async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${window.location.origin}/auth/callback/`,
+      redirectTo: `${window.location.origin}${BASE_PATH}/auth/callback/`,
     },
   })
 

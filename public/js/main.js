@@ -8,8 +8,8 @@ function getDownloadUrl() {
   const ua = navigator.userAgent || ''
   // Exclude mobile devices first - BrainDock is desktop-only
   if (/iPhone|iPad|iPod|Android/.test(ua)) return null
-  if (/Mac/.test(ua)) return '/download/macos'
-  if (/Win/.test(ua)) return '/download/windows'
+  if (/Mac/.test(ua)) return 'https://github.com/Morayya-Jain/BrainDock/releases/latest/download/BrainDock-macOS.dmg'
+  if (/Win/.test(ua)) return 'https://github.com/Morayya-Jain/BrainDock/releases/latest/download/BrainDock-Setup.exe'
   return null // unknown OS - keep default #download anchor
 }
 

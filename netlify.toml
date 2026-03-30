@@ -1,3 +1,7 @@
+# NOTE: This file is retained for Netlify fallback but is NOT active
+# when deployed via GitHub Pages. See .github/workflows/deploy.yml
+# for the current deployment config.
+
 [build]
   command = "npm run build"
   publish = "dist"

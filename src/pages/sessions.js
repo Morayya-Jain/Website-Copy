@@ -7,6 +7,7 @@ import { initDashboardLayout } from '../dashboard-layout.js'
 import { escapeHtml, formatDuration, modeLabel, focusLevelClass } from '../utils.js'
 import { t, getLocale } from '../dashboard-i18n.js'
 import { logError } from '../logger.js'
+import { BASE_PATH } from '../base-path.js'
 
 const PAGE_SIZE = 20
 
@@ -25,7 +26,7 @@ async function fetchSessionsWithCount(page, userId) {
 
 function render(main, sessions, page, total, goToPage) {
   const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE))
-  const base = window.location.origin
+  const base = BASE_PATH
 
   main.innerHTML = `
     <h1 class="dashboard-page-title">${t('dashboard.sessionList.title', 'Session History')}</h1>

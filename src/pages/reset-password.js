@@ -9,6 +9,7 @@ import {
 } from '../auth-helpers.js'
 import { isValidPassword, LIMITS } from '../validators.js'
 import { initDashboardI18n, t } from '../dashboard-i18n.js'
+import { BASE_PATH } from '../base-path.js'
 import '../auth.css'
 import { initAnimatedGrid } from '../animated-grid.js'
 initAnimatedGrid()
@@ -39,7 +40,7 @@ function showExpiredError() {
   // Update the footer link to point to forgot-password for convenience
   const footer = card.querySelector('.auth-footer')
   if (footer) {
-    footer.innerHTML = `<a href="/auth/forgot-password/">${t('auth.reset.requestNew', 'Request a new reset link')}</a>`
+    footer.innerHTML = `<a href="${BASE_PATH}/auth/forgot-password/">${t('auth.reset.requestNew', 'Request a new reset link')}</a>`
   }
 }
 
@@ -114,6 +115,6 @@ form.addEventListener('submit', async (e) => {
   try { await supabase.auth.signOut({ scope: 'global' }) } catch (_) { /* ignore */ }
 
   setTimeout(() => {
-    window.location.href = '/auth/login/'
+    window.location.href = `${BASE_PATH}/auth/login/`
   }, 2000)
 })

@@ -9,6 +9,7 @@ import {
 } from '../auth-helpers.js'
 import { isValidEmail } from '../validators.js'
 import { initDashboardI18n, t } from '../dashboard-i18n.js'
+import { BASE_PATH } from '../base-path.js'
 import '../auth.css'
 import { initAnimatedGrid } from '../animated-grid.js'
 initAnimatedGrid()
@@ -37,7 +38,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${window.location.origin}/auth/reset-password/`,
+      redirectTo: `${window.location.origin}${BASE_PATH}/auth/reset-password/`,
     })
 
     if (error) {

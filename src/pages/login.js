@@ -15,6 +15,7 @@ import {
 import { isValidEmail, isValidPassword, LIMITS } from '../validators.js'
 import { track, EVENTS } from '../analytics.js'
 import { initDashboardI18n, t } from '../dashboard-i18n.js'
+import { BASE_PATH } from '../base-path.js'
 import '../auth.css'
 import { initAnimatedGrid } from '../animated-grid.js'
 initAnimatedGrid()
@@ -168,7 +169,7 @@ googleBtn.addEventListener('click', async () => {
   const { error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: `${window.location.origin}/auth/callback/`,
+      redirectTo: `${window.location.origin}${BASE_PATH}/auth/callback/`,
     },
   })
 

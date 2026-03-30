@@ -10,6 +10,7 @@ import { isValidUuid } from '../validators.js'
 import { t, getLocale } from '../dashboard-i18n.js'
 import { logError } from '../logger.js'
 import { track, EVENTS } from '../analytics.js'
+import { BASE_PATH } from '../base-path.js'
 
 function eventLabel(type) {
   const labels = {
@@ -31,6 +32,11 @@ const EVENT_TYPE_TO_TIMELINE_CLASS = {
 }
 
 function getSessionIdFromPath() {
+  // Check query param first (GitHub Pages 404.html redirect)
+  const params = new URLSearchParams(window.location.search)
+  const idParam = params.get('id')
+  if (idParam) return idParam
+  // Original pathname parsing (Netlify rewrite)
   const path = window.location.pathname
   const segments = path.split('/').filter(Boolean)
   const last = segments[segments.length - 1]
@@ -91,7 +97,7 @@ function buildTimelineSegments(events, totalSeconds) {
 }
 
 function render(main, session, events) {
-  const base = window.location.origin
+  const base = BASE_PATH
   const summary = session.summary_stats || {}
   const presentSec = summary.present_seconds ?? 0
   const awaySec = summary.away_seconds ?? 0
@@ -206,7 +212,7 @@ async function main() {
 
   const sessionId = getSessionIdFromPath()
   if (!sessionId || !isValidUuid(sessionId)) {
-    window.location.href = '/sessions/'
+    window.location.href = `${BASE_PATH}/sessions/`
     return
   }
 
@@ -221,7 +227,7 @@ async function main() {
       mainEl.innerHTML = `
         <div class="dashboard-empty">
           <p class="dashboard-empty-title">${t('dashboard.sessionDetail.notFound', 'Session not found')}</p>
-          <p><a href="/sessions/">${t('dashboard.common.backToSessions', 'Back to Sessions')}</a></p>
+          <p><a href="${BASE_PATH}/sessions/">${t('dashboard.common.backToSessions', 'Back to Sessions')}</a></p>
         </div>
       `
       return
@@ -234,7 +240,7 @@ async function main() {
       <div class="dashboard-empty">
         <p class="dashboard-empty-title">${t('dashboard.sessionDetail.errorTitle', 'Could not load session')}</p>
         <p>${t('dashboard.common.tryAgain', 'Please try again.')}</p>
-        <p><a href="/sessions/">${t('dashboard.common.backToSessions', 'Back to Sessions')}</a></p>
+        <p><a href="${BASE_PATH}/sessions/">${t('dashboard.common.backToSessions', 'Back to Sessions')}</a></p>
       </div>
     `
   }

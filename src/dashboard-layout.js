@@ -26,23 +26,24 @@ import {
   Hourglass,
 } from 'lucide/dist/cjs/lucide.js'
 import { MACOS_URL, WINDOWS_URL } from './constants.js'
+import { BASE_PATH } from './base-path.js'
 import { ctaSlideHtml } from './icons.js'
 import { fetchUserCredits } from './credits.js'
 import { identify } from './analytics.js'
 import { initAnimatedGrid } from './animated-grid.js'
 import './dashboard.css'
 
-const LOGIN_PATH = '/auth/login/'
-const DASHBOARD_PATH = '/dashboard/'
+const LOGIN_PATH = `${BASE_PATH}/auth/login/`
+const DASHBOARD_PATH = `${BASE_PATH}/dashboard/`
 
 /** Detect user's OS and return the matching download URL. Falls back to /download/ page. */
 function getDownloadUrl() {
   const ua = navigator.userAgent || ''
   // Exclude mobile devices - BrainDock is desktop-only
-  if (/iPhone|iPad|iPod|Android/.test(ua)) return '/download/'
+  if (/iPhone|iPad|iPod|Android/.test(ua)) return `${BASE_PATH}/download/`
   if (/Mac/.test(ua)) return MACOS_URL
   if (/Win/.test(ua)) return WINDOWS_URL
-  return '/download/'
+  return `${BASE_PATH}/download/`
 }
 
 /**
@@ -63,7 +64,11 @@ function formatPillDuration(seconds) {
  * Get current path for sidebar active state (e.g. /settings/blocklist).
  */
 function getCurrentPath() {
-  const path = window.location.pathname
+  let path = window.location.pathname
+  // Strip base path prefix for consistent matching on GitHub Pages
+  if (BASE_PATH && path.startsWith(BASE_PATH)) {
+    path = path.slice(BASE_PATH.length)
+  }
   // Strip trailing slash for consistent matching (except for root)
   return path.endsWith('/') && path.length > 1 ? path.slice(0, -1) : path
 }
@@ -72,7 +77,7 @@ function getCurrentPath() {
  * Build sidebar HTML with active state for current path.
  */
 function buildSidebarHTML(currentPath) {
-  const base = window.location.origin
+  const base = BASE_PATH
 
   return `
     <a href="${base}/" class="dashboard-sidebar-logo" aria-label="BrainDock home">
@@ -265,7 +270,7 @@ async function handleSignOut() {
   sessionStorage.removeItem('braindock_checkout_tracked')
   // Reset PostHog identity so events are not attributed to the signed-out user
   try { window.posthog?.reset?.() } catch (_) { /* silent */ }
-  window.location.href = '/'
+  window.location.href = `${BASE_PATH}/`
 }
 
 /**
@@ -317,7 +322,7 @@ export async function initDashboardLayout(options = {}) {
   const user = session.user
   identify(user.id)
   const currentPath = getCurrentPath()
-  const base = window.location.origin
+  const base = BASE_PATH
   const avatarUrl = getUserAvatarUrl(user)
   const initials = getUserInitials(user)
   const displayName = user.user_metadata?.full_name || user.email || t('dashboard.common.signedIn', 'Signed in')
@@ -394,7 +399,7 @@ export async function initDashboardLayout(options = {}) {
     <button type="button" class="dashboard-mobile-menu-btn" id="dashboard-sidebar-toggle" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
-    <a href="${window.location.origin}/" class="dashboard-mobile-logo">
+    <a href="${BASE_PATH}/" class="dashboard-mobile-logo">
       <img src="/assets/logo_with_text.png" alt="BrainDock">
     </a>
   `

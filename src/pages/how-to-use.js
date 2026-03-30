@@ -5,6 +5,7 @@
 import { initDashboardLayout } from '../dashboard-layout.js'
 import { t } from '../dashboard-i18n.js'
 import { appleIcon, windowsIcon } from '../icons.js'
+import { BASE_PATH } from '../base-path.js'
 
 // Inline SVG icons (Lucide-style, 24x24 viewBox)
 const ICONS = {
@@ -23,7 +24,7 @@ const ICONS = {
 }
 
 function render(main) {
-  const base = window.location.origin
+  const base = BASE_PATH
 
   main.innerHTML = `
     <h1 class="dashboard-page-title">${t('dashboard.howToUse.title', 'How to Use BrainDock')}</h1>

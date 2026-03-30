@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://js.stripe.com https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://yviegtpsklovoyltpnml.supabase.co https://api.stripe.com https://us.i.posthog.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://js.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="description" content="BrainDock is a free AI focus app for macOS and Windows. Helps you stay focused during work and study sessions - no video stored. Download free.">
 
   <!-- Canonical URL -->
@@ -55,7 +57,7 @@
   <meta name="robots" content="index, follow">
   <meta name="google-site-verification" content="lQwRucACTWSnTMZxm8JeysOyW7Rg5VO86LBNM6XSj6M" />
   <!-- PostHog Analytics -->
-  <script src="/js/posthog.js" defer></script>
+  <script src="js/posthog.js" defer></script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -180,13 +182,13 @@
         <div class="nav-links">
           <a href="#why-braindock" data-i18n="nav.whyBrainDock">Why?</a>
           <a href="#features" data-i18n="nav.features">Features</a>
-          <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+          <a href="/Website-Copy/pricing/" data-i18n="nav.pricing">Pricing</a>
           <a href="#faq" data-i18n="nav.faqs">FAQs</a>
         </div>
       </div>
       
       <div class="nav-actions">
-        <a href="/auth/signup/" class="btn btn-secondary nav-cta nav-cta-signup" data-i18n="nav.signup" target="_blank" rel="noopener">Sign Up</a>
+        <a href="/Website-Copy/auth/signup/" class="btn btn-secondary nav-cta nav-cta-signup" data-i18n="nav.signup" target="_blank" rel="noopener">Sign Up</a>
         <a href="#download" class="btn btn-primary btn-cta nav-cta nav-cta-download">
           <span class="btn-cta-label">
             <span data-i18n="nav.download">Download</span>
@@ -207,9 +209,9 @@
     <div class="nav-mobile" id="nav-mobile">
       <a href="#why-braindock" data-i18n="nav.whyBrainDock">Why?</a>
       <a href="#features" data-i18n="nav.features">Features</a>
-      <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+      <a href="/Website-Copy/pricing/" data-i18n="nav.pricing">Pricing</a>
       <a href="#faq" data-i18n="nav.faqs">FAQs</a>
-      <a href="/auth/signup/" data-i18n="nav.signup" target="_blank" rel="noopener">Sign Up</a>
+      <a href="/Website-Copy/auth/signup/" data-i18n="nav.signup" target="_blank" rel="noopener">Sign Up</a>
       <a href="#download" data-i18n="nav.download">Download</a>
     </div>
   </nav>

@@ -6,6 +6,7 @@
 import { supabaseUrl, supabaseAnonKey } from './supabase.js'
 import { logError } from './logger.js'
 import { t } from './dashboard-i18n.js'
+import { BASE_PATH } from './base-path.js'
 
 const DESKTOP_SOURCE_KEY = 'braindock_desktop'
 /** Used by signup to pass redirect into emailRedirectTo; also read in getRedirectPath(). */
@@ -39,7 +40,7 @@ export function getRedirectPath() {
   if (isValidRedirectPath(redirect)) {
     return redirect
   }
-  return '/settings/blocklist/'
+  return `${BASE_PATH}/settings/blocklist/`
 }
 
 /**
