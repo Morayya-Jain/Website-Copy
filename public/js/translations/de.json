@@ -546,6 +546,46 @@
       "faqDesc": "Häufig gestellte Fragen"
     }
   },
+  "useCases": {
+    "titlePart1": "BrainDock funktioniert mit",
+    "titleAccent": "allem",
+    "subtitle": "Fokus in jeder App, jedem Tab und jedem Workflow. BrainDock integriert sich nahtlos in die Tools, die Sie bereits nutzen.",
+    "tabs": {
+      "essential": "Wichtige Apps",
+      "documentation": "Dokumentation",
+      "engineering": "Entwicklung",
+      "project": "Projektmanagement",
+      "writing": "Schreiben"
+    },
+    "essential": {
+      "email": { "title": "E-Mail", "desc": "Bleiben Sie fokussiert beim Bearbeiten Ihres Posteingangs. BrainDock hilft Ihnen, E-Mails gebündelt zu bearbeiten." },
+      "messaging": { "title": "Nachrichten", "desc": "Lassen Sie sich nicht von Chats ablenken. Intelligente Benachrichtigungen lassen nur Wichtiges durch." },
+      "videoCalls": { "title": "Videoanrufe", "desc": "Fokus-Sitzungen werden automatisch für geplante Anrufe pausiert und danach fortgesetzt." },
+      "calendar": { "title": "Kalender", "desc": "BrainDock liest Ihren Kalender, um Tiefarbeitsblöcke zu finden und zu schützen." },
+      "webBrowsing": { "title": "Web-Browsing", "desc": "Leitet Sie sanft um, wenn Sie während Fokus-Sitzungen auf ablenkende Seiten abdriften." },
+      "socialMedia": { "title": "Soziale Medien", "desc": "Blockieren oder begrenzen Sie soziale Medien während der Fokuszeit. Überprüfen Sie Nutzungsstatistiken." }
+    },
+    "documentation": {
+      "docs": { "title": "Dokumente", "desc": "Bleiben Sie in der Schreibzone. BrainDock hält Sie beim Verfassen fokussiert." },
+      "spreadsheets": { "title": "Tabellen", "desc": "Tiefarbeit mit Daten ohne Ablenkung. Konzentrieren Sie sich auf die Analyse." },
+      "notes": { "title": "Notizen", "desc": "Erfassen Sie Ideen und Recherchen im Flow. BrainDock schützt Ihre Notiz-Sitzungen." }
+    },
+    "engineering": {
+      "code": { "title": "Code-Editoren", "desc": "Schützen Sie Ihren Flow-Zustand beim Programmieren. BrainDock unterdrückt unkritische Unterbrechungen." },
+      "terminal": { "title": "Terminal", "desc": "Bleiben Sie beim Debugging und Deployment fokussiert." },
+      "devtools": { "title": "Entwickler-Tools", "desc": "Versionskontrolle, CI/CD und APIs - bleiben Sie im Engineering-Workflow fokussiert." }
+    },
+    "project": {
+      "tasks": { "title": "Aufgabenverwaltung", "desc": "Konzentrieren Sie sich auf eine Aufgabe. BrainDock hilft Ihnen, dem Drang zum Kontextwechsel zu widerstehen." },
+      "boards": { "title": "Boards", "desc": "Planen Sie Sprints und verfolgen Sie den Fortschritt, ohne sich in endlosen Board-Updates zu verlieren." },
+      "analytics": { "title": "Analytik", "desc": "Tauchen Sie tief in Daten ein ohne Benachrichtigungslärm." }
+    },
+    "writing": {
+      "creative": { "title": "Kreatives Schreiben", "desc": "Schützen Sie Ihren kreativen Flow. BrainDock schirmt Ihre Schreibzeit vor digitalen Unterbrechungen ab." },
+      "blogging": { "title": "Bloggen", "desc": "Entwerfen, bearbeiten und veröffentlichen Sie ohne Ablenkung." },
+      "research": { "title": "Recherche", "desc": "Tiefes Lesen und Recherchieren ohne die Versuchung, soziale Medien zu checken." }
+    }
+  },
   "hero": {
     "title": "Behalte deine Aufmerksamkeit",
     "subtitle": "BrainDock nutzt KI, um dir zu helfen, dich zu konzentrieren, intelligenter zu arbeiten und die Konzentration zu stärken.",

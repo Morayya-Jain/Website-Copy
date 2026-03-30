@@ -1879,6 +1879,196 @@ body.hero-compact .hero-ctas {
 }
 
 /* --------------------------------------------------------------------------
+   Use Cases / Works With Everything Section
+   -------------------------------------------------------------------------- */
+.use-cases {
+  padding: var(--space-section) 0;
+  background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(240, 238, 230, 0.5) 50%, var(--bg-primary) 100%);
+}
+
+.use-cases-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: var(--space-m);
+  line-height: 1.15;
+}
+
+.use-cases-accent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.use-cases-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+  line-height: 1.6;
+}
+
+/* Tabs */
+.use-cases-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-s);
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+}
+
+.use-cases-tab {
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: transparent;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.use-cases-tab:hover {
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+}
+
+.use-cases-tab.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Card grid */
+.use-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-l);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (max-width: 900px) {
+  .use-cases-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .use-cases-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Spotlight card */
+.use-cases-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.use-cases-card:hover {
+  border-color: rgba(100, 130, 60, 0.4);
+}
+
+/* Spotlight glow that follows mouse */
+.use-cases-card-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  border-radius: inherit;
+  background: radial-gradient(
+    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(100, 130, 60, 0.1),
+    transparent 40%
+  );
+}
+
+.use-cases-card:hover .use-cases-card-glow {
+  opacity: 1;
+}
+
+/* Spotlight border effect */
+.use-cases-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(100, 130, 60, 0.5),
+    transparent 50%
+  );
+  z-index: -1;
+}
+
+.use-cases-card:hover::before {
+  opacity: 1;
+}
+
+.use-cases-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(100, 130, 60, 0.1);
+  color: var(--text-primary);
+}
+
+.use-cases-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.use-cases-card p {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Tags */
+.use-cases-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: auto;
+  padding-top: var(--space-s);
+}
+
+.use-cases-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(100, 130, 60, 0.3);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--accent);
+  background: rgba(100, 130, 60, 0.06);
+  white-space: nowrap;
+}
+
+
+/* --------------------------------------------------------------------------
    Download Section
    -------------------------------------------------------------------------- */
 

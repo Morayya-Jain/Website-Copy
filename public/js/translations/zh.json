@@ -546,6 +546,46 @@
       "faqDesc": "常见问题解答"
     }
   },
+  "useCases": {
+    "titlePart1": "BrainDock适用于",
+    "titleAccent": "一切",
+    "subtitle": "在每个应用、每个标签页和每个工作流程中保持专注。BrainDock与您已经使用的工具无缝集成。",
+    "tabs": {
+      "essential": "常用应用",
+      "documentation": "文档",
+      "engineering": "工程开发",
+      "project": "项目管理",
+      "writing": "写作"
+    },
+    "essential": {
+      "email": { "title": "邮件", "desc": "处理收件箱时保持专注。BrainDock帮助您批量处理邮件，而非不断查看。" },
+      "messaging": { "title": "即时通讯", "desc": "不让聊天打断您的专注。智能通知只放行重要信息。" },
+      "videoCalls": { "title": "视频通话", "desc": "自动为预定通话暂停专注会话，结束后立即恢复。" },
+      "calendar": { "title": "日历", "desc": "BrainDock读取您的日历，找到并保护全天的深度工作时段。" },
+      "webBrowsing": { "title": "网页浏览", "desc": "当您在专注会话期间漂向分心网站时，温和地将您重定向。" },
+      "socialMedia": { "title": "社交媒体", "desc": "在专注时间内屏蔽或限制社交媒体。查看使用统计以建立更好的习惯。" }
+    },
+    "documentation": {
+      "docs": { "title": "文档", "desc": "保持在写作区域。BrainDock让您专注于起草，不切换上下文。" },
+      "spreadsheets": { "title": "电子表格", "desc": "无干扰地深度处理数据。" },
+      "notes": { "title": "笔记", "desc": "在心流状态中捕捉想法和研究。BrainDock保护您的笔记会话。" }
+    },
+    "engineering": {
+      "code": { "title": "代码编辑器", "desc": "编码时保护您的心流状态。BrainDock屏蔽非关键中断。" },
+      "terminal": { "title": "终端", "desc": "在调试和部署期间保持专注。" },
+      "devtools": { "title": "开发工具", "desc": "版本控制、CI/CD和API - 专注于工程工作流。" }
+    },
+    "project": {
+      "tasks": { "title": "任务管理", "desc": "一次专注一个任务。BrainDock帮助您抵制在工单间切换上下文的冲动。" },
+      "boards": { "title": "看板", "desc": "规划冲刺并跟踪进度，不在无尽的看板更新中迷失。" },
+      "analytics": { "title": "数据分析", "desc": "在没有通知噪音的情况下深入数据。" }
+    },
+    "writing": {
+      "creative": { "title": "创意写作", "desc": "保护您的创作心流。BrainDock屏蔽数字干扰，守护您的写作时间。" },
+      "blogging": { "title": "博客", "desc": "无干扰地起草、编辑和发布。" },
+      "research": { "title": "研究", "desc": "深度阅读和研究会话，没有查看社交媒体的诱惑。" }
+    }
+  },
   "hero": {
     "title": "掌控你的注意力",
     "subtitle": "BrainDock使用AI帮助你集中注意力，更聪明地工作，增强专注力。",
