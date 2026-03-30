@@ -9,7 +9,7 @@ BrainDock is an AI-powered focus assistant. This repo is the **landing page webs
 - **Deployment:** Netlify (static build from `dist/`). Edge functions deploy to Supabase.
 - **Dev server:** `npx vite --port 5173`
 
-## Project Structure
+
 
 - `public/` - Landing page (index.html, css/, js/, translations/, assets/)
 - `src/` - Dashboard pages and shared modules (bundled by Vite)
