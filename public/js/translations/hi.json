@@ -506,7 +506,45 @@
     "signup": "साइन अप",
     "pricing": "मूल्य",
     "download": "डाउनलोड",
-    "faqs": "FAQs"
+    "faqs": "FAQs",
+    "product": "उत्पाद",
+    "individuals": "व्यक्तिगत",
+    "business": "व्यवसाय",
+    "resources": "संसाधन",
+    "productMenu": {
+      "features": "विशेषताएं",
+      "featuresDesc": "BrainDock की सभी क्षमताओं का अन्वेषण करें",
+      "useCases": "उपयोग के मामले",
+      "useCasesDesc": "देखें कि BrainDock आपके वर्कफ्लो में कैसे फिट होता है",
+      "privacy": "गोपनीयता और सुरक्षा",
+      "privacyDesc": "हम आपके डेटा की सुरक्षा कैसे करते हैं"
+    },
+    "individualsMenu": {
+      "students": "छात्र",
+      "studentsDesc": "परीक्षा और उसके बाद भी ध्यान केंद्रित रखें",
+      "developers": "डेवलपर्स",
+      "developersDesc": "तेज शिपिंग के लिए गहरा फोकस",
+      "creators": "क्रिएटर्स",
+      "creatorsDesc": "अपनी रचनात्मक फ्लो अवस्था की रक्षा करें",
+      "sales": "बिक्री",
+      "salesDesc": "कम विकर्षणों के साथ अधिक सौदे करें",
+      "support": "ग्राहक सहायता",
+      "supportDesc": "हर टिकट पर केंद्रित रहें",
+      "lawyers": "वकील",
+      "lawyersDesc": "बिल योग्य गहन कार्य घंटे अधिकतम करें",
+      "leaders": "नेता",
+      "leadersDesc": "अराजकता नहीं, स्पष्टता के साथ नेतृत्व करें"
+    },
+    "resourcesMenu": {
+      "workflows": "वर्कफ्लो",
+      "workflowsDesc": "उत्पादकता गाइड और सुझाव",
+      "supportPage": "सहायता",
+      "supportPageDesc": "BrainDock के साथ मदद प्राप्त करें",
+      "talkToSales": "बिक्री से बात करें",
+      "talkToSalesDesc": "टीम और एंटरप्राइज़ योजनाओं के बारे में जानें",
+      "faq": "FAQ",
+      "faqDesc": "अक्सर पूछे जाने वाले प्रश्न"
+    }
   },
   "hero": {
     "title": "अपना ध्यान नियंत्रित करें",

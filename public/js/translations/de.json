@@ -506,7 +506,45 @@
     "signup": "Registrieren",
     "pricing": "Preise",
     "download": "Herunterladen",
-    "faqs": "FAQs"
+    "faqs": "FAQs",
+    "product": "Produkt",
+    "individuals": "Einzelpersonen",
+    "business": "Unternehmen",
+    "resources": "Ressourcen",
+    "productMenu": {
+      "features": "Funktionen",
+      "featuresDesc": "Alle BrainDock-Funktionen entdecken",
+      "useCases": "Anwendungsfälle",
+      "useCasesDesc": "So passt BrainDock in Ihren Workflow",
+      "privacy": "Datenschutz & Sicherheit",
+      "privacyDesc": "Wie wir Ihre Daten schützen"
+    },
+    "individualsMenu": {
+      "students": "Studierende",
+      "studentsDesc": "Konzentriert durch Prüfungen und darüber hinaus",
+      "developers": "Entwickler",
+      "developersDesc": "Tiefe Konzentration für schnellere Auslieferung",
+      "creators": "Kreative",
+      "creatorsDesc": "Schützen Sie Ihren kreativen Flow",
+      "sales": "Vertrieb",
+      "salesDesc": "Mehr abschließen mit weniger Ablenkungen",
+      "support": "Kundensupport",
+      "supportDesc": "Fokussiert bei jedem Ticket bleiben",
+      "lawyers": "Anwälte",
+      "lawyersDesc": "Abrechenbare Tiefarbeitsstunden maximieren",
+      "leaders": "Führungskräfte",
+      "leadersDesc": "Mit Klarheit führen, nicht im Chaos"
+    },
+    "resourcesMenu": {
+      "workflows": "Workflows",
+      "workflowsDesc": "Produktivitätsleitfäden und Tipps",
+      "supportPage": "Support",
+      "supportPageDesc": "Hilfe zu BrainDock erhalten",
+      "talkToSales": "Vertrieb kontaktieren",
+      "talkToSalesDesc": "Erfahren Sie mehr über Team- und Enterprise-Pläne",
+      "faq": "FAQ",
+      "faqDesc": "Häufig gestellte Fragen"
+    }
   },
   "hero": {
     "title": "Behalte deine Aufmerksamkeit",

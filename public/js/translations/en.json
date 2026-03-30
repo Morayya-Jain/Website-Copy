@@ -506,7 +506,45 @@
     "signup": "Sign Up",
     "pricing": "Pricing",
     "download": "Download",
-    "faqs": "FAQs"
+    "faqs": "FAQs",
+    "product": "Product",
+    "individuals": "Individuals",
+    "business": "Business",
+    "resources": "Resources",
+    "productMenu": {
+      "features": "Features",
+      "featuresDesc": "Explore all BrainDock capabilities",
+      "useCases": "Use Cases",
+      "useCasesDesc": "See how BrainDock fits your workflow",
+      "privacy": "Privacy & Security",
+      "privacyDesc": "How we protect your data"
+    },
+    "individualsMenu": {
+      "students": "Students",
+      "studentsDesc": "Focus through finals and beyond",
+      "developers": "Developers",
+      "developersDesc": "Deep focus for shipping faster",
+      "creators": "Creators",
+      "creatorsDesc": "Protect your creative flow state",
+      "sales": "Sales",
+      "salesDesc": "Close more with fewer distractions",
+      "support": "Customer Support",
+      "supportDesc": "Stay focused through every ticket",
+      "lawyers": "Lawyers",
+      "lawyersDesc": "Maximize billable deep work hours",
+      "leaders": "Leaders",
+      "leadersDesc": "Lead with clarity, not chaos"
+    },
+    "resourcesMenu": {
+      "workflows": "Workflows",
+      "workflowsDesc": "Productivity guides and tips",
+      "supportPage": "Support",
+      "supportPageDesc": "Get help with BrainDock",
+      "talkToSales": "Talk to Sales",
+      "talkToSalesDesc": "Learn about team & enterprise plans",
+      "faq": "FAQ",
+      "faqDesc": "Frequently asked questions"
+    }
   },
   "hero": {
     "title": "Own Your Attention",

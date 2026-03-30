@@ -506,7 +506,45 @@
     "signup": "注册",
     "pricing": "价格",
     "download": "下载",
-    "faqs": "FAQs"
+    "faqs": "FAQs",
+    "product": "产品",
+    "individuals": "个人用户",
+    "business": "企业",
+    "resources": "资源",
+    "productMenu": {
+      "features": "功能特点",
+      "featuresDesc": "探索BrainDock的全部功能",
+      "useCases": "使用场景",
+      "useCasesDesc": "了解BrainDock如何融入您的工作流程",
+      "privacy": "隐私与安全",
+      "privacyDesc": "我们如何保护您的数据"
+    },
+    "individualsMenu": {
+      "students": "学生",
+      "studentsDesc": "考试期间及以后都保持专注",
+      "developers": "开发者",
+      "developersDesc": "深度专注，更快交付",
+      "creators": "创作者",
+      "creatorsDesc": "保护您的创作心流状态",
+      "sales": "销售",
+      "salesDesc": "减少干扰，成交更多",
+      "support": "客户支持",
+      "supportDesc": "专注处理每一个工单",
+      "lawyers": "律师",
+      "lawyersDesc": "最大化可计费的深度工作时间",
+      "leaders": "领导者",
+      "leadersDesc": "以清晰而非混乱来领导"
+    },
+    "resourcesMenu": {
+      "workflows": "工作流",
+      "workflowsDesc": "生产力指南和技巧",
+      "supportPage": "支持",
+      "supportPageDesc": "获取BrainDock帮助",
+      "talkToSales": "联系销售",
+      "talkToSalesDesc": "了解团队和企业计划",
+      "faq": "常见问题",
+      "faqDesc": "常见问题解答"
+    }
   },
   "hero": {
     "title": "掌控你的注意力",

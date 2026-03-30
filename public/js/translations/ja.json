@@ -506,7 +506,45 @@
     "signup": "新規登録",
     "pricing": "料金",
     "download": "ダウンロード",
-    "faqs": "FAQs"
+    "faqs": "FAQs",
+    "product": "製品",
+    "individuals": "個人向け",
+    "business": "ビジネス",
+    "resources": "リソース",
+    "productMenu": {
+      "features": "機能",
+      "featuresDesc": "BrainDockの全機能を探索",
+      "useCases": "ユースケース",
+      "useCasesDesc": "BrainDockがワークフローにどう適合するか",
+      "privacy": "プライバシーとセキュリティ",
+      "privacyDesc": "データの保護方法"
+    },
+    "individualsMenu": {
+      "students": "学生",
+      "studentsDesc": "試験期間もその先も集中を維持",
+      "developers": "開発者",
+      "developersDesc": "より速い開発のための深い集中",
+      "creators": "クリエイター",
+      "creatorsDesc": "クリエイティブなフロー状態を守る",
+      "sales": "営業",
+      "salesDesc": "気が散ることなく成約率アップ",
+      "support": "カスタマーサポート",
+      "supportDesc": "すべてのチケットに集中して対応",
+      "lawyers": "弁護士",
+      "lawyersDesc": "請求可能な集中作業時間を最大化",
+      "leaders": "リーダー",
+      "leadersDesc": "混乱ではなく明確さでリードする"
+    },
+    "resourcesMenu": {
+      "workflows": "ワークフロー",
+      "workflowsDesc": "生産性ガイドとヒント",
+      "supportPage": "サポート",
+      "supportPageDesc": "BrainDockのヘルプを受ける",
+      "talkToSales": "営業に相談",
+      "talkToSalesDesc": "チームとエンタープライズプランについて",
+      "faq": "FAQ",
+      "faqDesc": "よくある質問"
+    }
   },
   "hero": {
     "title": "集中力を手に入れる",
