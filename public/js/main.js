@@ -301,17 +301,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Spotlight card mouse-tracking effect
-  var useCasesCards = document.querySelectorAll('.use-cases-card');
-  useCasesCards.forEach(function(card) {
-    card.addEventListener('mousemove', function(e) {
+  // Spotlight card mouse-tracking effect (event delegation for all cards including hidden panels)
+  var useCasesSection = document.querySelector('.use-cases');
+  if (useCasesSection) {
+    useCasesSection.addEventListener('mousemove', function(e) {
+      var card = e.target.closest('.use-cases-card');
+      if (!card) return;
       var rect = card.getBoundingClientRect();
       var x = e.clientX - rect.left;
       var y = e.clientY - rect.top;
       card.style.setProperty('--mouse-x', x + 'px');
       card.style.setProperty('--mouse-y', y + 'px');
     });
-  });
+  }
 
   // Made For You audience pill switcher
   initMadeForYou();

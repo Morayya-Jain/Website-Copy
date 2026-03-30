@@ -1965,23 +1965,50 @@ body.hero-compact .hero-ctas {
 
 /* Spotlight card */
 .use-cases-card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
   position: relative;
   background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid transparent;
   border-radius: 16px;
   padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
   overflow: hidden;
-  transition: border-color 0.3s ease;
+  transition: box-shadow 0.3s ease;
 }
 
 .use-cases-card:hover {
-  border-color: rgba(100, 130, 60, 0.4);
+  box-shadow: 0 8px 32px rgba(100, 130, 60, 0.1);
 }
 
-/* Spotlight glow that follows mouse */
+/* Spotlight border glow - uses mask to only show gradient on the border */
+.use-cases-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: radial-gradient(
+    350px circle at var(--mouse-x) var(--mouse-y),
+    rgba(100, 130, 60, 0.7),
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.use-cases-card:hover::before {
+  opacity: 1;
+}
+
+/* Spotlight inner glow that follows mouse */
 .use-cases-card-glow {
   position: absolute;
   inset: 0;
@@ -1990,8 +2017,8 @@ body.hero-compact .hero-ctas {
   pointer-events: none;
   border-radius: inherit;
   background: radial-gradient(
-    600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(100, 130, 60, 0.1),
+    400px circle at var(--mouse-x) var(--mouse-y),
+    rgba(100, 130, 60, 0.08),
     transparent 40%
   );
 }
@@ -2000,25 +2027,19 @@ body.hero-compact .hero-ctas {
   opacity: 1;
 }
 
-/* Spotlight border effect */
-.use-cases-card::before {
+/* Fallback static border for cards not being hovered */
+.use-cases-card::after {
   content: '';
   position: absolute;
-  inset: -1px;
+  inset: 0;
   border-radius: inherit;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  border: 1px solid var(--border-subtle);
   pointer-events: none;
-  background: radial-gradient(
-    300px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(100, 130, 60, 0.5),
-    transparent 50%
-  );
-  z-index: -1;
+  transition: opacity 0.3s ease;
 }
 
-.use-cases-card:hover::before {
-  opacity: 1;
+.use-cases-card:hover::after {
+  opacity: 0.3;
 }
 
 .use-cases-card-icon {
