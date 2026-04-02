@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo - BrainDock</title>
+  <meta name="description" content="See BrainDock in action. Watch how AI-powered focus tracking helps you stay productive.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Demo - BrainDock">
+  <meta property="og:description" content="See BrainDock in action. Watch how AI-powered focus tracking helps you stay productive.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thebraindock.com/demo/">
+  <meta property="og:image" content="https://thebraindock.com/assets/website_image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Demo - BrainDock">
+  <meta name="twitter:description" content="See BrainDock in action. Watch how AI-powered focus tracking helps you stay productive.">
+  <meta name="twitter:image" content="https://thebraindock.com/assets/website_image.png">
+  <link rel="canonical" href="https://thebraindock.com/demo/">
+  <link rel="icon" type="image/png" href="/assets/white-logo.png">
+  <link rel="apple-touch-icon" href="/assets/white-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .demo-page {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .demo-main {
+      flex: 1;
+      padding-top: calc(100px + 5vh);
+      padding-bottom: 5vh;
+    }
+    .demo-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+    .demo-header {
+      text-align: center;
+      margin-bottom: 5vh;
+    }
+    .demo-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 1.4rem + 0.8vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1vh;
+    }
+    .demo-subtitle {
+      font-family: var(--font-sans);
+      font-size: clamp(0.875rem, 0.82rem + 0.3vw, 1.05rem);
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .demo-video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--bg-surface);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.02);
+      margin-bottom: 5vh;
+    }
+    .demo-video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .demo-placeholder {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      gap: 1rem;
+    }
+    .demo-placeholder svg {
+      width: 64px;
+      height: 64px;
+      opacity: 0.4;
+    }
+    .demo-placeholder p {
+      font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.1rem);
+    }
+    .demo-cta {
+      text-align: center;
+      margin-top: 2vh;
+    }
+    .demo-cta p {
+      font-family: var(--font-sans);
+      font-size: clamp(0.875rem, 0.82rem + 0.3vw, 1.05rem);
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-page">
+  <nav class="nav">
+    <div class="container nav-container">
+      <a href="/" class="nav-logo">
+        <img src="/assets/logo_with_text.png" alt="BrainDock">
+      </a>
+      <div class="nav-center">
+        <div class="nav-links">
+          <a href="/#why-braindock" data-i18n="nav.whyBrainDock">Why?</a>
+          <a href="/#features" data-i18n="nav.features">Features</a>
+          <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+          <a href="/demo/" data-i18n="nav.demo">Demo</a>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <a href="/auth/signup/" class="btn btn-secondary nav-cta nav-cta-signup" data-i18n="nav.signup" target="_blank" rel="noopener">Sign Up</a>
+        <a href="/#download" class="btn btn-primary btn-cta nav-cta nav-cta-download">
+          <span class="btn-cta-label">
+            <span data-i18n="nav.download">Download</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </span>
+          <span class="btn-cta-slide" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+      </div>
+      <button class="nav-toggle" aria-label="Toggle menu" aria-pressed="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="nav-mobile" id="nav-mobile">
+      <a href="/#why-braindock" data-i18n="nav.whyBrainDock">Why?</a>
+      <a href="/#features" data-i18n="nav.features">Features</a>
+      <a href="/pricing/" data-i18n="nav.pricing">Pricing</a>
+      <a href="/demo/" data-i18n="nav.demo">Demo</a>
+      <a href="/auth/signup/" data-i18n="nav.signup" target="_blank" rel="noopener">Sign Up</a>
+      <a href="/#download" data-i18n="nav.download">Download</a>
+    </div>
+  </nav>
+
+  <main class="demo-main">
+    <div class="demo-container">
+      <div class="demo-header">
+        <h1 class="demo-title" data-i18n="demo.title">See BrainDock in Action</h1>
+        <p class="demo-subtitle" data-i18n="demo.subtitle">Watch how BrainDock uses AI to track your focus and help you build better work habits.</p>
+      </div>
+
+      <div class="demo-video-wrapper">
+        <div class="demo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+          <p>Demo video coming soon</p>
+        </div>
+      </div>
+
+      <div class="demo-cta">
+        <p>Ready to try it yourself?</p>
+        <a href="/#download" class="btn btn-primary btn-cta">
+          <span class="btn-cta-label">
+            <span data-i18n="hero.downloadBtn">Download</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </span>
+          <span class="btn-cta-slide" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="/assets/logo_with_text.png" alt="BrainDock" loading="lazy">
+          <p data-i18n="footer.brandDescription">AI-powered focus assistant that helps you build better habits.</p>
+        </div>
+        <div class="footer-links">
+          <h4 data-i18n="footer.legalTitle">Legal</h4>
+          <a href="/privacy.html" target="_blank" rel="noopener noreferrer" data-i18n="footer.privacyPolicy">Privacy Policy</a>
+          <a href="/terms.html" target="_blank" rel="noopener noreferrer" data-i18n="footer.termsOfService">Terms and Conditions</a>
+        </div>
+        <div class="footer-contact" id="contact">
+          <h4 data-i18n="footer.contactTitle">Contact</h4>
+          <a href="mailto:morayya@thebraindock.com">morayya@thebraindock.com</a>
+          <a href="mailto:help.thebraindock@gmail.com">help.thebraindock@gmail.com</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p data-i18n="footer.copyright">&copy; 2026 BrainDock. All rights reserved.</p>
+        <div class="language-selector">
+          <button class="language-toggle" id="footer-lang-toggle" aria-pressed="false" aria-haspopup="listbox" aria-label="Select language">
+            <svg class="globe-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+            </svg>
+            <span class="language-current">English</span>
+            <svg class="chevron-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </button>
+          <ul class="language-dropdown" role="listbox" aria-labelledby="footer-lang-toggle">
+            <li role="option" tabindex="0" aria-selected="false" data-lang="en">English</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="ja">日本語 (Japan)</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="de">Deutsch (Germany)</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="fr">Français (France)</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="zh">中文 (China)</li>
+            <li role="option" tabindex="0" aria-selected="false" data-lang="hi">हिन्दी (India)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  </div>
+
+  <script src="/js/i18n.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>
