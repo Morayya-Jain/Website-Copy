@@ -1,65 +1,39 @@
 /**
  * Scroll-driven Spline 3D animation.
- * Maps scroll position within the .spline-scroll-track to the laptop
- * Screen object rotation, opening/closing the lid as you scroll.
+ * Waits for the <spline-viewer> to load, then maps scroll position
+ * to the laptop Screen object rotation (open/close lid).
  */
 ;(function () {
   'use strict'
 
-  var wrapper = document.getElementById('spline-scroll-wrapper')
-  if (!wrapper) return
+  var viewer = document.getElementById('spline-viewer')
+  if (!viewer) return
 
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
-  var SCENE_URL = 'https://prod.spline.design/MscmfVQqaOCiTGvA/scene.splinecode'
-
-  var canvas = document.getElementById('spline-canvas')
-  if (!canvas) return
-
-  var splineApp = null
-  var screenObj = null
   var hint = document.querySelector('.spline-scroll-hint')
-
-  // The lid rotation range (X axis): closed -> open
-  var LID_CLOSED_X = -90  // degrees - lid flat/closed
-  var LID_OPEN_X = 0      // degrees - lid fully open
+  var screenObj = null
+  var openRotationX = 0
 
   function degToRad(deg) {
     return deg * (Math.PI / 180)
   }
 
-  import('https://unpkg.com/@splinetool/runtime@1.9.30/build/runtime.js')
-    .then(function (module) {
-      var Application = module.Application
-      splineApp = new Application(canvas)
-      return splineApp.load(SCENE_URL)
-    })
-    .then(function () {
-      wrapper.classList.add('spline-loaded')
+  viewer.addEventListener('load', function (e) {
+    var spline = viewer.spline || (e.detail && e.detail.spline)
+    if (!spline) return
 
-      screenObj = splineApp.findObjectByName('Screen')
+    screenObj = spline.findObjectByName('Screen')
+    if (!screenObj) return
 
-      if (!screenObj) {
-        console.warn('Spline: "Screen" object not found in scene')
-        return
-      }
+    // Record the scene's default rotation as "open"
+    openRotationX = screenObj.rotation.x
 
-      // Record the initial rotation as the "open" state
-      LID_OPEN_X = screenObj.rotation.x
+    if (reducedMotion) return
 
-      if (reducedMotion) {
-        // Show laptop open
-        return
-      }
-
-      // Start with lid closed
-      screenObj.rotation.x = LID_OPEN_X + degToRad(90)
-      setupScrollListener()
-    })
-    .catch(function (err) {
-      console.warn('Spline scene failed to load:', err)
-      wrapper.classList.add('spline-fallback')
-    })
+    // Start closed (lid rotated 90 degrees from open)
+    screenObj.rotation.x = openRotationX + degToRad(90)
+    setupScrollListener()
+  })
 
   function setupScrollListener() {
     var track = document.getElementById('spline-scroll-track')
@@ -87,9 +61,8 @@
       var scrolled = -trackRect.top
       var progress = Math.max(0, Math.min(1, scrolled / scrollRange))
 
-      // Interpolate rotation: closed (progress=0) -> open (progress=1)
-      // closed = LID_OPEN_X + 90deg, open = LID_OPEN_X
-      screenObj.rotation.x = LID_OPEN_X + degToRad(90) * (1 - progress)
+      // Interpolate: closed (progress=0) -> open (progress=1)
+      screenObj.rotation.x = openRotationX + degToRad(90) * (1 - progress)
 
       if (!hintHidden && progress > 0.05 && hint) {
         hint.style.opacity = '0'
