@@ -16,7 +16,7 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://yviegtpsklovoyltpnml.supabase.co https://api.stripe.com https://us.i.posthog.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://js.stripe.com; object-src 'none'; base-uri 'self'; form-action 'self'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com https://us-assets.i.posthog.com https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://yviegtpsklovoyltpnml.supabase.co https://api.stripe.com https://us.i.posthog.com https://prod.spline.design; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://js.stripe.com; worker-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
