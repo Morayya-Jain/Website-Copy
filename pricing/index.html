@@ -22,30 +22,116 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
-  <script src="/js/posthog.js" defer></script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://thebraindock.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Pricing",
-        "item": "https://thebraindock.com/pricing/"
-      }
-    ]
-  }
-  </script>
+  <style>
+    #pricing-root {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .pricing-main {
+      flex: 1;
+      padding-top: calc(100px + 5vh);
+      padding-bottom: 5vh;
+    }
+    .pricing-container {
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 5vh;
+    }
+    .pricing-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.5rem, 1.4rem + 0.8vw, 2.5rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1vh;
+    }
+    .pricing-subtitle-free {
+      font-family: var(--font-sans);
+      font-size: clamp(0.9rem, 0.85rem + 0.3vw, 1.1rem);
+      color: var(--text-primary);
+      margin-bottom: 0.3rem;
+    }
+    .pricing-subtitle {
+      font-family: var(--font-sans);
+      font-size: clamp(0.875rem, 0.82rem + 0.3vw, 1.05rem);
+      color: var(--text-secondary);
+    }
+    .pricing-grid {
+      display: grid;
+      gap: clamp(12px, 2vw, 28px);
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: 1100px) {
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 440px; margin: 0 auto; }
+    }
+    .pricing-card {
+      background: var(--bg-surface);
+      border-radius: 16px;
+      padding: clamp(16px, 1.8vw, 24px) clamp(18px, 2.5vw, 32px) clamp(24px, 2.5vw, 32px) clamp(18px, 2vw, 28px);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid rgba(0,0,0,0.02);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      min-height: clamp(380px, 45vh, 520px);
+      text-align: left;
+    }
+    .pricing-card-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.2rem, 1.1rem + 0.6vw, 1.65rem);
+      font-weight: 700;
+      margin-bottom: 1.2vh;
+      color: var(--text-primary);
+    }
+    .pricing-card-price {
+      font-size: clamp(1.15rem, 1.05rem + 0.5vw, 1.55rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.3vh;
+      font-family: var(--font-sans);
+    }
+    .pricing-card-total {
+      font-size: clamp(0.75rem, 0.72rem + 0.15vw, 0.85rem);
+      color: var(--text-tertiary);
+      margin-bottom: 1.2vh;
+      font-family: var(--font-sans);
+    }
+    .pricing-card-desc {
+      font-size: clamp(0.8rem, 0.78rem + 0.2vw, 0.9375rem);
+      color: var(--text-secondary);
+      margin-bottom: 0;
+      line-height: 1.6;
+      flex: 1;
+      font-family: var(--font-sans);
+    }
+    .pricing-card .btn {
+      margin-top: auto;
+      padding: clamp(9px, 1vw, 12px) clamp(18px, 2vw, 28px);
+      font-size: clamp(0.84rem, 0.8rem + 0.18vw, 0.95rem);
+    }
+    .pricing-faq {
+      max-width: 800px;
+      margin: 10vh auto 8vh;
+    }
+    .pricing-faq-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.25rem, 1.15rem + 0.5vw, 1.75rem);
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 4.5vh;
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation (same as landing page - managed by main.js) -->
   <nav class="nav">
     <div class="container nav-container">
       <a href="/" class="nav-logo">
@@ -75,7 +161,6 @@
         <span></span>
       </button>
     </div>
-    <!-- Mobile menu -->
     <div class="nav-mobile" id="nav-mobile">
       <a href="/#why-braindock" data-i18n="nav.whyBrainDock">Why?</a>
       <a href="/#features" data-i18n="nav.features">Features</a>
@@ -87,15 +172,102 @@
   </nav>
 
   <div id="pricing-root">
-    <noscript>
-      <div style="text-align:center;padding:4rem 2rem;">
-        <h1>Pricing</h1>
-        <p>JavaScript is required to view pricing. Please enable it in your browser settings.</p>
+    <main class="pricing-main">
+      <div class="container pricing-container">
+        <div class="pricing-header">
+          <h1 class="pricing-title" data-i18n="pricing.title">Pricing</h1>
+          <p class="pricing-subtitle-free" data-i18n-html="pricing.subtitleFree"><strong>Every account starts with 30 free minutes.</strong></p>
+          <p class="pricing-subtitle" data-i18n="pricing.subtitleDesc">Use camera or screen sessions - top up anytime.</p>
+        </div>
+        <div class="pricing-grid">
+          <div class="pricing-card">
+            <h3 class="pricing-card-title">Pro</h3>
+            <p class="pricing-card-price">A$1.99/hr</p>
+            <p class="pricing-card-total">1 hour</p>
+            <p class="pricing-card-desc">Perfect for trying out BrainDock and seeing how AI-powered focus works for you.</p>
+            <a href="/auth/signup/" class="btn btn-primary btn-cta" target="_blank" rel="noopener"><span class="btn-cta-label"><span>Get Pro</span></span><span class="btn-cta-slide" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+          <div class="pricing-card">
+            <h3 class="pricing-card-title">Ultra</h3>
+            <p class="pricing-card-price">A$1.49/hr</p>
+            <p class="pricing-card-total">10 hours</p>
+            <p class="pricing-card-desc">For the dedicated ones. Enough hours to build a real focus routine at a better rate.</p>
+            <a href="/auth/signup/" class="btn btn-primary btn-cta" target="_blank" rel="noopener"><span class="btn-cta-label"><span>Get Ultra</span></span><span class="btn-cta-slide" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+          <div class="pricing-card">
+            <h3 class="pricing-card-title">Max</h3>
+            <p class="pricing-card-price">A$1.16/hr</p>
+            <p class="pricing-card-total">30 hours</p>
+            <p class="pricing-card-desc">For those who want to go all out. The best bang for your buck to get ultimate AI-powered focus.</p>
+            <a href="/auth/signup/" class="btn btn-primary btn-cta" target="_blank" rel="noopener"><span class="btn-cta-label"><span>Get Max</span></span><span class="btn-cta-slide" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></span></a>
+          </div>
+        </div>
+
+        <section class="pricing-faq">
+          <h2 class="pricing-faq-title" data-i18n="pricing.faq.title">Questions & Answers</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span data-i18n="pricing.faq.q0">Is there a free plan?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  <p data-i18n="pricing.faq.a0">Yes! Every new account gets 30 free minutes per month. Your free time resets automatically at the start of each month. Upgrade anytime for more hours and PDF reports.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span data-i18n="pricing.faq.q1">Which plan should I choose?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  <p data-i18n="pricing.faq.a1">If you're just getting started, Pro (1 hour) lets you try BrainDock without a big commitment. For regular use, Ultra (10 hours) offers a better per-hour rate. Max (30 hours) is the best value if you plan to use BrainDock daily.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span data-i18n="pricing.faq.q2">How does the credit system work?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  <p data-i18n="pricing.faq.a2">You purchase a pack of hours upfront. Each time you run a focus session - whether using your camera, screen monitoring, or both - time is deducted from your balance. You can top up anytime, and your hours never expire.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span data-i18n="pricing.faq.q3">Can I switch between camera and screen sessions?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  <p data-i18n="pricing.faq.a3">Yes. Your hours work across all session types. Use camera-based focus tracking, screen monitoring, or both at the same time - it all draws from the same balance.</p>
+                </div>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span data-i18n="pricing.faq.q4">What happens when I run out of hours?</span>
+                <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="faq-answer" role="region">
+                <div class="faq-answer-inner">
+                  <p data-i18n="pricing.faq.a4">Your session will end and you can top up with another pack right away. Any session data you've already recorded stays in your dashboard - nothing is lost.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
-    </noscript>
+    </main>
   </div>
 
-  <!-- Footer (same as landing page) -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -143,6 +315,22 @@
 
   <script src="/js/i18n.js"></script>
   <script src="/js/main.js"></script>
-  <script type="module" src="/src/pages/pricing.js"></script>
+  <script>
+    // FAQ accordion toggle
+    document.querySelectorAll('.faq-question').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.parentElement;
+        var isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(function(el) {
+          el.classList.remove('active');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isActive) {
+          item.classList.add('active');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
