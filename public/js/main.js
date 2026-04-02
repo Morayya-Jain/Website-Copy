@@ -150,73 +150,6 @@ document.addEventListener('DOMContentLoaded', function() {
     responsiveResizeTimeout = setTimeout(runAllResponsiveChecks, 150);
   });
 
-  // Desktop dropdown hover behavior
-  var dropdowns = document.querySelectorAll('.nav-dropdown');
-  var dropdownCloseTimers = {};
-
-  dropdowns.forEach(function(dropdown, index) {
-    dropdown.addEventListener('mouseenter', function() {
-      clearTimeout(dropdownCloseTimers[index]);
-      // Close other dropdowns
-      dropdowns.forEach(function(other, otherIndex) {
-        if (otherIndex !== index) {
-          clearTimeout(dropdownCloseTimers[otherIndex]);
-          other.classList.remove('active');
-        }
-      });
-      dropdown.classList.add('active');
-    });
-
-    dropdown.addEventListener('mouseleave', function() {
-      dropdownCloseTimers[index] = setTimeout(function() {
-        dropdown.classList.remove('active');
-      }, 150);
-    });
-
-    // Also toggle on click for touch devices
-    var trigger = dropdown.querySelector('.nav-dropdown-trigger');
-    if (trigger) {
-      trigger.addEventListener('click', function(e) {
-        e.preventDefault();
-        var isActive = dropdown.classList.contains('active');
-        // Close all dropdowns
-        dropdowns.forEach(function(d) { d.classList.remove('active'); });
-        if (!isActive) dropdown.classList.add('active');
-      });
-    }
-  });
-
-  // Close dropdowns when clicking outside
-  document.addEventListener('click', function(e) {
-    if (!e.target.closest('.nav-dropdown')) {
-      dropdowns.forEach(function(d) { d.classList.remove('active'); });
-    }
-  });
-
-  // Close dropdowns when clicking a dropdown link
-  document.querySelectorAll('.nav-dropdown-item').forEach(function(item) {
-    item.addEventListener('click', function() {
-      dropdowns.forEach(function(d) { d.classList.remove('active'); });
-    });
-  });
-
-  // Mobile accordion behavior
-  document.querySelectorAll('.nav-mobile-accordion').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var content = this.nextElementSibling;
-      var isActive = this.classList.contains('active');
-      // Close all accordions
-      document.querySelectorAll('.nav-mobile-accordion').forEach(function(b) {
-        b.classList.remove('active');
-        b.nextElementSibling.classList.remove('active');
-      });
-      if (!isActive) {
-        this.classList.add('active');
-        content.classList.add('active');
-      }
-    });
-  });
-
   if (navToggle && navMobile) {
     navToggle.addEventListener('click', function() {
       const isOpen = navMobile.classList.toggle('active');
@@ -225,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-mobile a, .nav-mobile-accordion-content a').forEach(link => {
+    document.querySelectorAll('.nav-mobile a').forEach(link => {
       link.addEventListener('click', () => {
         navMobile.classList.remove('active');
         nav.classList.remove('nav-menu-open');
@@ -235,8 +168,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Close mobile menu when clicking outside
     document.addEventListener('click', (e) => {
-      if (navMobile.classList.contains('active') &&
-          !navMobile.contains(e.target) &&
+      if (navMobile.classList.contains('active') && 
+          !navMobile.contains(e.target) && 
           !navToggle.contains(e.target)) {
         navMobile.classList.remove('active');
         nav.classList.remove('nav-menu-open');
