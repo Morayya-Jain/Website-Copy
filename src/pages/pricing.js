@@ -82,10 +82,16 @@ function tierDescription(hours) {
   return `${hours} hours of BrainDock - camera, screen, or both.`
 }
 
+/** Fallback packages when Supabase is unreachable (e.g. GitHub Pages). */
+const FALLBACK_PACKAGES = [
+  { id: 'fallback-pro', name: 'pro', display_name: 'Pro', hours: 1, price_cents: 199, currency: 'aud' },
+  { id: 'fallback-ultra', name: 'ultra', display_name: 'Ultra', hours: 10, price_cents: 1490, currency: 'aud' },
+  { id: 'fallback-max', name: 'max', display_name: 'Max', hours: 30, price_cents: 3490, currency: 'aud' },
+]
+
 function render(root, packages, hasUser) {
-  // If packages failed to load from DB, show an error state instead of non-functional fallbacks
-  const defaultPackages = packages.length > 0 ? packages : []
-  const packagesLoadFailed = packages.length === 0
+  const defaultPackages = packages.length > 0 ? packages : FALLBACK_PACKAGES
+  const packagesLoadFailed = false
 
   root.innerHTML = `
     <main class="pricing-main">
