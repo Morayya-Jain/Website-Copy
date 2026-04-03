@@ -18,14 +18,24 @@
     return deg * (Math.PI / 180)
   }
 
+  // The spline-viewer fires a 'load' event when the scene is ready
   viewer.addEventListener('load', function (e) {
-    var spline = viewer.spline || (e.detail && e.detail.spline)
+    var spline = viewer.spline
     if (!spline) return
 
-    screenObj = spline.findObjectByName('Screen')
-    if (!screenObj) return
+    // List all objects to help debug
+    var allObjects = spline.getAllObjects()
+    console.log('Spline objects:', allObjects.map(function (o) { return o.name }))
 
-    // Record the scene's default rotation as "open"
+    screenObj = spline.findObjectByName('Screen')
+    if (!screenObj) {
+      console.warn('Spline: "Screen" object not found')
+      return
+    }
+
+    console.log('Screen rotation:', screenObj.rotation)
+
+    // Record the scene default rotation as "open"
     openRotationX = screenObj.rotation.x
 
     if (reducedMotion) return
