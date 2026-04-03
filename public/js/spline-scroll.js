@@ -1,7 +1,8 @@
 /**
  * Scroll-driven Spline 3D animation.
- * Positions camera straight-on facing the laptop, starts closed,
- * opens the lid as user scrolls down.
+ * Uses the scene's default camera (don't override it).
+ * Disables mouse interaction via HTML attributes.
+ * Opens laptop lid on scroll down, closes on scroll up.
  */
 ;(function () {
   'use strict'
@@ -16,46 +17,25 @@
     var spline = viewer.spline
     if (!spline) return
 
-    // Log all objects for debugging
+    // Log all objects and their rotations
     var allObjects = spline.getAllObjects()
-    console.log('Spline objects:', allObjects.map(function (o) {
-      return o.name
-    }))
-
-    // Position camera straight-on, looking at the laptop from the front
-    var camera = spline.findObjectByName('Camera')
-    if (camera) {
-      // Straight-on view: centered, slightly above, pulled back
-      camera.position.x = 0
-      camera.position.y = 100
-      camera.position.z = 1200
-      camera.rotation.x = 0
-      camera.rotation.y = 0
-      camera.rotation.z = 0
-      console.log('Camera set to front view')
-    }
-
-    // Find the Macbook group and reset its rotation so it faces straight
-    var macbook = spline.findObjectByName('Macbook')
-    if (macbook) {
-      macbook.rotation.x = 0
-      macbook.rotation.y = 0
-      macbook.rotation.z = 0
-    }
+    allObjects.forEach(function (o) {
+      console.log(o.name, 'rot:', o.rotation.x, o.rotation.y, o.rotation.z)
+    })
 
     // Find the screen/lid
     var screenObj = spline.findObjectByName('Screen')
     if (!screenObj) {
-      console.warn('Screen object not found in scene')
+      console.warn('Screen object not found')
       return
     }
 
-    console.log('Screen default rotation x:', screenObj.rotation.x)
     var openRotationX = screenObj.rotation.x
+    console.log('Screen open rotation x:', openRotationX)
 
     if (reducedMotion) return
 
-    // Start with lid closed (rotated 90 degrees shut)
+    // Start with lid closed
     screenObj.rotation.x = openRotationX + (90 * Math.PI / 180)
     setupScrollListener(screenObj, openRotationX)
   })
@@ -85,7 +65,6 @@
       var scrolled = -trackRect.top
       var progress = Math.max(0, Math.min(1, scrolled / scrollRange))
 
-      // Closed (progress=0) -> Open (progress=1)
       screenObj.rotation.x = openRotationX + (90 * Math.PI / 180) * (1 - progress)
 
       if (!hintHidden && progress > 0.05 && hint) {
