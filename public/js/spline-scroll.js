@@ -1,6 +1,6 @@
 /**
  * Scroll-driven Spline 3D animation.
- * Centers the laptop, disables interaction, opens lid on scroll.
+ * Waits for scene to fully render before attempting any manipulation.
  */
 ;(function () {
   'use strict'
@@ -15,41 +15,31 @@
     var spline = viewer.spline
     if (!spline) return
 
-    // Log everything so we can debug
-    var allObjects = spline.getAllObjects()
-    allObjects.forEach(function (o) {
-      console.log(o.name,
-        'pos(' + Math.round(o.position.x) + ',' + Math.round(o.position.y) + ',' + Math.round(o.position.z) + ')',
-        'rot(' + Math.round(o.rotation.x * 57.3) + ',' + Math.round(o.rotation.y * 57.3) + ',' + Math.round(o.rotation.z * 57.3) + ')')
-    })
+    // Wait for the scene's built-in start animation to finish
+    // before we take over control
+    setTimeout(function () {
+      var allObjects = spline.getAllObjects()
+      allObjects.forEach(function (o) {
+        console.log(o.name,
+          'pos(' + Math.round(o.position.x) + ',' + Math.round(o.position.y) + ',' + Math.round(o.position.z) + ')',
+          'rot(' + Math.round(o.rotation.x * 57.3) + ',' + Math.round(o.rotation.y * 57.3) + ',' + Math.round(o.rotation.z * 57.3) + ')')
+      })
 
-    // Adjust camera relative to its default - pull back and center
-    var camera = spline.findObjectByName('Camera')
-    if (camera) {
-      console.log('Camera BEFORE:', camera.position.x, camera.position.y, camera.position.z)
-      camera.position.x = 0
-      camera.position.y = 50
-      camera.position.z = camera.position.z * 3
-      camera.rotation.x = -0.1
-      camera.rotation.y = 0
-      camera.rotation.z = 0
-      console.log('Camera AFTER:', camera.position.x, camera.position.y, camera.position.z)
-    }
+      var screenObj = spline.findObjectByName('Screen')
+      if (!screenObj) {
+        console.warn('Screen not found')
+        return
+      }
 
-    // Find the screen/lid
-    var screenObj = spline.findObjectByName('Screen')
-    if (!screenObj) {
-      console.warn('Screen not found')
-      return
-    }
+      var openRotationX = screenObj.rotation.x
+      console.log('Screen openRotationX:', openRotationX)
 
-    var openRotationX = screenObj.rotation.x
+      if (reducedMotion) return
 
-    if (reducedMotion) return
-
-    // Start closed
-    screenObj.rotation.x = openRotationX + (90 * Math.PI / 180)
-    setupScrollListener(screenObj, openRotationX)
+      // Close the lid
+      screenObj.rotation.x = openRotationX + (90 * Math.PI / 180)
+      setupScrollListener(screenObj, openRotationX)
+    }, 2000)
   })
 
   function setupScrollListener(screenObj, openRotationX) {
