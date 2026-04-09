@@ -22,6 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preload" as="image" href="../assets/frames/frame_0001.jpg">
   <style>
     .demo-page {
       display: flex;
@@ -173,7 +174,7 @@
   <!-- Scroll-driven frame animation -->
   <div id="scroll-frame-track" class="scroll-frame-track">
     <div id="scroll-frame-sticky" class="scroll-frame-sticky">
-      <img id="scroll-frame-img" src="../assets/frames/frame_0001.jpg" alt="BrainDock demo animation">
+      <img id="scroll-frame-img" src="../assets/frames/frame_0001.jpg" alt="BrainDock demo animation" fetchpriority="high" decoding="sync">
       <div class="scroll-hint" id="scroll-hint" aria-hidden="true">
         <span>Scroll to explore</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

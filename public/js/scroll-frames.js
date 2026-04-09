@@ -31,10 +31,26 @@
     framePaths.push(basePath + 'frame_' + num + '.jpg')
   }
 
-  // Preload all frames into browser cache
-  for (var j = 0; j < TOTAL_FRAMES; j++) {
-    var preload = new Image()
-    preload.src = framePaths[j]
+  // Preload frames in small batches to avoid network contention
+  var preloaded = []
+  var batchSize = 10
+  function preloadBatch(start) {
+    for (var k = start; k < Math.min(start + batchSize, TOTAL_FRAMES); k++) {
+      var p = new Image()
+      p.src = framePaths[k]
+      preloaded[k] = p
+    }
+    if (start + batchSize < TOTAL_FRAMES) {
+      setTimeout(function () { preloadBatch(start + batchSize) }, 100)
+    }
+  }
+  preloadBatch(0)
+
+  // Retry first frame if it fails to load
+  img.onerror = function () {
+    setTimeout(function () {
+      img.src = framePaths[0]
+    }, 500)
   }
 
   // Start listening immediately - frame 1 is already set as img src
