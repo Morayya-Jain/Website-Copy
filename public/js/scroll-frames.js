@@ -1,7 +1,7 @@
 /**
  * Scroll-driven frame sequence animation.
- * Preloads 60 JPG frames and swaps an <img> src
- * based on scroll position within .scroll-frame-track.
+ * Preloads all 60 frames, then swaps <img> src on scroll
+ * for instant, flicker-free frame changes.
  */
 ;(function () {
   'use strict'
@@ -17,63 +17,60 @@
   if (!track || !sticky) return
 
   var TOTAL_FRAMES = 60
-  var currentFrame = 0
+  var currentFrame = -1
   var ticking = false
   var hintHidden = false
 
-  // Derive the base path from the first frame's src (set in HTML)
-  var basePath = img.src.replace(/frame_0001\.jpg$/, '')
+  // Derive base path from the img src set in HTML
+  var basePath = img.src.replace(/frame_0001\.jpg.*$/, '')
 
-  // Build all frame paths (1-indexed, 4-digit: frame_0001.jpg to frame_0060.jpg)
+  // Build frame paths (1-indexed, 4-digit)
   var framePaths = []
   for (var i = 1; i <= TOTAL_FRAMES; i++) {
-    var num = i < 10 ? '000' + i : (i < 100 ? '00' + i : (i < 1000 ? '0' + i : '' + i))
+    var num = i < 10 ? '000' + i : (i < 100 ? '00' + i : '0' + i)
     framePaths.push(basePath + 'frame_' + num + '.jpg')
   }
 
-  // Preload frames in small batches to avoid network contention
-  var preloaded = []
-  var batchSize = 10
-  function preloadBatch(start) {
-    for (var k = start; k < Math.min(start + batchSize, TOTAL_FRAMES); k++) {
-      var p = new Image()
-      p.src = framePaths[k]
-      preloaded[k] = p
-    }
-    if (start + batchSize < TOTAL_FRAMES) {
-      setTimeout(function () { preloadBatch(start + batchSize) }, 100)
-    }
-  }
-  preloadBatch(0)
-
-  // Retry first frame if it fails to load
-  img.onerror = function () {
-    setTimeout(function () {
-      img.src = framePaths[0]
-    }, 500)
+  // Preload every frame as an Image object so the browser caches them
+  var images = []
+  var loaded = 0
+  for (var j = 0; j < TOTAL_FRAMES; j++) {
+    var pre = new Image()
+    pre.onload = pre.onerror = onLoad
+    pre.src = framePaths[j]
+    images.push(pre)
   }
 
-  // Start listening immediately - frame 1 is already set as img src
+  function onLoad() {
+    loaded++
+    // Start scroll listener as soon as all frames are cached
+    if (loaded === TOTAL_FRAMES) {
+      window.addEventListener('scroll', onScroll, { passive: true })
+      // Draw current scroll position immediately
+      update()
+    }
+  }
+
+  // Also listen right away so it works even if some frames are slow
   window.addEventListener('scroll', onScroll, { passive: true })
 
   function onScroll() {
     if (!ticking) {
-      requestAnimationFrame(updateFrame)
+      requestAnimationFrame(update)
       ticking = true
     }
   }
 
-  function updateFrame() {
+  function update() {
     ticking = false
 
-    var trackRect = track.getBoundingClientRect()
-    var scrollRange = track.offsetHeight - sticky.offsetHeight
-    if (scrollRange <= 0) return
+    var rect = track.getBoundingClientRect()
+    var range = track.offsetHeight - window.innerHeight
+    if (range <= 0) return
 
-    var scrolled = -trackRect.top
-    var progress = Math.max(0, Math.min(1, scrolled / scrollRange))
-
-    var frameIndex = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * TOTAL_FRAMES))
+    var scrolled = -rect.top
+    var progress = Math.max(0, Math.min(1, scrolled / range))
+    var frameIndex = Math.min(TOTAL_FRAMES - 1, Math.round(progress * (TOTAL_FRAMES - 1)))
 
     if (frameIndex !== currentFrame) {
       img.src = framePaths[frameIndex]
@@ -81,7 +78,7 @@
     }
 
     // Fade scroll hint
-    if (!hintHidden && progress > 0.03 && hint) {
+    if (!hintHidden && progress > 0.02 && hint) {
       hint.style.opacity = '0'
       hintHidden = true
     } else if (hintHidden && progress <= 0.01 && hint) {
