@@ -22,13 +22,12 @@
   var hintHidden = false
 
   // Derive the base path from the first frame's src (set in HTML)
-  // This works in both dev (/) and production (/Website-Copy/)
-  var basePath = img.src.replace(/frame_000\.jpg$/, '')
+  var basePath = img.src.replace(/frame_0001\.jpg$/, '')
 
-  // Build all frame paths
+  // Build all frame paths (1-indexed, 4-digit: frame_0001.jpg to frame_0060.jpg)
   var framePaths = []
-  for (var i = 0; i < TOTAL_FRAMES; i++) {
-    var num = i < 10 ? '00' + i : (i < 100 ? '0' + i : '' + i)
+  for (var i = 1; i <= TOTAL_FRAMES; i++) {
+    var num = i < 10 ? '000' + i : (i < 100 ? '00' + i : (i < 1000 ? '0' + i : '' + i))
     framePaths.push(basePath + 'frame_' + num + '.jpg')
   }
 
@@ -38,7 +37,7 @@
     preload.src = framePaths[j]
   }
 
-  // Start listening immediately - frame 0 is already set as img src
+  // Start listening immediately - frame 1 is already set as img src
   window.addEventListener('scroll', onScroll, { passive: true })
 
   function onScroll() {
