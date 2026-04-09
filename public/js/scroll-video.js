@@ -21,20 +21,34 @@
   var hintHidden = false
   var duration = 0
 
-  // Wait for video metadata to load so we know the duration
+  // Wait for video to be ready for seeking
   function onReady() {
     duration = video.duration
     if (!duration || isNaN(duration)) return
 
-    // Set to first frame
+    // Prime the decoder: play briefly then pause so seeking renders frames
     video.currentTime = 0
-    window.addEventListener('scroll', onScroll, { passive: true })
+    var playPromise = video.play()
+    if (playPromise !== undefined) {
+      playPromise.then(function () {
+        video.pause()
+        video.currentTime = 0
+        window.addEventListener('scroll', onScroll, { passive: true })
+      }).catch(function () {
+        // Autoplay blocked - still attach scroll, seeking may work anyway
+        video.pause()
+        window.addEventListener('scroll', onScroll, { passive: true })
+      })
+    } else {
+      video.pause()
+      window.addEventListener('scroll', onScroll, { passive: true })
+    }
   }
 
-  if (video.readyState >= 1) {
+  if (video.readyState >= 2) {
     onReady()
   } else {
-    video.addEventListener('loadedmetadata', onReady)
+    video.addEventListener('canplay', onReady)
   }
 
   function onScroll() {
