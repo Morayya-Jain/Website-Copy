@@ -1,6 +1,6 @@
 /**
  * Scroll-driven frame sequence animation.
- * Preloads 60 JPG frames and draws them to a canvas
+ * Preloads 60 JPG frames and draws them to a full-viewport canvas
  * based on scroll position within .scroll-frame-track.
  */
 ;(function () {
@@ -20,12 +20,11 @@
   var TOTAL_FRAMES = 60
   var frames = []
   var loadedCount = 0
-  var currentFrame = 0
+  var currentFrame = -1
   var ticking = false
   var hintHidden = false
   var ready = false
 
-  // Build frame paths
   function framePath(i) {
     var num = i < 10 ? '00' + i : (i < 100 ? '0' + i : '' + i)
     return '/assets/frames/frame_' + num + '.jpg'
@@ -41,30 +40,44 @@
 
   function onFrameLoad() {
     loadedCount++
-    // Once first frame is loaded, size the canvas and draw it
     if (loadedCount === 1) {
-      sizeCanvas(frames[0])
+      sizeCanvas()
       drawFrame(0)
     }
     if (loadedCount === TOTAL_FRAMES) {
       ready = true
       window.addEventListener('scroll', onScroll, { passive: true })
-      // Draw current position in case user already scrolled during load
       updateFrame()
     }
   }
 
-  function sizeCanvas(img) {
-    // Use the native image dimensions for crisp rendering
-    canvas.width = img.naturalWidth
-    canvas.height = img.naturalHeight
+  function sizeCanvas() {
+    var dpr = window.devicePixelRatio || 1
+    var w = sticky.clientWidth
+    var h = sticky.clientHeight
+    canvas.width = w * dpr
+    canvas.height = h * dpr
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
   }
 
   function drawFrame(index) {
     var img = frames[index]
     if (!img || !img.complete) return
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height)
+
+    var cw = sticky.clientWidth
+    var ch = sticky.clientHeight
+    var iw = img.naturalWidth
+    var ih = img.naturalHeight
+
+    // object-fit: contain - fit image inside the viewport
+    var scale = Math.min(cw / iw, ch / ih)
+    var dw = iw * scale
+    var dh = ih * scale
+    var dx = (cw - dw) / 2
+    var dy = (ch - dh) / 2
+
+    ctx.clearRect(0, 0, cw, ch)
+    ctx.drawImage(img, dx, dy, dw, dh)
     currentFrame = index
   }
 
@@ -86,7 +99,6 @@
     var scrolled = -trackRect.top
     var progress = Math.max(0, Math.min(1, scrolled / scrollRange))
 
-    // Map progress to frame index
     var frameIndex = Math.min(TOTAL_FRAMES - 1, Math.floor(progress * TOTAL_FRAMES))
 
     if (frameIndex !== currentFrame) {
@@ -103,10 +115,9 @@
     }
   }
 
-  // Re-size canvas on window resize to keep it responsive
   window.addEventListener('resize', function () {
-    if (frames[0] && frames[0].complete) {
-      sizeCanvas(frames[0])
+    sizeCanvas()
+    if (currentFrame >= 0) {
       drawFrame(currentFrame)
     }
   })
