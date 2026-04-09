@@ -21,11 +21,15 @@
   var ticking = false
   var hintHidden = false
 
+  // Derive the base path from the first frame's src (set in HTML)
+  // This works in both dev (/) and production (/Website-Copy/)
+  var basePath = img.src.replace(/frame_000\.jpg$/, '')
+
   // Build all frame paths
   var framePaths = []
   for (var i = 0; i < TOTAL_FRAMES; i++) {
     var num = i < 10 ? '00' + i : (i < 100 ? '0' + i : '' + i)
-    framePaths.push('/assets/frames/frame_' + num + '.jpg')
+    framePaths.push(basePath + 'frame_' + num + '.jpg')
   }
 
   // Preload all frames into browser cache
