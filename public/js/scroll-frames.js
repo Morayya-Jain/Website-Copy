@@ -16,7 +16,7 @@
   var hint = document.getElementById('scroll-hint')
   if (!track || !sticky) return
 
-  var TOTAL_FRAMES = 41 // frames 0-40: closed to fully open
+  var TOTAL_FRAMES = 60
   var currentFrame = 0
   var ticking = false
   var hintHidden = false
