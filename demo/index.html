@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://js.stripe.com https://us-assets.i.posthog.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https:; img-src 'self' data: blob: https:; font-src 'self' https://fonts.gstatic.com; frame-src https://my.spline.design; object-src 'none'; base-uri 'self'">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Demo - BrainDock</title>
@@ -32,7 +31,7 @@
     .demo-main {
       flex: 1;
       padding-top: calc(100px + 5vh);
-      padding-bottom: 5vh;
+      padding-bottom: 0;
     }
     .demo-container {
       max-width: 900px;
@@ -42,7 +41,7 @@
     }
     .demo-header {
       text-align: center;
-      margin-bottom: 5vh;
+      margin-bottom: 2vh;
     }
     .demo-title {
       font-family: var(--font-serif);
@@ -58,31 +57,33 @@
       max-width: 600px;
       margin: 0 auto;
     }
-    /* Scroll-driven Spline animation */
-    .spline-scroll-track {
-      height: auto;
+
+    /* Scroll-driven video animation */
+    .scroll-video-track {
+      height: 300vh;
       position: relative;
     }
-    .spline-sticky {
+    .scroll-video-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
     }
-    .spline-scroll-wrapper {
-      width: 100%;
-      max-width: 900px;
-      height: 80vh;
-      position: relative;
-      overflow: hidden;
+    .scroll-video-wrapper {
+      width: 90%;
+      max-width: 800px;
       margin: 0 auto;
     }
-    #spline-iframe {
+    .scroll-video-wrapper video {
       width: 100%;
-      height: 100%;
+      height: auto;
       display: block;
+      border-radius: 12px;
     }
-    .spline-scroll-hint {
+    .scroll-hint {
       margin-top: 1.5rem;
       display: flex;
       align-items: center;
@@ -92,23 +93,13 @@
       color: var(--text-secondary);
       opacity: 0.6;
       animation: bounce-hint 2s ease-in-out infinite;
-      transition: opacity 0.3s;
+      transition: opacity 0.4s;
     }
     @keyframes bounce-hint {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(6px); }
     }
-    @media (prefers-reduced-motion: reduce) {
-      .spline-scroll-track {
-        height: auto;
-      }
-      .spline-sticky {
-        position: relative;
-      }
-      .spline-scroll-hint {
-        display: none;
-      }
-    }
+
     .demo-cta {
       text-align: center;
       margin-top: 2vh;
@@ -118,6 +109,18 @@
       font-size: clamp(0.875rem, 0.82rem + 0.3vw, 1.05rem);
       color: var(--text-secondary);
       margin-bottom: 1.5rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-video-track {
+        height: auto;
+      }
+      .scroll-video-sticky {
+        position: relative;
+      }
+      .scroll-hint {
+        display: none;
+      }
     }
   </style>
 </head>
@@ -168,24 +171,22 @@
         <h1 class="demo-title" data-i18n="demo.title">See BrainDock in Action</h1>
         <p class="demo-subtitle" data-i18n="demo.subtitle">Watch how BrainDock uses AI to track your focus and help you build better work habits.</p>
       </div>
-
     </div>
   </main>
 
-  <!-- Spline 3D scroll-driven animation -->
-  <div id="spline-scroll-track" class="spline-scroll-track">
-    <div id="spline-sticky" class="spline-sticky">
-      <div id="spline-scroll-wrapper" class="spline-scroll-wrapper">
-        <iframe
-          id="spline-iframe"
-          src="https://my.spline.design/mackbookmockupanimationwithframertutorial-HAp7DLNfkJ5drgfF58CcGxfc/"
-          frameborder="0"
-          width="100%"
-          height="100%"
-          style="border: none; pointer-events: none;"
-        ></iframe>
+  <!-- Scroll-driven video animation -->
+  <div id="scroll-video-track" class="scroll-video-track">
+    <div id="scroll-video-sticky" class="scroll-video-sticky">
+      <div class="scroll-video-wrapper">
+        <video
+          id="scroll-video"
+          src="/assets/laptop-open.mp4"
+          muted
+          playsinline
+          preload="auto"
+        ></video>
       </div>
-      <div class="spline-scroll-hint" aria-hidden="true">
+      <div class="scroll-hint" id="scroll-hint" aria-hidden="true">
         <span>Scroll to explore</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 5v14"/>
@@ -256,5 +257,6 @@
 
   <script src="/js/i18n.js"></script>
   <script src="/js/main.js"></script>
+  <script src="/js/scroll-video.js"></script>
 </body>
 </html>
