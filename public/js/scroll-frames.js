@@ -1,7 +1,7 @@
 /**
  * Scroll-driven frame sequence animation.
- * Preloads 60 JPG frames and draws them to a full-viewport canvas
- * based on scroll position within .scroll-frame-track.
+ * Preloads 60 JPG frames and draws them to a canvas
+ * covering the full viewport, based on scroll position.
  */
 ;(function () {
   'use strict'
@@ -25,6 +25,7 @@
   var hintHidden = false
   var ready = false
 
+  // Build frame paths
   function framePath(i) {
     var num = i < 10 ? '00' + i : (i < 100 ? '0' + i : '' + i)
     return '/assets/frames/frame_' + num + '.jpg'
@@ -52,25 +53,27 @@
   }
 
   function sizeCanvas() {
+    // Match canvas pixels to the viewport for full-bleed drawing
     var dpr = window.devicePixelRatio || 1
-    var w = sticky.clientWidth
-    var h = sticky.clientHeight
-    canvas.width = w * dpr
-    canvas.height = h * dpr
+    canvas.width = window.innerWidth * dpr
+    canvas.height = window.innerHeight * dpr
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
   }
 
+  /**
+   * Draw a frame covering the full canvas (object-fit: cover).
+   */
   function drawFrame(index) {
     var img = frames[index]
     if (!img || !img.complete) return
 
-    var cw = sticky.clientWidth
-    var ch = sticky.clientHeight
+    var cw = window.innerWidth
+    var ch = window.innerHeight
     var iw = img.naturalWidth
     var ih = img.naturalHeight
 
-    // object-fit: contain - fit image inside the viewport
-    var scale = Math.min(cw / iw, ch / ih)
+    // Calculate cover dimensions
+    var scale = Math.max(cw / iw, ch / ih)
     var dw = iw * scale
     var dh = ih * scale
     var dx = (cw - dw) / 2
