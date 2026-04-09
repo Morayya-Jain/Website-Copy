@@ -67,15 +67,16 @@
       position: sticky;
       top: 0;
       height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       background: #000;
     }
-    .scroll-frame-sticky canvas {
+    .scroll-frame-sticky img {
       width: 100%;
       height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
+      object-fit: contain;
     }
     .scroll-hint {
       position: absolute;
@@ -172,7 +173,7 @@
   <!-- Scroll-driven frame animation -->
   <div id="scroll-frame-track" class="scroll-frame-track">
     <div id="scroll-frame-sticky" class="scroll-frame-sticky">
-      <canvas id="scroll-frame-canvas"></canvas>
+      <img id="scroll-frame-img" src="/assets/frames/frame_000.jpg" alt="BrainDock demo animation">
       <div class="scroll-hint" id="scroll-hint" aria-hidden="true">
         <span>Scroll to explore</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
